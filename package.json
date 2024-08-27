@@ -162,6 +162,7 @@
   },
   "description": "Base template for Figure Typescript projects",
   "scripts": {
+    "build:jsr": "bun run scripts/build-jsr-manifest.ts",
     "prepare": "husky",
     "lint": "eslint src/",
     "format": "prettier --write src/",
