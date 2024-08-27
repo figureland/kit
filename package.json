@@ -164,6 +164,7 @@
   "scripts": {
     "build:jsr": "bun run scripts/build-jsr-manifest.ts",
     "prepare": "husky",
+    "test": "bun test",
     "lint": "eslint src/",
     "format": "prettier --write src/",
     "release": "bunx changelogen@latest --release"
