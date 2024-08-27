@@ -1,4 +1,16 @@
 #
+## v0.0.2
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.1...v0.0.2)
+
+### 🏡 Chore
+
+- Fixed action and added test script ([d4492ee](https://github.com/figureland/kit/commit/d4492ee))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.1
 
 
