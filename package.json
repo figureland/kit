@@ -1,52 +1,214 @@
 {
-  "name": "@figureland/base",
+  "name": "@figureland/kit",
   "version": "0.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/index.js"
+    "./math": {
+      "types": "./src/math/index.ts",
+      "import": "./src/math/index.ts"
     },
-    "./entry": {
-      "types": "./dist/entry.d.ts",
-      "require": "./dist/entry.js",
-      "import": "./dist/entry.js"
+    "./math/number": {
+      "types": "./src/math/number.ts",
+      "import": "./src/math/number.ts"
+    },
+    "./math/easing": {
+      "types": "./src/math/easing.ts",
+      "import": "./src/math/easing.ts"
+    },
+    "./math/vector2": {
+      "types": "./src/math/vector2.ts",
+      "import": "./src/math/vector2.ts"
+    },
+    "./math/matrix2D": {
+      "types": "./src/math/matrix2D.ts",
+      "import": "./src/math/matrix2D.ts"
+    },
+    "./math/box": {
+      "types": "./src/math/box.ts",
+      "import": "./src/math/box.ts"
+    },
+    "./math/size": {
+      "types": "./src/math/size.ts",
+      "import": "./src/math/size.ts"
+    },
+    "./math/random": {
+      "types": "./src/math/random.ts",
+      "import": "./src/math/random.ts"
+    },
+    "./math/constants": {
+      "types": "./src/math/constants.ts",
+      "import": "./src/math/constants.ts"
+    },
+    "./math/style": {
+      "types": "./src/math/style.ts",
+      "import": "./src/math/style.ts"
+    },
+    "./type": {
+      "types": "./src/type/index.ts",
+      "import": "./src/type/index.ts"
+    },
+    "./type/device": {
+      "types": "./src/type/device.ts",
+      "import": "./src/type/device.ts"
+    },
+    "./type/guards": {
+      "types": "./src/type/guards.ts",
+      "import": "./src/type/guards.ts"
+    },
+    "./type/map": {
+      "types": "./src/type/map.ts",
+      "import": "./src/type/map.ts"
+    },
+    "./type/merge": {
+      "types": "./src/type/merge.ts",
+      "import": "./src/type/merge.ts"
+    },
+    "./type/object": {
+      "types": "./src/type/object.ts",
+      "import": "./src/type/object.ts"
+    },
+    "./type/async": {
+      "types": "./src/type/async.ts",
+      "import": "./src/type/async.ts"
+    },
+    "./type/time": {
+      "types": "./src/type/time.ts",
+      "import": "./src/type/time.ts"
+    },
+    "./type/equals": {
+      "types": "./src/type/equals.ts",
+      "import": "./src/type/equals.ts"
+    },
+    "./type/clone": {
+      "types": "./src/type/clone.ts",
+      "import": "./src/type/clone.ts"
+    },
+    "./dom": {
+      "types": "./src/dom/index.ts",
+      "import": "./src/dom/index.ts"
+    },
+    "./dom/clipboard": {
+      "types": "./src/dom/clipboard.ts",
+      "import": "./src/dom/clipboard.ts"
+    },
+    "./dom/device": {
+      "types": "./src/dom/device.ts",
+      "import": "./src/dom/device.ts"
+    },
+    "./dom/filedrop": {
+      "types": "./src/dom/filedrop.ts",
+      "import": "./src/dom/filedrop.ts"
+    },
+    "./dom/fullscreen": {
+      "types": "./src/dom/fullscreen.ts",
+      "import": "./src/dom/fullscreen.ts"
+    },
+    "./dom/keycommands": {
+      "types": "./src/dom/keycommands.ts",
+      "import": "./src/dom/keycommands.ts"
+    },
+    "./dom/pointer": {
+      "types": "./src/dom/pointer.ts",
+      "import": "./src/dom/pointer.ts"
+    },
+    "./dom/screen": {
+      "types": "./src/dom/screen.ts",
+      "import": "./src/dom/screen.ts"
+    },
+    "./dom/sfx": {
+      "types": "./src/dom/sfx.ts",
+      "import": "./src/dom/sfx.ts"
+    },
+    "./dom/events": {
+      "types": "./src/dom/events.ts",
+      "import": "./src/dom/events.ts"
+    },
+    "./dom/blob": {
+      "types": "./src/dom/blob.ts",
+      "import": "./src/dom/blob.ts"
+    },
+    "./dom/preferences": {
+      "types": "./src/dom/preferences.ts",
+      "import": "./src/dom/preferences.ts"
+    },
+    "./dom/timer": {
+      "types": "./src/dom/timer.ts",
+      "import": "./src/dom/timer.ts"
+    },
+    "./state": {
+      "types": "./src/state/index.ts",
+      "import": "./src/state/index.ts"
+    },
+    "./state/vue": {
+      "types": "./src/state/vue.ts",
+      "import": "./src/state/vue.ts"
+    },
+    "./state/react": {
+      "types": "./src/state/react.ts",
+      "import": "./src/state/react.ts"
+    },
+    "./state/svelte": {
+      "types": "./src/state/svelte.ts",
+      "import": "./src/state/svelte.ts"
+    },
+    "./state/typed-local-storage": {
+      "types": "./src/state/typed-local-storage.ts",
+      "import": "./src/state/typed-local-storage.ts"
+    },
+    "./state/animated": {
+      "types": "./src/state/animated.ts",
+      "import": "./src/state/animated.ts"
     }
   },
   "description": "Base template for Figure Typescript projects",
   "scripts": {
-    "build": "bun run scripts/build.ts",
-    "dev": "bun --watch scripts/dev.ts",
     "prepare": "husky",
     "lint": "eslint src/",
     "format": "prettier --write src/",
     "release": "bunx changelogen@latest --release"
   },
   "files": [
-    "dist"
+    "src"
   ],
   "license": "MIT",
   "devDependencies": {
-    "@commitlint/cli": "^19.3.0",
+    "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
-    "@types/bun": "^1.1.6",
+    "@types/bun": "^1.1.8",
     "bun-plugin-dts": "^0.2.3",
-    "eslint": "^9.8.0",
-    "husky": "^9.1.3",
+    "eslint": "^9.9.1",
+    "husky": "^9.1.5",
     "prettier": "^3.3.3",
     "typescript": "^5.5.4",
-    "typescript-eslint": "^7.17.0"
+    "typescript-eslint": "^7.18.0",
+    "@types/react": "^18.3.4",
+    "react": "^18.3.1",
+    "svelte": "^4.2.19",
+    "vue": "^3.4.38"
+  },
+  "peerDependencies": {
+    "react": ">=16.8",
+    "svelte": "^4.0.0",
+    "vue": ">=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "svelte": {
+      "optional": true
+    }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/figureland/base.git"
+    "url": "git+https://github.com/figureland/kit.git"
   },
   "author": "Figure Systems",
   "bugs": {
-    "url": "https://github.com/figureland/base"
+    "url": "https://github.com/figureland/kit"
   },
-  "homepage": "https://github.com/figureland/base#readme"
+  "homepage": "https://github.com/figureland/kit#readme"
 }
