@@ -158,9 +158,13 @@
     "./state/animated": {
       "types": "./src/state/animated.ts",
       "import": "./src/state/animated.ts"
+    },
+    "./infinity": {
+      "types": "./src/infinity/index.ts",
+      "import": "./src/infinity/index.ts"
     }
   },
-  "description": "Base template for Figure Typescript projects",
+  "description": "Toolkit for building apps, prototypes and experiments",
   "scripts": {
     "build:jsr": "bun run scripts/build-jsr-manifest.ts",
     "prepare": "husky",
