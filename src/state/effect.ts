@@ -1,4 +1,5 @@
-import { system, type Effect, type Events, type Signal } from '.'
+import { Effect, Events, Signal } from './api'
+import { system } from './system'
 
 type SourceValue<S> =
   S extends Signal<infer V>

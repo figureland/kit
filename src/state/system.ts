@@ -1,5 +1,5 @@
 import { NiceMap } from '../type/map'
-import type { Disposable, System } from '.'
+import { Disposable, System } from './api'
 import { createSubscriptions } from './utils/subscriptions'
 
 export const system = (): System => {

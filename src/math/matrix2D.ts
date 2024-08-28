@@ -13,7 +13,7 @@ export const matrix2D = (
 
 export default matrix2D
 
-export const clone = (m: Matrix2D) => matrix2D(m[0], m[1], m[2], m[3], m[4], m[5])
+export const clone = (m: Matrix2D): Matrix2D => matrix2D(m[0], m[1], m[2], m[3], m[4], m[5])
 
 export const set = (
   m: Matrix2D,
@@ -23,7 +23,7 @@ export const set = (
   d: number,
   e: number,
   f: number
-) => {
+): Matrix2D => {
   m[0] = a
   m[1] = b
   m[2] = c

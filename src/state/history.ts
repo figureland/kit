@@ -1,11 +1,11 @@
 import {
-  type SubscribableType,
-  type Subscribable,
-  type SubscribableHistoryEntry,
-  type Signal,
-  type SubscribableHistory,
-  signal
-} from '.'
+  Signal,
+  Subscribable,
+  SubscribableHistory,
+  SubscribableHistoryEntry,
+  SubscribableType
+} from './api'
+import { signal } from './signal'
 
 export type HistoryOptions = {
   limit?: number

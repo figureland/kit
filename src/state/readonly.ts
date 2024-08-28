@@ -1,4 +1,5 @@
-import { signal, type Gettable, type ReadonlySignal, type SettableType } from '.'
+import { Gettable, ReadonlySignal, SettableType } from './api'
+import { signal } from './signal'
 
 export const readonly = <S extends Gettable, T extends SettableType<S>>(
   s: S
