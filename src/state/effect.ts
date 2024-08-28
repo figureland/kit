@@ -70,7 +70,6 @@ export const effect = <S extends (State<any> | Events<any>)[]>(
     updateValues()
   }
 
-  // Ensure any scheduled timeout is cleared on dispose
   use(() => clearScheduledTimeout)
 
   return {

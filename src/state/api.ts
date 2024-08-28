@@ -1,3 +1,4 @@
+import { Equals, Merge } from '../type'
 import type { Subscription, Unsubscribe } from './utils/subscriptions'
 
 export type SubscribableHistoryEntry<V extends any> = [number, V]
@@ -50,6 +51,13 @@ export type State<V> = Settable<V> &
     mutate: (u: (val: V) => void, sync?: boolean) => void
   }
 
+export type StateOptions<R> = {
+  track?: boolean
+  equality?: Equals<R>
+  merge?: Merge
+  throttle?: number
+}
+
 export type StateRecord<R extends Record<string, any>, K extends keyof R = keyof R> = Settable<R> &
   Gettable<R> & {
     key: <K extends keyof R>(key: K) => State<R[K]>
@@ -61,7 +69,7 @@ export type StateMachineTransitions<
   Events extends string,
   D extends object
 > = {
-  [State in States]: {
+  [S in States]: {
     on?: {
       [Event in Events]?: States
     }
@@ -81,6 +89,7 @@ export type AnimatedState<V extends any> = State<V> & {
 
 export type System = Disposable &
   Usable & {
+    state: <V>(fn: V | ((use: UseStateDependency) => V), options?: StateOptions<V>) => State<V>
     unique: <S extends Disposable>(key: string | number | symbol, s: () => S) => S
   }
 

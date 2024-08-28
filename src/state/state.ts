@@ -1,9 +1,9 @@
 import { isFunction, isObject, isMap, isSet } from '../type'
-import { shallowEquals, type Equals } from '../type'
-import { type Merge, simpleMerge } from '../type'
-import { type Subscription } from './utils/subscriptions'
+import { shallowEquals } from '../type'
+import { simpleMerge } from '../type'
+import type { Subscription } from './utils/subscriptions'
 import { events } from './utils/events'
-import type { State, SubscribableEvents, UseStateDependency } from './api'
+import type { State, StateOptions, SubscribableEvents, UseStateDependency } from './api'
 import { system } from './system'
 
 export const context = () => {
@@ -93,11 +93,4 @@ const createState = <V>(
     },
     use
   }
-}
-
-export type StateOptions<R> = {
-  track?: boolean
-  equality?: Equals<R>
-  merge?: Merge
-  throttle?: number
 }
