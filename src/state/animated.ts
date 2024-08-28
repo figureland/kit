@@ -1,11 +1,4 @@
-import {
-  type AnimatedState,
-  type Events,
-  type State,
-  events,
-  system,
-  state
-} from '../state'
+import { type AnimatedState, type Events, type State, events, system, state } from '../state'
 import { clamp, mapRange } from '../math/number'
 import { isObject } from '../type/guards'
 import { isBrowser } from './utils'
@@ -102,41 +95,41 @@ export const createAnimated = <V extends any>(
     })
   )
 
-  const state = {
+  const store = {
     target: raw.get(),
     active: false,
     progress: 0.0
   }
 
-  const objectLike = isObject(state.target)
+  const objectLike = isObject(store.target)
 
   const tick = (delta: number) => {
-    state.progress = clamp(state.progress + delta, 0, duration)
-    const finished = state.progress === duration || duration - state.progress < epsilon
+    store.progress = clamp(store.progress + delta, 0, duration)
+    const finished = store.progress === duration || duration - store.progress < epsilon
 
-    if (!finished || state.active) {
-      const amount = easing(mapRange(state.progress, 0, duration, 0, 1))
+    if (!finished || store.active) {
+      const amount = easing(mapRange(store.progress, 0, duration, 0, 1))
       objectLike
         ? clone.mutate((d) => {
-            d = interpolate(d, state.target, amount)
+            d = interpolate(d, store.target, amount)
           }, true)
-        : clone.set((d) => interpolate(d, state.target, amount), true)
-      state.active = !finished
+        : clone.set((d) => interpolate(d, store.target, amount), true)
+      store.active = !finished
     }
   }
 
   raw.on((v) => {
-    state.progress = 0
-    state.target = v
-    state.active = true
+    store.progress = 0
+    store.target = v
+    store.active = true
     tick(0)
   })
 
   const set = (v: V | Partial<V> | ((v: V) => V | Partial<V>), sync: boolean = true) => {
-    state.progress = 1.0
+    store.progress = 1.0
     clone.set(v, sync)
-    state.target = clone.get()
-    state.active = false
+    store.target = clone.get()
+    store.active = false
   }
 
   return {
