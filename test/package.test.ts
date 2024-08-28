@@ -17,7 +17,7 @@ const checkEntrypoints = async () => {
   }
 }
 
-describe('check-entrypoints', () => {
+describe('check entrypoints', () => {
   it('should successfully import all entrypoints', async () => {
     let error: Error | null = null
     try {
