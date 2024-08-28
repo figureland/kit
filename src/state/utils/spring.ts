@@ -1,4 +1,4 @@
-import { abs } from '../math'
+import { abs } from '../../math'
 
 export type SpringOptions = {
   stiffness: number

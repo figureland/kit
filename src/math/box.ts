@@ -1,11 +1,12 @@
-import type { Box, Matrix2D, Vector2 } from '../math'
+import type { Box } from '../math/box'
 import {
   matrix2D,
   translate as translateMat2D,
-  rotate as rotateMat2D
+  rotate as rotateMat2D,
+  type Matrix2D
 } from '../math/matrix2D'
 import { dp, isNumber, max, min } from '../math/number'
-import { vector2, isVector2, negate } from '../math/vector2'
+import { vector2, isVector2, negate, Vector2 } from '../math/vector2'
 
 export type { Box } from './api'
 
@@ -98,7 +99,8 @@ export const translate = (v: Box, t: Vector2): Box => set(v, v.x + t.x, v.y + t.
  * @param height - The new height.
  * @returns The resized Box.
  */
-export const resize = (v: Box, width: number, height: number): Box => set(v, v.x, v.y, width, height)
+export const resize = (v: Box, width: number, height: number): Box =>
+  set(v, v.x, v.y, width, height)
 
 /**
  * Expands the box to include the specified point.
@@ -237,7 +239,8 @@ export const rotate = (box: Box, angle: number) => {
  * @param box - The Box to calculate the center for.
  * @returns A Vector2 representing the center point of the Box.
  */
-export const boxCenter = (box: Box): Vector2 => vector2(box.x + box.width / 2, box.y + box.height / 2)
+export const boxCenter = (box: Box): Vector2 =>
+  vector2(box.x + box.width / 2, box.y + box.height / 2)
 
 /**
  * Rounds the dimensions of a Box to a precise enough level.
