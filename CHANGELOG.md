@@ -1,4 +1,20 @@
 #
+## v0.0.6
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.5...v0.0.6)
+
+### 🚀 Enhancements
+
+- Removed old code and renamed signal ([89fceca](https://github.com/figureland/kit/commit/89fceca))
+
+### 🏡 Chore
+
+- Updated to fix namespace clashes ([14bbc69](https://github.com/figureland/kit/commit/14bbc69))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.5
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.4...v0.0.5)
