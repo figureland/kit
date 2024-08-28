@@ -1,4 +1,4 @@
-import { type Signal, system, signal, type Disposable } from '../state'
+import { type State, system, state, type Disposable } from '../state'
 import { createListener } from './events'
 
 export const supportsFullscreen = (): boolean =>
@@ -7,8 +7,8 @@ export const supportsFullscreen = (): boolean =>
 
 export const createFullscreen = (): Fullscreen => {
   const { use, dispose } = system()
-  const available = use(signal(supportsFullscreen))
-  const active = use(signal(() => false))
+  const available = use(state(supportsFullscreen))
+  const active = use(state(() => false))
 
   const setActive = () => active.set(true)
   const setInactive = () => active.set(false)
@@ -52,6 +52,6 @@ export const createFullscreen = (): Fullscreen => {
 export type Fullscreen = Disposable & {
   open: (element: HTMLElement) => void
   close: () => void
-  available: Signal<boolean>
-  active: Signal<boolean>
+  available: State<boolean>
+  active: State<boolean>
 }

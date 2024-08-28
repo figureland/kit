@@ -4,41 +4,41 @@ import { record } from '..'
 describe('record', () => {
   it('creates a record and retrieves its initial values', () => {
     const initialObj = { a: 1, b: 'test' }
-    const objSignal = record(initialObj)
-    expect(objSignal.get()).toEqual(initialObj)
+    const objState = record(initialObj)
+    expect(objState.get()).toEqual(initialObj)
   })
-  it('sets and gets a single signal value', () => {
-    const objSignal = record({ a: 1, b: 'test' })
-    objSignal.key('a').set(2)
-    expect(objSignal.key('a').get()).toBe(2)
+  it('sets and gets a single state value', () => {
+    const objState = record({ a: 1, b: 'test' })
+    objState.key('a').set(2)
+    expect(objState.key('a').get()).toBe(2)
   })
   it('globally sets and gets updated values', () => {
-    const objSignal = record({ a: 1, b: 'initial' })
-    objSignal.set({ a: 2, b: 'updated' })
-    expect(objSignal.get()).toEqual({ a: 2, b: 'updated' })
+    const objState = record({ a: 1, b: 'initial' })
+    objState.set({ a: 2, b: 'updated' })
+    expect(objState.get()).toEqual({ a: 2, b: 'updated' })
   })
-  it('notifies subscribers on any signal update', () => {
-    const objSignal = record({ a: 1, b: 'initial' })
+  it('notifies subscribers on any state update', () => {
+    const objState = record({ a: 1, b: 'initial' })
     let receivedObj!: Partial<{ a: number; b: string }>
-    objSignal.on((updatedObj) => {
+    objState.on((updatedObj) => {
       receivedObj = updatedObj
     })
-    objSignal.set({ a: 2 })
+    objState.set({ a: 2 })
     expect(receivedObj).toEqual({ a: 2, b: 'initial' })
   })
-  it('disposes of all signals and stops notifications', () => {
-    const objSignal = record({ a: 1, b: 'initial' })
+  it('disposes of all states and stops notifications', () => {
+    const objState = record({ a: 1, b: 'initial' })
     let calls = 0
-    objSignal.on(() => {
+    objState.on(() => {
       calls += 1
     })
-    objSignal.dispose()
-    objSignal.set({ a: 2 })
+    objState.dispose()
+    objState.set({ a: 2 })
     expect(calls).toBe(0)
   })
   it('handles partial updates correctly', () => {
-    const objSignal = record({ a: 1, b: 'initial', c: true })
-    objSignal.set({ b: 'updated' })
-    expect(objSignal.get()).toEqual({ a: 1, b: 'updated', c: true })
+    const objState = record({ a: 1, b: 'initial', c: true })
+    objState.set({ b: 'updated' })
+    expect(objState.get()).toEqual({ a: 1, b: 'updated', c: true })
   })
 })

@@ -1,4 +1,4 @@
-import { type Signal, type Disposable, type Events, system, signal, events } from '../state'
+import { type State, type Disposable, type Events, system, state, events } from '../state'
 import { createListener } from '../dom/events'
 import { isString } from '../type/guards'
 import { values } from '../type/object'
@@ -88,7 +88,7 @@ export type ParsedClipboardData = {
 
 export const createClipboard = (): Clipboard => {
   const { use, dispose } = system()
-  const available = use(signal(supportsClipboard))
+  const available = use(state(supportsClipboard))
 
   const e = events<ClipboardEvents>()
 
@@ -133,6 +133,6 @@ export const createClipboard = (): Clipboard => {
 export type Clipboard = Disposable & {
   events: Events<ClipboardEvents>
   copy: (items: ClipboardEntry[]) => Promise<void>
-  available: Signal<boolean>
+  available: State<boolean>
   read: () => Promise<ParsedClipboardData | undefined>
 }

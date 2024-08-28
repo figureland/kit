@@ -1,4 +1,4 @@
-import { type Events, type SignalRecord, events, record, type Disposable, system } from '../state'
+import { type Events, type StateRecord, events, record, type Disposable, system } from '../state'
 import { isNotNullish } from '../type'
 import { createListener, type ListenerTarget } from '../dom/events'
 
@@ -140,6 +140,6 @@ export const createFileDrop = ({
 }
 
 export type FileDrop = Disposable & {
-  state: SignalRecord<FileDropState>
+  state: StateRecord<FileDropState>
   events: Events<FileDropEvents>
 }

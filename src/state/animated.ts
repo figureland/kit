@@ -1,10 +1,10 @@
 import {
-  type AnimatedSignal,
+  type AnimatedState,
   type Events,
-  type Signal,
+  type State,
   events,
   system,
-  signal
+  state
 } from '../state'
 import { clamp, mapRange } from '../math/number'
 import { isObject } from '../type/guards'
@@ -19,9 +19,9 @@ type EngineEvents = {
 
 export const animation = ({ fps = 60 }: { fps?: number; epsilon?: number } = {}): Animated => {
   const { use, dispose } = system()
-  const active = use(signal(() => false))
+  const active = use(state(() => false))
   const e = use(events<EngineEvents>())
-  const animations: Set<AnimatedSignal<any>> = new Set()
+  const animations: Set<AnimatedState<any>> = new Set()
 
   const timestep: number = 1000 / fps
   let lastTimestamp: number = 0
@@ -66,7 +66,7 @@ export const animation = ({ fps = 60 }: { fps?: number; epsilon?: number } = {})
     },
     tick,
     events: e,
-    animated: <V>(s: Signal<V>, options: AnimatedSignalOptions<V>): AnimatedSignal<V> => {
+    animated: <V>(s: State<V>, options: AnimatedStateOptions<V>): AnimatedState<V> => {
       const a = use(createAnimated(s, options))
       animations.add(a)
       a.events.on('dispose', () => animations.delete(a))
@@ -77,22 +77,22 @@ export const animation = ({ fps = 60 }: { fps?: number; epsilon?: number } = {})
 }
 
 export type Animated = {
-  active: Signal<boolean>
+  active: State<boolean>
   tick: (timestamp: number) => void
   start: () => void
   stop: () => void
   dispose: () => void
   events: Events<EngineEvents>
-  animated: <V>(s: Signal<V>, options: AnimatedSignalOptions<V>) => AnimatedSignal<V>
+  animated: <V>(s: State<V>, options: AnimatedStateOptions<V>) => AnimatedState<V>
 }
 
 export const createAnimated = <V extends any>(
-  raw: Signal<V>,
-  { duration = 500, easing = (v) => v, interpolate, epsilon = 16 }: AnimatedSignalOptions<V>
-): AnimatedSignal<V> => {
+  raw: State<V>,
+  { duration = 500, easing = (v) => v, interpolate, epsilon = 16 }: AnimatedStateOptions<V>
+): AnimatedState<V> => {
   const m = system()
   const clone = m.use(
-    signal(raw.get, {
+    state(raw.get, {
       equality: () => false
     })
   )
@@ -154,7 +154,7 @@ export const createAnimated = <V extends any>(
 
 type InterpolationFn<V> = (from: V, to: V, amount: number) => V
 
-type AnimatedSignalOptions<V> = {
+type AnimatedStateOptions<V> = {
   duration?: number
   interpolate: InterpolationFn<V>
   easing?: (p: number) => number

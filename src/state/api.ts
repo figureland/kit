@@ -29,7 +29,7 @@ export type SubscribableEvents<V> = {
   previous: SubscribableHistoryEntry<V>
 }
 
-export type ReadonlySignal<V> = Subscribable<V> & Gettable<V>
+export type ReadonlyState<V> = Subscribable<V> & Gettable<V>
 
 export type Settable<V extends any = any> = {
   set: (partial: V | Partial<V> | ((state: V) => V | Partial<V>), sync?: boolean) => void
@@ -41,22 +41,22 @@ export type SettableType<S> = S extends Settable<infer T> ? T : never
 
 export type SubscribableType<S> = S extends Subscribable<infer T> ? T : never
 
-export type UseSignalDependency = <S extends Subscribable & Gettable>(u: S) => SubscribableType<S>
+export type UseStateDependency = <S extends Subscribable & Gettable>(u: S) => SubscribableType<S>
 
 export type UseEffectDependency = <S extends Subscribable>(u: S) => void
 
-export type Signal<V> = Settable<V> &
+export type State<V> = Settable<V> &
   Gettable<V> & {
     mutate: (u: (val: V) => void, sync?: boolean) => void
   }
 
-export type SignalRecord<R extends Record<string, any>, K extends keyof R = keyof R> = Settable<R> &
+export type StateRecord<R extends Record<string, any>, K extends keyof R = keyof R> = Settable<R> &
   Gettable<R> & {
-    key: <K extends keyof R>(key: K) => Signal<R[K]>
+    key: <K extends keyof R>(key: K) => State<R[K]>
     keys: K[]
   }
 
-export type SignalMachineTransitions<
+export type StateMachineTransitions<
   States extends string,
   Events extends string,
   D extends object
@@ -65,17 +65,17 @@ export type SignalMachineTransitions<
     on?: {
       [Event in Events]?: States
     }
-    enter?: (data: Signal<D>, event: Events, from: States) => void
-    exit?: (data: Signal<D>, event: Events, to: States) => void
+    enter?: (data: State<D>, event: Events, from: States) => void
+    exit?: (data: State<D>, event: Events, to: States) => void
   }
 }
 
-export interface SignalState<R extends Record<string, any>, K extends keyof R = keyof R>
-  extends SignalRecord<R, K> {
+export interface StateState<R extends Record<string, any>, K extends keyof R = keyof R>
+  extends StateRecord<R, K> {
   reset: () => void
 }
 
-export type AnimatedSignal<V extends any> = Signal<V> & {
+export type AnimatedState<V extends any> = State<V> & {
   tick: (delta: number) => void
 }
 
@@ -84,7 +84,7 @@ export type System = Disposable &
     unique: <S extends Disposable>(key: string | number | symbol, s: () => S) => S
   }
 
-export type SubscribableHistory<V> = Signal<V> & {
+export type SubscribableHistory<V> = State<V> & {
   restore: (n?: number) => void
 }
 

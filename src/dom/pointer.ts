@@ -1,4 +1,4 @@
-import { type SignalRecord, record } from '../state'
+import { type StateRecord, record } from '../state'
 import {
   allowEvent,
   createListener,
@@ -158,4 +158,4 @@ export const createPointer = ({
   return state
 }
 
-export type Pointer = SignalRecord<PointerState>
+export type Pointer = StateRecord<PointerState>

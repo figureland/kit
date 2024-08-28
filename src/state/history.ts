@@ -1,21 +1,21 @@
 import {
-  Signal,
+  State,
   Subscribable,
   SubscribableHistory,
   SubscribableHistoryEntry,
   SubscribableType
 } from './api'
-import { signal } from './signal'
+import { state } from './state'
 
 export type HistoryOptions = {
   limit?: number
 }
 
-export const history = <S extends Subscribable | Signal<any>>(
+export const history = <S extends Subscribable | State<any>>(
   s: S,
   { limit = 50 }: HistoryOptions = {}
 ): SubscribableHistory<SubscribableHistoryEntry<SubscribableType<S>>[]> => {
-  const state = signal<SubscribableHistoryEntry<SubscribableType<S>>[]>(() => [])
+  const state = state<SubscribableHistoryEntry<SubscribableType<S>>[]>(() => [])
 
   s.events.on('previous', (e) => {
     state.mutate((s) => {

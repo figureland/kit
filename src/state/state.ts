@@ -3,10 +3,10 @@ import { shallowEquals, type Equals } from '../type'
 import { type Merge, simpleMerge } from '../type'
 import { type Subscription } from './utils/subscriptions'
 import { events } from './utils/events'
-import type { Signal, SubscribableEvents, UseSignalDependency } from './api'
+import type { State, SubscribableEvents, UseStateDependency } from './api'
 import { system } from './system'
 
-export const createSignalContext = () => {
+export const context = () => {
   let id: number = 0
 
   const register = () => {
@@ -16,27 +16,25 @@ export const createSignalContext = () => {
 
   return {
     /**
-     * Creates new {@link Signal}
+     * Creates new {@link State}
      */
-    signal: <V>(
-      fn: V | ((use: UseSignalDependency) => V),
-      options: SignalOptions<V> = {}
-    ): Signal<V> => createSignal<V>(register(), fn, options)
+    state: <V>(fn: V | ((use: UseStateDependency) => V), options: StateOptions<V> = {}): State<V> =>
+      createState<V>(register(), fn, options)
   }
 }
 
-export const { signal } = createSignalContext()
+export const { state } = context()
 
 /**
- * Creates a simple {@link Signal} for tracking a value
+ * Creates a simple {@link State} for tracking a value
  */
-const createSignal = <V>(
+const createState = <V>(
   id: string,
-  initial: V | ((use: UseSignalDependency) => V),
-  { merge = simpleMerge, equality = shallowEquals, throttle, track = false }: SignalOptions<V>
-): Signal<V> => {
+  initial: V | ((use: UseStateDependency) => V),
+  { merge = simpleMerge, equality = shallowEquals, throttle, track = false }: StateOptions<V>
+): State<V> => {
   const { dispose, use } = system()
-  const dependencies = new Set<Signal<any>['on']>()
+  const dependencies = new Set<State<any>['on']>()
 
   const e = use(events<SubscribableEvents<V>>())
   let loaded = track
@@ -44,7 +42,7 @@ const createSignal = <V>(
 
   const shouldThrottle = () => throttle && performance.now() - lastSyncTime < throttle
 
-  const handleDependency: UseSignalDependency = (s) => {
+  const handleDependency: UseStateDependency = (s) => {
     if (!loaded) dependencies.add(s.on)
     return s.get()
   }
@@ -97,7 +95,7 @@ const createSignal = <V>(
   }
 }
 
-export type SignalOptions<R> = {
+export type StateOptions<R> = {
   track?: boolean
   equality?: Equals<R>
   merge?: Merge

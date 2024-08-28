@@ -1,4 +1,4 @@
-import { readonly, record, type ReadonlySignal } from '../state'
+import { readonly, record, type ReadonlyState } from '../state'
 import { createListener, mediaQuery } from '../dom/events'
 
 type PreferenceState = {
@@ -37,4 +37,4 @@ export const createPreferences = () => {
   return readonly(state)
 }
 
-export type Preferences = ReadonlySignal<PreferenceState>
+export type Preferences = ReadonlyState<PreferenceState>

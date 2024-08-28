@@ -1,4 +1,4 @@
-import { events, record, system, type Events, type SignalRecord, type Unsubscribe } from '../state'
+import { events, record, system, type Events, type StateRecord, type Unsubscribe } from '../state'
 import { isBrowser } from '../dom'
 
 type TimerEvent = {
@@ -72,7 +72,7 @@ export const timer = (): Timer => {
 }
 
 export type Timer = {
-  state: SignalRecord<TimerState>
+  state: StateRecord<TimerState>
   get: () => TimerEvent | undefined
   on: Events<TimerEvents>['on']
   start: () => void

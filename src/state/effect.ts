@@ -1,14 +1,14 @@
-import { Effect, Events, Signal } from './api'
+import { Effect, Events, State } from './api'
 import { system } from './system'
 
 type SourceValue<S> =
-  S extends Signal<infer V>
+  S extends State<infer V>
     ? V
     : S extends Events<infer E, infer K>
       ? [K, E[keyof E]] | undefined
       : never
 
-export const effect = <S extends (Signal<any> | Events<any>)[]>(
+export const effect = <S extends (State<any> | Events<any>)[]>(
   sources: [...S],
   callback: (values: { [K in keyof S]: SourceValue<S[K]> }) => void,
   { trigger, throttle }: { trigger?: boolean; throttle?: number } = {}

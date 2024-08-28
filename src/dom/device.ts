@@ -1,4 +1,4 @@
-import { type SignalRecord, record } from '../state'
+import { type StateRecord, record } from '../state'
 import { isChrome, isMobile, isSafari } from '../type'
 import { createListener } from '../dom/events'
 
@@ -75,4 +75,4 @@ export const createDevice = (): Device => {
   return state
 }
 
-export type Device = SignalRecord<DeviceState>
+export type Device = StateRecord<DeviceState>

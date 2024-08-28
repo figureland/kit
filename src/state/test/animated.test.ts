@@ -2,7 +2,7 @@ import { test, describe, beforeEach, afterEach, expect } from 'bun:test'
 import { vector2, lerp as lerpVec2 } from '../../math/vector2'
 import { lerp } from '../../math/number'
 import { type Animated, animation } from '../animated'
-import { signal } from '../signal'
+import { state } from '../state'
 
 let lastTime = 0
 
@@ -37,17 +37,17 @@ describe('Animation System', () => {
     expect(stopped).toBe(true)
   })
 
-  test('Engine should manage animated signals correctly', () => {
-    const rawSignal = signal(() => 0)
+  test('Engine should manage animated states correctly', () => {
+    const rawState = state(() => 0)
 
-    const animatedSig = engine.animated(rawSignal, {
+    const animatedSig = engine.animated(rawState, {
       interpolate: lerp,
       duration: 500
     })
 
     expect(animatedSig.get()).toBeCloseTo(0)
 
-    rawSignal.set(100)
+    rawState.set(100)
     engine.tick(250)
 
     expect(animatedSig.get()).toBeCloseTo(50)
@@ -56,7 +56,7 @@ describe('Animation System', () => {
   })
 
   test('Vector2 animation should interpolate correctly', () => {
-    const v = signal(() => vector2(0, 0))
+    const v = state(() => vector2(0, 0))
 
     const animatedVector = engine.animated(v, {
       interpolate: (from, to, amount) => lerpVec2(from, from, to, amount),
@@ -94,7 +94,7 @@ describe('Animation System', () => {
   })
 
   test('Vector2 animation should emit events', () => {
-    const v = signal(() => vector2())
+    const v = state(() => vector2())
 
     let count = 0
 
@@ -116,7 +116,7 @@ describe('Animation System', () => {
     expect(count).toBe(3)
   })
   test('Number animation should emit events', () => {
-    const v = signal(() => 0)
+    const v = state(() => 0)
 
     let count = 0
 

@@ -1,10 +1,10 @@
-import { Gettable, ReadonlySignal, SettableType } from './api'
-import { signal } from './signal'
+import { Gettable, ReadonlyState, SettableType } from './api'
+import { state } from './state'
 
 export const readonly = <S extends Gettable, T extends SettableType<S>>(
   s: S
-): ReadonlySignal<T> => {
-  const { on, get, events, dispose, id, use } = s.use(signal<T>((get) => get(s)))
+): ReadonlyState<T> => {
+  const { on, get, events, dispose, id, use } = s.use(state<T>((get) => get(s)))
 
   return {
     on,

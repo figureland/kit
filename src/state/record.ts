@@ -1,22 +1,22 @@
 import { isFunction } from '../type/guards'
 import { keys } from '../type/object'
-import { type SignalOptions, signal } from './signal'
-import type { Signal, SignalRecord } from './api'
+import { type StateOptions, state } from './state'
+import type { State, StateRecord } from './api'
 
 export const record = <R extends Record<string, any>>(
   r: R,
-  options?: SignalOptions<R>
-): SignalRecord<R> => {
-  const parent = signal<R>(structuredClone(r), options)
-  const signals = {} as { [K in keyof R]: Signal<R[K]> }
+  options?: StateOptions<R>
+): StateRecord<R> => {
+  const parent = state<R>(structuredClone(r), options)
+  const states = {} as { [K in keyof R]: State<R[K]> }
 
   for (const k in r) {
-    signals[k] = signal(r[k])
-    parent.use(signals[k].on(() => parent.set(getObject())))
-    parent.use(signals[k].dispose)
+    states[k] = state(r[k])
+    parent.use(states[k].on(() => parent.set(getObject())))
+    parent.use(states[k].dispose)
   }
 
-  const key = <K extends keyof R>(k: K) => signals[k]
+  const key = <K extends keyof R>(k: K) => states[k]
 
   const getObject = () => {
     const out = {} as R
@@ -35,7 +35,7 @@ export const record = <R extends Record<string, any>>(
 
   return {
     id: parent.id,
-    keys: keys(signals),
+    keys: keys(states),
     key,
     set,
     events: parent.events,

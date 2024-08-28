@@ -1,4 +1,4 @@
-import { type SignalRecord, record } from '../state'
+import { type StateRecord, record } from '../state'
 import { dp } from '../math'
 import type { Size } from '../math/size'
 import { createListener } from '../dom/events'
@@ -63,6 +63,6 @@ export const createScreen = <B extends Breakpoints>(
   }
 }
 
-export type Screen<B = Breakpoints> = SignalRecord<ScreenState<B>> & {
+export type Screen<B = Breakpoints> = StateRecord<ScreenState<B>> & {
   is: (b: keyof B) => boolean
 }

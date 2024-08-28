@@ -15,24 +15,20 @@ interface JsrManifest {
 
 async function generateJsrManifest() {
   try {
-    // Read package.json
     const packageJsonPath = path.join(process.cwd(), 'package.json')
     const packageJsonContent = await fs.readFile(packageJsonPath, 'utf-8')
     const packageJson: PackageJson = JSON.parse(packageJsonContent)
 
-    // Create JSR manifest
     const jsrManifest: JsrManifest = {
       name: packageJson.name,
       version: packageJson.version,
       exports: {}
     }
 
-    // Convert exports
     for (const [key, value] of Object.entries(packageJson.exports)) {
       jsrManifest.exports[key] = value.import
     }
 
-    // Write JSR manifest
     const jsrManifestPath = path.join(process.cwd(), 'jsr.json')
     await fs.writeFile(jsrManifestPath, JSON.stringify(jsrManifest, null, 2))
 
