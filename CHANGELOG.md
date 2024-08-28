@@ -1,4 +1,16 @@
 #
+## v0.0.8
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.7...v0.0.8)
+
+### 🏡 Chore
+
+- Minor tweaks to system ([7307946](https://github.com/figureland/kit/commit/7307946))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.7
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.6...v0.0.7)
