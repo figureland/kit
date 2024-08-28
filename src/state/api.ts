@@ -1,4 +1,4 @@
-import { Equals, Merge } from '../type'
+import { Equals, Merge } from '../ts'
 import type { Subscription, Unsubscribe } from './utils/subscriptions'
 
 export type SubscribableHistoryEntry<V extends any> = [number, V]

@@ -1,4 +1,4 @@
-import { isFunction } from '../type/guards'
+import { isFunction } from '../ts/guards'
 
 const { stringify, parse } = JSON
 

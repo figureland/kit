@@ -1,6 +1,6 @@
 import { type AnimatedState, type Events, type State, events, system, state } from '../state'
 import { clamp, mapRange } from '../math/number'
-import { isObject } from '../type/guards'
+import { isObject } from '../ts/guards'
 import { isBrowser } from './utils'
 
 type EngineEvents = {

@@ -1,4 +1,4 @@
-import { isString } from '../../type/guards'
+import { isString } from '../../ts/guards'
 
 export const backgroundPatterns = ['dots', 'lines', 'none'] as const
 

@@ -1,5 +1,5 @@
-import { entries } from '../../type/object'
-import { isString, isNumber, isSymbol } from '../../type/guards'
+import { entries } from '../../ts/object'
+import { isString, isNumber, isSymbol } from '../../ts/guards'
 import { createSubscriptions, createTopicSubscriptions, type Subscription } from './subscriptions'
 import type { EventsKey, EventsMap, Events } from '../api'
 

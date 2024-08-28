@@ -1,5 +1,5 @@
 import { type StateRecord, record } from '../state'
-import { isChrome, isMobile, isSafari } from '../type'
+import { isChrome, isMobile, isSafari } from '../ts'
 import { createListener } from '../dom/events'
 
 export const isBrowser = typeof window !== 'undefined'

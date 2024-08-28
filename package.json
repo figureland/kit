@@ -43,45 +43,45 @@
       "types": "./src/math/style.ts",
       "import": "./src/math/style.ts"
     },
-    "./type": {
-      "types": "./src/type/index.ts",
-      "import": "./src/type/index.ts"
+    "./ts": {
+      "types": "./src/ts/index.ts",
+      "import": "./src/ts/index.ts"
     },
-    "./type/device": {
-      "types": "./src/type/device.ts",
-      "import": "./src/type/device.ts"
+    "./ts/device": {
+      "types": "./src/ts/device.ts",
+      "import": "./src/ts/device.ts"
     },
-    "./type/guards": {
-      "types": "./src/type/guards.ts",
-      "import": "./src/type/guards.ts"
+    "./ts/guards": {
+      "types": "./src/ts/guards.ts",
+      "import": "./src/ts/guards.ts"
     },
-    "./type/map": {
-      "types": "./src/type/map.ts",
-      "import": "./src/type/map.ts"
+    "./ts/map": {
+      "types": "./src/ts/map.ts",
+      "import": "./src/ts/map.ts"
     },
-    "./type/merge": {
-      "types": "./src/type/merge.ts",
-      "import": "./src/type/merge.ts"
+    "./ts/merge": {
+      "types": "./src/ts/merge.ts",
+      "import": "./src/ts/merge.ts"
     },
-    "./type/object": {
-      "types": "./src/type/object.ts",
-      "import": "./src/type/object.ts"
+    "./ts/object": {
+      "types": "./src/ts/object.ts",
+      "import": "./src/ts/object.ts"
     },
-    "./type/async": {
-      "types": "./src/type/async.ts",
-      "import": "./src/type/async.ts"
+    "./ts/async": {
+      "types": "./src/ts/async.ts",
+      "import": "./src/ts/async.ts"
     },
-    "./type/time": {
-      "types": "./src/type/time.ts",
-      "import": "./src/type/time.ts"
+    "./ts/time": {
+      "types": "./src/ts/time.ts",
+      "import": "./src/ts/time.ts"
     },
-    "./type/equals": {
-      "types": "./src/type/equals.ts",
-      "import": "./src/type/equals.ts"
+    "./ts/equals": {
+      "types": "./src/ts/equals.ts",
+      "import": "./src/ts/equals.ts"
     },
-    "./type/clone": {
-      "types": "./src/type/clone.ts",
-      "import": "./src/type/clone.ts"
+    "./ts/clone": {
+      "types": "./src/ts/clone.ts",
+      "import": "./src/ts/clone.ts"
     },
     "./dom": {
       "types": "./src/dom/index.ts",
@@ -151,9 +151,9 @@
       "types": "./src/state/svelte.ts",
       "import": "./src/state/svelte.ts"
     },
-    "./state/typed-local-storage": {
-      "types": "./src/state/typed-local-storage.ts",
-      "import": "./src/state/typed-local-storage.ts"
+    "./state/local-storage": {
+      "types": "./src/state/local-storage.ts",
+      "import": "./src/state/local-storage.ts"
     },
     "./state/animated": {
       "types": "./src/state/animated.ts",

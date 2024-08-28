@@ -1,4 +1,4 @@
-import { values } from '../type/object'
+import { values } from '../ts/object'
 import type { PointerState } from '../dom/pointer'
 import { type State, state, system } from '../state'
 import { box, type Box } from '../math/box'

@@ -1,5 +1,5 @@
-import { has, is, keys } from '../type/object'
-import { isArray } from '../type/guards'
+import { has, is, keys } from '../ts/object'
+import { isArray } from '../ts/guards'
 
 export type Equals<T extends any = any> = (s: T, t: T) => boolean
 

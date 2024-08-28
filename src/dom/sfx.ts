@@ -1,6 +1,6 @@
 import { system, state, events, type Disposable, type Events } from '../state'
-import { NiceMap } from '../type'
-import { keys } from '../type'
+import { NiceMap } from '../ts'
+import { keys } from '../ts'
 
 type SoundMap = {
   [sound: string]: string

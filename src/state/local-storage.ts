@@ -2,7 +2,7 @@ import { getStorageName, type StorageAPI, type StorageAPIOptions } from './persi
 
 declare var localStorage: Storage
 
-export const typedLocalStorage = <T>({
+export const storage = <T>({
   name,
   validate,
   interval,
