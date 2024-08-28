@@ -1,4 +1,16 @@
 #
+## v0.0.9
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.8...v0.0.9)
+
+### 🚀 Enhancements
+
+- Migrated infinitykit ([c4dd3aa](https://github.com/figureland/kit/commit/c4dd3aa))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.8
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.7...v0.0.8)
