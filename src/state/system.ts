@@ -1,11 +1,10 @@
 import { NiceMap } from '../type/map'
-import { Disposable, System } from './api'
+import type { Disposable, System } from './api'
 import { context } from './state'
 import { createSubscriptions } from './utils/subscriptions'
 
 export const system = (): System => {
   const ctx = context()
-  const { state } = ctx
 
   const keyedSubs = new NiceMap()
   const subs = createSubscriptions()
@@ -25,11 +24,13 @@ export const system = (): System => {
   }
 
   return {
-    state,
+    state: (...args) => use(ctx.state(...args)),
     unique,
     use,
     dispose
   }
 }
 
-export const disposable = (fn: () => void): Disposable => ({ dispose: fn })
+export const disposable = (dispose: () => void): Disposable => ({
+  dispose
+})
