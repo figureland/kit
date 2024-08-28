@@ -1,6 +1,6 @@
 {
   "name": "@figureland/kit",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "exports": {
     "./math": "./src/math/index.ts",
     "./math/number": "./src/math/number.ts",

@@ -1,4 +1,16 @@
 #
+## v0.0.7
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.6...v0.0.7)
+
+### 🏡 Chore
+
+- Tweaks to system and api.ts ([ff002e8](https://github.com/figureland/kit/commit/ff002e8))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.6
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.5...v0.0.6)
