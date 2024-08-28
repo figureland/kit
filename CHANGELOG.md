@@ -1,4 +1,17 @@
 #
+## v0.0.11
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.10...v0.0.11)
+
+### 📖 Documentation
+
+- Adding tsdoc annotations and return types ([25ca46d](https://github.com/figureland/kit/commit/25ca46d))
+- Adding tsdoc annotations and return types ([c716ec8](https://github.com/figureland/kit/commit/c716ec8))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.10
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.9...v0.0.10)
