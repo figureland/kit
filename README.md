@@ -1,5 +1,5 @@
-[![CI](https://github.com/figureland/base/actions/workflows/ci.yml/badge.svg)](https://github.com/figureland/base/actions/workflows/ci.yml)
-[![NPM](https://img.shields.io/npm/v/@figureland/base?color=40bd5c)](https://img.shields.io/npm/v/@figureland/base?color=40bd5c)
+[![CI](https://github.com/figureland/kit/actions/workflows/ci.yml/badge.svg)](https://github.com/figureland/kit/actions/workflows/ci.yml)
+[![NPM](https://img.shields.io/npm/v/@figureland/kit?color=40bd5c)](https://img.shields.io/npm/v/@figureland/kit?color=40bd5c)
 
 This is a starter template for Typescript projects using Bun. It also contains some basic best practises for linting, formatting, commit formatting and releasing.
 
