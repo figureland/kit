@@ -9,13 +9,22 @@ import { vector2, isVector2, negate } from '../math/vector2'
 
 export type { Box } from './api'
 
+/**
+ * Sets the properties of a Box.
+ * @param v - The Box to modify.
+ * @param x - The new x coordinate.
+ * @param y - The new y coordinate.
+ * @param width - The new width (optional, defaults to current width).
+ * @param height - The new height (optional, defaults to current height).
+ * @returns The modified Box.
+ */
 export const set = (
   v: Box,
   x: number,
   y: number,
   width: number = v.width,
   height: number = v.height
-) => {
+): Box => {
   v.x = x
   v.y = y
   v.width = width
@@ -23,6 +32,14 @@ export const set = (
   return v
 }
 
+/**
+ * Creates a new Box with the given dimensions.
+ * @param x - The x coordinate (default: 0).
+ * @param y - The y coordinate (default: 0).
+ * @param width - The width (default: 0).
+ * @param height - The height (default: 0).
+ * @returns A new Box object.
+ */
 export const box = (x: number = 0, y: number = 0, width: number = 0, height: number = 0): Box => ({
   x,
   y,
@@ -32,6 +49,11 @@ export const box = (x: number = 0, y: number = 0, width: number = 0, height: num
 
 export default box
 
+/**
+ * Checks if the given value is a Box.
+ * @param v - The value to check.
+ * @returns True if the value is a Box, false otherwise.
+ */
 export const isBox = (v: unknown): v is Box =>
   v != null &&
   isNumber((v as Box).x) &&
@@ -61,9 +83,22 @@ export const copy = (v: Box, a: Box) => set(v, a.x, a.y, a.width, a.height)
  */
 export const reset = (v: Box) => set(v, 0, 0, 0, 0)
 
-export const translate = (v: Box, t: Vector2) => set(v, v.x + t.x, v.y + t.y)
+/**
+ * Translates a Box by a given Vector2.
+ * @param v - The Box to translate.
+ * @param t - The Vector2 to translate by.
+ * @returns The translated Box.
+ */
+export const translate = (v: Box, t: Vector2): Box => set(v, v.x + t.x, v.y + t.y)
 
-export const resize = (v: Box, width: number, height: number) => set(v, v.x, v.y, width, height)
+/**
+ * Resizes a Box to the given dimensions.
+ * @param v - The Box to resize.
+ * @param width - The new width.
+ * @param height - The new height.
+ * @returns The resized Box.
+ */
+export const resize = (v: Box, width: number, height: number): Box => set(v, v.x, v.y, width, height)
 
 /**
  * Expands the box to include the specified point.
@@ -134,6 +169,11 @@ export const intersection = (a: Box, b: Box) => {
   return box(x, y, min(a.x + a.width, b.x + b.width) - x, min(a.y + a.height, b.y + b.height) - y)
 }
 
+/**
+ * Calculates the bounding box for an array of Boxes.
+ * @param boxes - An array of Boxes.
+ * @returns The bounding Box that contains all input Boxes.
+ */
 export const calculateBoundingBox = (boxes: Box[]): Box => {
   if (boxes.length === 0) {
     return box()
@@ -192,6 +232,16 @@ export const rotate = (box: Box, angle: number) => {
   return transformBox(box, matrix)
 }
 
-export const boxCenter = (box: Box) => vector2(box.x + box.width / 2, box.y + box.height / 2)
+/**
+ * Calculates the center point of a Box.
+ * @param box - The Box to calculate the center for.
+ * @returns A Vector2 representing the center point of the Box.
+ */
+export const boxCenter = (box: Box): Vector2 => vector2(box.x + box.width / 2, box.y + box.height / 2)
 
-export const preciseEnough = (b: Box) => set(b, dp(b.x), dp(b.y), dp(b.width), dp(b.height))
+/**
+ * Rounds the dimensions of a Box to a precise enough level.
+ * @param b - The Box to adjust.
+ * @returns The Box with rounded dimensions.
+ */
+export const preciseEnough = (b: Box): Box => set(b, dp(b.x), dp(b.y), dp(b.width), dp(b.height))

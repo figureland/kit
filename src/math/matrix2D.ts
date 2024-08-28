@@ -2,6 +2,8 @@ import type { Matrix2D, Vector2 } from '../math'
 import { EPS } from '../math/constants'
 import { sin, cos, sqrt, abs, max, isNumber, lerp as _lerp, dp } from '../math/number'
 
+export type { Matrix2D } from './api'
+
 /**
  * Creates a new 2D matrix with the specified values.
  * @param a - The value for element [0,0] (default: 1)
