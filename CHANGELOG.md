@@ -1,4 +1,16 @@
 #
+## v0.0.4
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.3...v0.0.4)
+
+### 🏡 Chore
+
+- Fixed imports, updated package.json and entrypoints ([e04a560](https://github.com/figureland/kit/commit/e04a560))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.3
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.2...v0.0.3)
