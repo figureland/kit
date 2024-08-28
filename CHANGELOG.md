@@ -1,4 +1,20 @@
 #
+## v0.0.10
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.9...v0.0.10)
+
+### 🚀 Enhancements
+
+- Renamed type -> ts ([c66da87](https://github.com/figureland/kit/commit/c66da87))
+
+### 📖 Documentation
+
+- Updated readme badge ([a9f8b1c](https://github.com/figureland/kit/commit/a9f8b1c))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.9
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.8...v0.0.9)
