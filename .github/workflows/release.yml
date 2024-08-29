@@ -8,7 +8,7 @@ on:
 permissions: write-all
 
 jobs:
-  release:
+  release-github:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,6 +34,21 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  release-npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: oven-sh/setup-bun@v1
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Test the package
+        run: bun run test
+
       - uses: actions/setup-node@v4
         with:
           node-version: '20.x'
@@ -44,30 +59,30 @@ jobs:
         run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          
-  release-jsr:
-    runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-      id-token: write
+  # release-jsr:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+  #   permissions:
+  #     contents: read
+  #     id-token: write
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20.x'
-          registry-url: 'https://npm.pkg.github.com/'
-          scope: '@figureland'
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v1
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '20.x'
+  #         registry-url: 'https://npm.pkg.github.com/'
+  #         scope: '@figureland'
 
-      - name: Install dependencies
-        run: bun install
+  #     - uses: oven-sh/setup-bun@v1
 
-      - name: Test the package
-        run: bun run test
+  #     - name: Install dependencies
+  #       run: bun install
 
-      - name: Publish package
-        run: npx jsr publish
+  #     - name: Test the package
+  #       run: bun run test
+
+  #     - name: Publish package
+  #       run: npx jsr publish
