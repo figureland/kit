@@ -1,4 +1,22 @@
 #
+## v0.0.12
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.11...v0.0.12)
+
+### 🚀 Enhancements
+
+- Cleaning up state ([c8e50a8](https://github.com/figureland/kit/commit/c8e50a8))
+
+### 🏡 Chore
+
+- Simplified vue/svelte/react code ([b3a6160](https://github.com/figureland/kit/commit/b3a6160))
+- Removing unused and old files ([61fd481](https://github.com/figureland/kit/commit/61fd481))
+- Explicit return types ([fcca5fd](https://github.com/figureland/kit/commit/fcca5fd))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.11
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.10...v0.0.11)
