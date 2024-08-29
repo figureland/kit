@@ -1,5 +1,3 @@
-/// <reference lib="dom" />
-
 import type { Box, Matrix2D, Vector2 } from './api'
 import { box } from './box'
 import { matrix2D, set as setMat2D } from './matrix2D'

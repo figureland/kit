@@ -1,5 +1,3 @@
-/// <reference lib="dom" />
-
 const hasPlatform = () => typeof navigator !== 'undefined' && navigator.platform
 const hasUserAgent = () => typeof navigator !== 'undefined' && navigator.userAgent
 
