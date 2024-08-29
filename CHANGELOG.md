@@ -1,4 +1,16 @@
 #
+## v0.0.13
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.12...v0.0.13)
+
+### 🏡 Chore
+
+- Fixed release gh action ([bd04f17](https://github.com/figureland/kit/commit/bd04f17))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.12
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.11...v0.0.12)
