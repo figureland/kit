@@ -1,7 +1,7 @@
-import { entries } from '../../ts/object'
-import { isString, isNumber, isSymbol } from '../../ts/guards'
+import { entries } from '../ts/object'
+import { isString, isNumber, isSymbol } from '../ts/guards'
 import { createSubscriptions, createTopicSubscriptions, type Subscription } from './subscriptions'
-import type { EventsKey, EventsMap, Events } from '../api'
+import type { EventsKey, EventsMap, Events } from './api'
 
 /**
  * Creates a new event emitter

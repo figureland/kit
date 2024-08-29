@@ -220,5 +220,13 @@
   "bugs": {
     "url": "https://github.com/figureland/kit"
   },
-  "homepage": "https://github.com/figureland/kit#readme"
+  "homepage": "https://github.com/figureland/kit#readme",
+  "prettier": {
+    "$schema": "https://json.schemastore.org/prettierrc",
+    "semi": false,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "printWidth": 100,
+    "trailingComma": "none"
+  }
 }

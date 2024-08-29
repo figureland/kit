@@ -1,6 +1,6 @@
 export * from './api'
 export { type PersistenceName, persist, type StorageAPI, type StorageAPIOptions } from './persist'
-export { events } from './utils/events'
+export { events } from './events'
 export { state, context } from './state'
 export {
   type Unsubscribe,
@@ -9,7 +9,7 @@ export {
   createSubscriptions,
   createTopicSubscriptions,
   type TopicSubscriptions
-} from './utils/subscriptions'
+} from './subscriptions'
 export { record } from './record'
 export { system, disposable } from './system'
 export { history, type HistoryOptions } from './history'
