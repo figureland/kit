@@ -1,4 +1,17 @@
 #
+## v0.0.16
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.15...v0.0.16)
+
+### 🏡 Chore
+
+- Rename file ([f5f8643](https://github.com/figureland/kit/commit/f5f8643))
+- Added api.ts ([1284ab6](https://github.com/figureland/kit/commit/1284ab6))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.15
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.14...v0.0.15)
