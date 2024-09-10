@@ -170,6 +170,10 @@
     "./color/guards": {
       "types": "./src/color/guards.ts",
       "import": "./src/color/guards.ts"
+    },
+    "./color/rgb": {
+      "types": "./src/color/rgb.ts",
+      "import": "./src/color/rgb.ts"
     }
   },
   "description": "Toolkit for building apps, prototypes and experiments",

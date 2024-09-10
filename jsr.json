@@ -43,6 +43,7 @@
     "./state/animated": "./src/state/animated.ts",
     "./infinity": "./src/infinity/index.ts",
     "./color": "./src/color/index.ts",
-    "./color/guards": "./src/color/guards.ts"
+    "./color/guards": "./src/color/guards.ts",
+    "./color/rgb": "./src/color/rgb.ts"
   }
 }

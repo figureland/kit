@@ -6,3 +6,4 @@ export {
   isLchColorString
 } from './guards'
 
+export { rgb, rgba } from './rgb'
