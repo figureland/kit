@@ -13,7 +13,7 @@ interface JsrManifest {
   exports: Record<string, string>
 }
 
-async function generateJsrManifest() {
+const generateJsrManifest = async () => {
   try {
     const packageJsonPath = path.join(process.cwd(), 'package.json')
     const packageJsonContent = await fs.readFile(packageJsonPath, 'utf-8')

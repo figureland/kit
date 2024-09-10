@@ -41,6 +41,8 @@
     "./state/svelte": "./src/state/svelte.ts",
     "./state/local-storage": "./src/state/local-storage.ts",
     "./state/animated": "./src/state/animated.ts",
-    "./infinity": "./src/infinity/index.ts"
+    "./infinity": "./src/infinity/index.ts",
+    "./color": "./src/color/index.ts",
+    "./color/guards": "./src/color/guards.ts"
   }
 }

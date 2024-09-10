@@ -41,6 +41,7 @@ export const animation = ({ fps = 60 }: { fps?: number; epsilon?: number } = {})
     }
     delta = timestamp - lastTimestamp
     lastTimestamp = timestamp
+    
     for (const a of animations) {
       a.tick(delta)
     }

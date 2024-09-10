@@ -1,7 +1,7 @@
 import { isFunction } from '../ts/guards'
 import { keys } from '../ts/object'
-import { type StateOptions, state } from './state'
-import type { State, StateRecord } from './api'
+import { state } from './state'
+import type { State, StateOptions, StateRecord } from './api'
 
 export const record = <R extends Record<string, any>>(
   r: R,

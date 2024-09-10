@@ -27,10 +27,7 @@ export {
   isNullOrUndefined,
   isPrimitive,
   isNull,
-  isUndefined,
-  isHexColorString,
-  isRGBColorString,
-  isHSLColorString
+  isUndefined
 } from './guards'
 export {
   type DistributiveOmit,
