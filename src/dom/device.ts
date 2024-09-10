@@ -2,7 +2,7 @@ import { type StateRecord, record } from '../state'
 import { isChrome, isMobile, isSafari } from '../ts'
 import { createListener } from '../dom/events'
 
-export const isBrowser = typeof window !== 'undefined'
+export const isBrowser = () => typeof window !== 'undefined'
 
 export type PersistenceStatus = {
   available: number
@@ -17,7 +17,7 @@ const defaultPersistence = (): PersistenceStatus => ({
 export const getPersistenceStatus = async (): Promise<PersistenceStatus> => {
   const persistenceResult = defaultPersistence()
   try {
-    if (isBrowser && navigator.storage) {
+    if (isBrowser() && navigator.storage) {
       if (navigator.storage.estimate) {
         const storageEstimate = await navigator.storage.estimate()
         const hasQuota = !!storageEstimate.quota && !!storageEstimate.usage

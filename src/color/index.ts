@@ -7,3 +7,4 @@ export {
 } from './guards'
 
 export { rgb, rgba } from './rgb'
+export { isDisplayP3Supported } from './utils'

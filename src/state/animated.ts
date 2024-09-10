@@ -1,7 +1,7 @@
 import { type AnimatedState, type Events, type State, events, system, state } from '../state'
 import { clamp, mapRange } from '../math/number'
 import { isObject } from '../ts/guards'
-import { isBrowser } from './utils'
+import { isBrowser } from '../dom'
 
 type EngineEvents = {
   start: void
@@ -41,7 +41,7 @@ export const animation = ({ fps = 60 }: { fps?: number; epsilon?: number } = {})
     }
     delta = timestamp - lastTimestamp
     lastTimestamp = timestamp
-    
+
     for (const a of animations) {
       a.tick(delta)
     }
