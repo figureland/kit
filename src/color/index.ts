@@ -6,5 +6,5 @@ export {
   isLchColorString
 } from './guards'
 
-export { rgb, rgba } from './rgb'
+export { rgba } from './rgba'
 export { isDisplayP3Supported } from './utils'

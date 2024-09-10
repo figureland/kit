@@ -171,9 +171,9 @@
       "types": "./src/color/guards.ts",
       "import": "./src/color/guards.ts"
     },
-    "./color/rgb": {
-      "types": "./src/color/rgb.ts",
-      "import": "./src/color/rgb.ts"
+    "./color/rgba": {
+      "types": "./src/color/rgba.ts",
+      "import": "./src/color/rgba.ts"
     }
   },
   "description": "Toolkit for building apps, prototypes and experiments",
