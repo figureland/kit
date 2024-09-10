@@ -1,4 +1,17 @@
 #
+## v0.0.14
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.13...v0.0.14)
+
+### 🚀 Enhancements
+
+- Added color, updated entrypoints ([5c2cfcf](https://github.com/figureland/kit/commit/5c2cfcf))
+- Added package entrypoint for rgb/rgba ([7829a93](https://github.com/figureland/kit/commit/7829a93))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.13
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.12...v0.0.13)
