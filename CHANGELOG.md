@@ -1,4 +1,17 @@
 #
+## v0.0.15
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.14...v0.0.15)
+
+### 🚀 Enhancements
+
+- Removed duplicate utils and added color gamut ([c0883b3](https://github.com/figureland/kit/commit/c0883b3))
+- Simple gamut handling for rgba ([c5805c0](https://github.com/figureland/kit/commit/c5805c0))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.14
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.13...v0.0.14)
