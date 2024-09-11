@@ -1,4 +1,17 @@
 #
+## v0.0.17
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.16...v0.0.17)
+
+### 🚀 Enhancements
+
+- Added oklch wrapper ([30ade5a](https://github.com/figureland/kit/commit/30ade5a))
+- Added sandbox, improved framework integration and added decimal entrypoint ([e12f6bb](https://github.com/figureland/kit/commit/e12f6bb))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.16
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.15...v0.0.16)
