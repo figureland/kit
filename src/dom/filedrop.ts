@@ -1,6 +1,7 @@
 import { type Events, type StateRecord, events, record, type Disposable, system } from '../state'
 import { isNotNullish } from '../ts'
 import { createListener, type ListenerTarget } from '../dom/events'
+import { freeze } from '../ts/object'
 
 export type FileDropTextContent = {
   type: 'text'
@@ -132,11 +133,11 @@ export const createFileDrop = ({
   use(createListener(target, 'dragover', onDragOver))
   use(createListener(target, 'drop', onDrop))
 
-  return {
+  return freeze({
     dispose,
     state,
     events: e
-  }
+  })
 }
 
 export type FileDrop = Disposable & {

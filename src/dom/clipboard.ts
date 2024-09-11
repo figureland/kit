@@ -1,7 +1,7 @@
 import { type State, type Disposable, type Events, system, state, events } from '../state'
 import { createListener } from '../dom/events'
 import { isString } from '../ts/guards'
-import { values } from '../ts/object'
+import { freeze, values } from '../ts/object'
 import { settle } from '../ts/async'
 import {
   blobToData,
@@ -121,13 +121,13 @@ export const createClipboard = (): Clipboard => {
   use(createListener(window, 'cut', handleCut))
   use(createListener(window, 'paste', handlePaste))
 
-  return {
+  return freeze({
     events: e,
     copy,
     read,
     available,
     dispose
-  }
+  })
 }
 
 export type Clipboard = Disposable & {

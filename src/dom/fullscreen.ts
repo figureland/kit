@@ -1,4 +1,5 @@
 import { type State, system, state, type Disposable } from '../state'
+import { freeze } from '../ts/object'
 import { createListener } from './events'
 
 export const supportsFullscreen = (): boolean =>
@@ -40,13 +41,13 @@ export const createFullscreen = (): Fullscreen => {
     }
   })
 
-  return {
+  return freeze({
     open,
     close,
     available,
     active,
     dispose
-  }
+  })
 }
 
 export type Fullscreen = Disposable & {

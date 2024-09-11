@@ -3,6 +3,7 @@ import { dp } from '../math'
 import type { Size } from '../math/size'
 import { createListener } from '../dom/events'
 import { getClosestBreakpoint, type Breakpoints } from './utils/breakpoints'
+import { extend } from '../ts/object'
 
 export type ScreenState<B> = {
   visible: boolean
@@ -57,10 +58,9 @@ export const createScreen = <B extends Breakpoints>(
 
   const is = (b: keyof B) => state.key('breakpoint').get() === b
 
-  return {
-    ...state,
+  return extend(state, {
     is
-  }
+  })
 }
 
 export type Screen<B = Breakpoints> = StateRecord<ScreenState<B>> & {

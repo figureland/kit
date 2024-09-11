@@ -34,3 +34,8 @@ export const omit = <Item extends object, K extends keyof Item>(
     },
     { ...item }
   )
+
+export const freeze = <T extends object>(obj: T): Readonly<T> => Object.freeze(obj)
+
+export const extend = <T extends object, X extends object>(obj: T, extensions: X): T & X =>
+  freeze({ ...obj, ...extensions })

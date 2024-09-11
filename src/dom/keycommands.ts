@@ -1,6 +1,7 @@
 import { events } from '../state'
 import { preventEvents, type ListenerTarget } from '../dom/events'
 import { tinykeys } from './utils/tinykeys'
+import { extend } from '../ts/object'
 
 export enum Commands {
   all,
@@ -63,15 +64,14 @@ export const createKeyCommands = ({ target = window }: KeyCommandsOptions = {}) 
     'Shift+_': key('zoomOut')
   })
 
-  return {
-    ...e,
+  return extend(e, {
     dispose: () => {
       e.dispose()
       if (unsubscribe) {
         unsubscribe()
       }
     }
-  }
+  })
 }
 
 export type KeyCommands = ReturnType<typeof createKeyCommands>

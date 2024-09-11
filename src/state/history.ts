@@ -1,3 +1,4 @@
+import { extend } from '../ts/object'
 import {
   State,
   Subscribable,
@@ -31,8 +32,7 @@ export const history = <S extends Subscribable | State<any>>(
     }
   }
 
-  return {
-    ...store,
+  return extend(store, {
     restore
-  }
+  })
 }

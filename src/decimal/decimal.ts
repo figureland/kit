@@ -1,5 +1,6 @@
 import Big, { type RoundingMode } from 'big.js'
 import { state } from '../state'
+import { extend, freeze } from '../ts/object'
 import type { Decimal } from './api'
 
 export const decimal = <V extends string | number | Big>(fn: V): Decimal => {
@@ -18,8 +19,7 @@ export const decimal = <V extends string | number | Big>(fn: V): Decimal => {
     }
   }
 
-  return {
-    ...s,
+  return extend(s, {
     set,
     abs: () => store.value.abs().valueOf(),
     plus: (n: string | number | Big) => store.value.plus(n).valueOf(),
@@ -40,7 +40,7 @@ export const decimal = <V extends string | number | Big>(fn: V): Decimal => {
     toString: () => store.value.toString(),
     toPrecision: (dp: number) => store.value.toPrecision(dp),
     instance: () => store.value
-  }
+  })
 }
 
 export const isBig = (v: any): v is Big => v instanceof Big
