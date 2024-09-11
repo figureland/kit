@@ -60,17 +60,18 @@ export const createDevice = (): Device => {
     mobile: isMobile()
   })
 
-  const setOnline = () => {
-    state.key('online').set(true)
-  }
-  const setOffline = () => {
-    state.key('online').set(false)
-  }
-
   getPersistenceStatus().then((persistence) => state.set({ persistence }))
 
-  state.use(createListener(window, 'offline', setOffline))
-  state.use(createListener(window, 'online', setOnline))
+  state.use(
+    createListener(window, 'offline', () => {
+      state.key('online').set(false)
+    })
+  )
+  state.use(
+    createListener(window, 'online', () => {
+      state.key('online').set(true)
+    })
+  )
 
   return state
 }

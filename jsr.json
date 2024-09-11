@@ -44,6 +44,7 @@
     "./infinity": "./src/infinity/index.ts",
     "./color": "./src/color/index.ts",
     "./color/guards": "./src/color/guards.ts",
-    "./color/rgba": "./src/color/rgba.ts"
+    "./color/rgba": "./src/color/rgba.ts",
+    "./decimal": "./src/decimal/index.ts"
   }
 }

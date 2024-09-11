@@ -2,6 +2,9 @@
   "name": "@figureland/kit",
   "version": "0.0.16",
   "type": "module",
+  "workspaces": [
+    "tools/*"
+  ],
   "exports": {
     "./math": {
       "types": "./src/math/index.ts",
@@ -174,6 +177,10 @@
     "./color/rgba": {
       "types": "./src/color/rgba.ts",
       "import": "./src/color/rgba.ts"
+    },
+    "./decimal": {
+      "types": "./src/decimal/index.ts",
+      "import": "./src/decimal/index.ts"
     }
   },
   "description": "Toolkit for building apps, prototypes and experiments",
@@ -193,8 +200,10 @@
     "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.4.1",
     "@texel/color": "^1.1.2",
+    "@types/big.js": "^6.2.2",
     "@types/bun": "^1.1.8",
     "@types/react": "^18.3.4",
+    "big.js": "^6.2.2",
     "bun-plugin-dts": "^0.2.3",
     "eslint": "^9.9.1",
     "husky": "^9.1.5",
@@ -206,6 +215,9 @@
     "vue": "^3.4.38"
   },
   "peerDependencies": {
+    "@texel/color": "^1.1.2",
+    "@types/big.js": "^6.2.2",
+    "big.js": "^6.2.2",
     "react": ">=16.8",
     "svelte": "^4.0.0",
     "vue": ">=3.0.0",
@@ -213,6 +225,12 @@
   },
   "peerDependenciesMeta": {
     "@texel/color": {
+      "optional": true
+    },
+    "@types/big.js": {
+      "optional": true
+    },
+    "big.js": {
       "optional": true
     },
     "react": {

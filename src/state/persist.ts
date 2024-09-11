@@ -7,13 +7,13 @@ export type StorageAPI<T> = {
 }
 
 export type StorageAPIOptions<T> = {
-  name: PersistenceName
+  name: string | PersistenceName
   validate: ((v: unknown) => Promise<boolean>) | ((v: unknown) => v is T)
   refine?: {
     get: ((v: unknown) => Promise<T>) | ((v: unknown) => T)
     set: ((v: T) => Promise<any>) | ((v: T) => any)
   }
-  fallback: () => T | Promise<T>
+  fallback: T | (() => T) | (() => Promise<T>)
   parse?: (v: string) => T
   stringify?: (v: T) => string
 }
