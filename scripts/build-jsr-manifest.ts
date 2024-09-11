@@ -1,5 +1,5 @@
-import fs from 'node:fs/promises'
-import path from 'node:path'
+import { readFile, writeFile } from 'node:fs/promises'
+import { join } from 'node:path'
 
 interface PackageJson {
   name: string
@@ -15,8 +15,8 @@ interface JsrManifest {
 
 const generateJsrManifest = async () => {
   try {
-    const packageJsonPath = path.join(process.cwd(), 'package.json')
-    const packageJsonContent = await fs.readFile(packageJsonPath, 'utf-8')
+    const packageJsonPath = join(process.cwd(), 'package.json')
+    const packageJsonContent = await readFile(packageJsonPath, 'utf-8')
     const packageJson: PackageJson = JSON.parse(packageJsonContent)
 
     const jsrManifest: JsrManifest = {
@@ -29,8 +29,8 @@ const generateJsrManifest = async () => {
       jsrManifest.exports[key] = value.import
     }
 
-    const jsrManifestPath = path.join(process.cwd(), 'jsr.json')
-    await fs.writeFile(jsrManifestPath, JSON.stringify(jsrManifest, null, 2))
+    const jsrManifestPath = join(process.cwd(), 'jsr.json')
+    await writeFile(jsrManifestPath, JSON.stringify(jsrManifest, null, 2))
 
     console.log('JSR manifest generated successfully!')
   } catch (error) {
