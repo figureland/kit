@@ -1,6 +1,6 @@
 import type Big from 'big.js'
+import type { RoundingMode } from 'big.js'
 import type { Gettable } from '../state'
-import { RoundingMode } from 'big.js'
 
 export type Decimal = Gettable<string> & {
   set: (v: string | number | Big) => void
