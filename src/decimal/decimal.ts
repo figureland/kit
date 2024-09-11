@@ -3,13 +3,16 @@ import { state } from '../state'
 import type { Decimal } from './api'
 
 export const decimal = <V extends string | number | Big>(fn: V): Decimal => {
-  const v = new Big(fn)
-  const s = state(v.valueOf())
+  const store = {
+    value: new Big(fn)
+  }
+
+  const s = state(store.value.valueOf())
 
   const set = (v: string | number | Big) => {
     try {
-      const result = new Big(v)
-      s.set(result.valueOf())
+      store.value = new Big(v)
+      s.set(store.value.valueOf())
     } catch {
       console.error('Invalid decimal value', v)
     }
@@ -18,25 +21,25 @@ export const decimal = <V extends string | number | Big>(fn: V): Decimal => {
   return {
     ...s,
     set,
-    abs: () => v.abs().valueOf(),
-    plus: (n: string | number | Big) => v.plus(n).valueOf(),
-    minus: (n: string | number | Big) => v.minus(n).valueOf(),
-    times: (n: string | number | Big) => v.times(n).valueOf(),
-    div: (n: string | number | Big) => v.div(n).valueOf(),
-    pow: (n: number) => v.pow(n).valueOf(),
-    round: (dp?: number, rm?: RoundingMode) => v.round(dp, rm).valueOf(),
-    eq: (n: string | number | Big) => v.eq(n),
-    gt: (n: string | number | Big) => v.gt(n),
-    lt: (n: string | number | Big) => v.lt(n),
-    gte: (n: string | number | Big) => v.gte(n),
-    lte: (n: string | number | Big) => v.lte(n),
-    sqrt: () => v.sqrt().valueOf(),
-    mod: (n: string | number | Big) => v.mod(n).valueOf(),
-    neg: () => v.neg().valueOf(),
-    toNumber: () => v.toNumber(),
-    toString: () => v.toString(),
-    toPrecision: (dp: number) => v.toPrecision(dp),
-    instance: () => v
+    abs: () => store.value.abs().valueOf(),
+    plus: (n: string | number | Big) => store.value.plus(n).valueOf(),
+    minus: (n: string | number | Big) => store.value.minus(n).valueOf(),
+    times: (n: string | number | Big) => store.value.times(n).valueOf(),
+    div: (n: string | number | Big) => store.value.div(n).valueOf(),
+    pow: (n: number) => store.value.pow(n).valueOf(),
+    round: (dp?: number, rm?: RoundingMode) => store.value.round(dp, rm).valueOf(),
+    eq: (n: string | number | Big) => store.value.eq(n),
+    gt: (n: string | number | Big) => store.value.gt(n),
+    lt: (n: string | number | Big) => store.value.lt(n),
+    gte: (n: string | number | Big) => store.value.gte(n),
+    lte: (n: string | number | Big) => store.value.lte(n),
+    sqrt: () => store.value.sqrt().valueOf(),
+    mod: (n: string | number | Big) => store.value.mod(n).valueOf(),
+    neg: () => store.value.neg().valueOf(),
+    toNumber: () => store.value.toNumber(),
+    toString: () => store.value.toString(),
+    toPrecision: (dp: number) => store.value.toPrecision(dp),
+    instance: () => store.value
   }
 }
 

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { state } from '@figureland/kit/state/svelte'
-  const s = state(0)
+  import { wrap, state } from '@figureland/kit/state/svelte'
+  import { decimal } from '@figureland/kit/decimal'
+  const s = state(0.000001)
+  const w = wrap(decimal(0.000001))
 </script>
 
-<h1>Welcome to SvelteKit {$s}</h1>
-<button on:click={() => s.set((s) => s + 1)}>Inc</button>
-<button on:click={() => s.set((s) => s - 1)}>Dec</button>
+<h1>Welcome to SvelteKit {$w} {$s}</h1>

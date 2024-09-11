@@ -17,8 +17,8 @@ export const storage = <T>({
   const browser = isBrowser()
   const target = getStorageName(name)
   const set = async (v: T) => {
-    const now = performance.now()
     if (!browser) return
+    const now = performance.now()
     if (!interval || now - lastUpdate >= interval) {
       const value = refine ? await refine.set(v) : v
       localStorage.setItem(target, stringify(value))
