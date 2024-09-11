@@ -1,4 +1,20 @@
 #
+## v0.0.19
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.18...v0.0.19)
+
+### 🚀 Enhancements
+
+- Added freeze/extend utilities ([823a954](https://github.com/figureland/kit/commit/823a954))
+
+### 🏡 Chore
+
+- Tweaks to decimal ([12b4357](https://github.com/figureland/kit/commit/12b4357))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.18
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.17...v0.0.18)
