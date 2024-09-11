@@ -1,2 +1,2 @@
 export type * from './api'
-export { decimal } from './decimal'
+export { decimal, isBig } from './decimal'

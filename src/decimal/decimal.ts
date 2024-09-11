@@ -28,6 +28,16 @@ export const decimal = <V extends string | number | Big>(fn: V): Decimal => {
     eq: (n: string | number | Big) => v.eq(n),
     gt: (n: string | number | Big) => v.gt(n),
     lt: (n: string | number | Big) => v.lt(n),
-    toNumber: () => v.toNumber()
+    gte: (n: string | number | Big) => v.gte(n),
+    lte: (n: string | number | Big) => v.lte(n),
+    sqrt: () => v.sqrt().valueOf(),
+    mod: (n: string | number | Big) => v.mod(n).valueOf(),
+    neg: () => v.neg().valueOf(),
+    toNumber: () => v.toNumber(),
+    toString: () => v.toString(),
+    toPrecision: (dp: number) => v.toPrecision(dp),
+    instance: () => v
   }
 }
+
+export const isBig = (v: any): v is Big => v instanceof Big

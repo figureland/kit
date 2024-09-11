@@ -4,7 +4,7 @@ import type { Gettable } from '../state'
 
 export type Decimal = Gettable<string> & {
   set: (v: string | number | Big) => void
-  abs: () => void
+  abs: () => string
   plus: (n: string | number | Big) => string
   minus: (n: string | number | Big) => string
   times: (n: string | number | Big) => string
@@ -14,5 +14,13 @@ export type Decimal = Gettable<string> & {
   eq: (n: string | number | Big) => boolean
   gt: (n: string | number | Big) => boolean
   lt: (n: string | number | Big) => boolean
+  gte: (n: string | number | Big) => boolean
+  lte: (n: string | number | Big) => boolean
+  sqrt: () => string
+  mod: (n: string | number | Big) => string
+  neg: () => string
   toNumber: () => number
+  toString: () => string
+  toPrecision: (dp: number) => string
+  instance: () => Big
 }
