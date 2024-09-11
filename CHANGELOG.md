@@ -1,4 +1,20 @@
 #
+## v0.0.18
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.17...v0.0.18)
+
+### 🚀 Enhancements
+
+- Adding tests and updating decimal api ([593d3d9](https://github.com/figureland/kit/commit/593d3d9))
+
+### 🏡 Chore
+
+- Updated typescript import ([3a3117e](https://github.com/figureland/kit/commit/3a3117e))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.17
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.16...v0.0.17)
