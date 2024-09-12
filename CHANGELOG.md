@@ -1,4 +1,20 @@
 #
+## v0.0.20
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.19...v0.0.20)
+
+### 🚀 Enhancements
+
+- First draft of docs ([d3a456b](https://github.com/figureland/kit/commit/d3a456b))
+
+### 🏡 Chore
+
+- Tweak import statements ([11b99a3](https://github.com/figureland/kit/commit/11b99a3))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.19
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.18...v0.0.19)
