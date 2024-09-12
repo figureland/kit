@@ -14,6 +14,10 @@
       "types": "./src/math/number.ts",
       "import": "./src/math/number.ts"
     },
+    "./math/decimal": {
+      "types": "./src/math/decimal.ts",
+      "import": "./src/math/decimal.ts"
+    },
     "./math/easing": {
       "types": "./src/math/easing.ts",
       "import": "./src/math/easing.ts"
@@ -177,10 +181,6 @@
     "./color/rgba": {
       "types": "./src/color/rgba.ts",
       "import": "./src/color/rgba.ts"
-    },
-    "./decimal": {
-      "types": "./src/decimal/index.ts",
-      "import": "./src/decimal/index.ts"
     }
   },
   "description": "Toolkit for building apps, prototypes and experiments",

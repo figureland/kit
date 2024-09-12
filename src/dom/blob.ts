@@ -33,7 +33,7 @@ export const imageToBlob = async (src: ImageBlobContent): Promise<Blob> =>
         const ctx = canvas.getContext('2d')
         if (ctx) {
           ctx.drawImage(img, 0, 0)
-          canvas.toBlob(async (blob) => {
+          canvas.toBlob((blob) => {
             if (!blob) {
               throw new Error('Failed to generate image blob')
             } else {

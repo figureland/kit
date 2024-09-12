@@ -1,6 +1,6 @@
 import Big, { type RoundingMode } from 'big.js'
 import { state } from '../state'
-import { extend, freeze } from '../ts/object'
+import { extend } from '../ts/object'
 import type { Decimal } from './api'
 
 export const decimal = <V extends string | number | Big>(fn: V): Decimal => {
@@ -27,6 +27,7 @@ export const decimal = <V extends string | number | Big>(fn: V): Decimal => {
     times: (n: string | number | Big) => store.value.times(n).valueOf(),
     div: (n: string | number | Big) => store.value.div(n).valueOf(),
     pow: (n: number) => store.value.pow(n).valueOf(),
+    neg: () => store.value.neg().valueOf(),
     round: (dp?: number, rm?: RoundingMode) => store.value.round(dp, rm).valueOf(),
     eq: (n: string | number | Big) => store.value.eq(n),
     gt: (n: string | number | Big) => store.value.gt(n),
@@ -35,7 +36,6 @@ export const decimal = <V extends string | number | Big>(fn: V): Decimal => {
     lte: (n: string | number | Big) => store.value.lte(n),
     sqrt: () => store.value.sqrt().valueOf(),
     mod: (n: string | number | Big) => store.value.mod(n).valueOf(),
-    neg: () => store.value.neg().valueOf(),
     toNumber: () => store.value.toNumber(),
     toString: () => store.value.toString(),
     toPrecision: (dp: number) => store.value.toPrecision(dp),
