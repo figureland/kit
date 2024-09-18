@@ -30,8 +30,8 @@ describe('Object Utility Functions', () => {
   it('is should correctly compare two values', () => {
     expect(is(5, 5)).toBe(true)
     expect(is('test', 'test')).toBe(true)
-    expect(is({}, {})).toBe(false) // Different references
-    expect(is(NaN, NaN)).toBe(true) // Same value, special case
+    expect(is({}, {})).toBe(false)
+    expect(is(NaN, NaN)).toBe(true)
   })
 
   it('has should verify if an object has a property', () => {
@@ -51,8 +51,8 @@ describe('Object Utility Functions', () => {
     const result = omit(original, ['b', 'd'])
 
     expect(result).toEqual({ a: 1, c: 3 })
-    expect(original).toEqual({ a: 1, b: 2, c: 3, d: 4 }) // Ensure original object is not modified
-    expect(result).not.toBe(original) // Ensure a new object is returned
+    expect(original).toEqual({ a: 1, b: 2, c: 3, d: 4 })
+    expect(result).not.toBe(original)
 
     const resultWithNonExistent = omit(original, ['b'])
     expect(resultWithNonExistent).toEqual({ a: 1, c: 3, d: 4 })
