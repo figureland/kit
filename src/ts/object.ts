@@ -1,6 +1,7 @@
 import { isObject } from './guards'
 
 type ValueOf<T> = T[keyof T]
+
 type Entries<T> = [keyof T, ValueOf<T>][]
 
 export const entries = <T extends object>(obj: T): Entries<T> => Object.entries(obj) as Entries<T>
@@ -8,9 +9,6 @@ export const entries = <T extends object>(obj: T): Entries<T> => Object.entries(
 export const keys = <T extends object>(obj: T) => Object.keys(obj) as (keyof T)[]
 
 export const values = <T extends object>(obj: T) => Object.values(obj) as ValueOf<T>[]
-
-export const assignSame = <T extends object, U extends (T | Partial<T>)[]>(obj: T, ...objs: U) =>
-  Object.assign(obj, ...objs)
 
 export const is = <T>(a: T, b: T) => a === b || Object.is(a, b)
 
@@ -25,17 +23,14 @@ export type Modify<T, R> = Omit<T, keyof R> & R
 
 export const omit = <Item extends object, K extends keyof Item>(
   item: Item,
-  props: K[]
-): Omit<Item, K> =>
-  props.reduce(
-    (acc, key) => {
-      if (key in acc) {
-        delete acc[key]
-      }
-      return acc
-    },
-    { ...item }
-  )
+  props: ReadonlyArray<K>
+): Omit<Item, K> => {
+  const result = { ...item }
+  for (const key of props) {
+    delete result[key]
+  }
+  return result
+}
 
 export const freeze = <T extends object>(obj: T): Readonly<T> => Object.freeze(obj)
 

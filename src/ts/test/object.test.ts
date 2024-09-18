@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'bun:test'
-import { entries, keys, values, is, has, assignSame } from '../object'
+import { entries, keys, values, is, has, omit } from '../object'
 
 describe('Object Utility Functions', () => {
   const testObj = {
@@ -27,15 +27,6 @@ describe('Object Utility Functions', () => {
     expect(result).toEqual([1, 'Test', true])
   })
 
-  it('assign should merge multiple objects into the first one', () => {
-    const obj1 = { a: 1 }
-    const obj2 = { b: 2 }
-    const obj3 = { b: 4 }
-    const obj4 = { c: 4 }
-    const res = assignSame({}, obj1, obj2, obj3, obj4)
-    expect(res).toEqual({ a: 1, b: 4, c: 4 })
-  })
-
   it('is should correctly compare two values', () => {
     expect(is(5, 5)).toBe(true)
     expect(is('test', 'test')).toBe(true)
@@ -47,5 +38,23 @@ describe('Object Utility Functions', () => {
     const obj = { key: 'value' }
     expect(has(obj, 'key')).toBe(true)
     expect(has(obj, 'nonexistent')).toBe(false)
+  })
+
+  it('has should verify if an object has a property', () => {
+    const obj = { key: 'value' }
+    expect(has(obj, 'key')).toBe(true)
+    expect(has(obj, 'nonexistent')).toBe(false)
+  })
+
+  it('omit should return a new object without the specified properties', () => {
+    const original = { a: 1, b: 2, c: 3, d: 4 }
+    const result = omit(original, ['b', 'd'])
+
+    expect(result).toEqual({ a: 1, c: 3 })
+    expect(original).toEqual({ a: 1, b: 2, c: 3, d: 4 }) // Ensure original object is not modified
+    expect(result).not.toBe(original) // Ensure a new object is returned
+
+    const resultWithNonExistent = omit(original, ['b'])
+    expect(resultWithNonExistent).toEqual({ a: 1, c: 3, d: 4 })
   })
 })

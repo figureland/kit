@@ -36,9 +36,9 @@ export {
   entries,
   keys,
   values,
-  assignSame,
   is,
-  has
+  has,
+  omit
 } from './object'
 export { sortMapToArray, NiceMap } from './map'
 export { getTimeSince } from './time'
