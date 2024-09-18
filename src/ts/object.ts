@@ -1,3 +1,5 @@
+import { isObject } from './guards'
+
 type ValueOf<T> = T[keyof T]
 type Entries<T> = [keyof T, ValueOf<T>][]
 
@@ -36,6 +38,16 @@ export const omit = <Item extends object, K extends keyof Item>(
   )
 
 export const freeze = <T extends object>(obj: T): Readonly<T> => Object.freeze(obj)
+
+export const deepFreeze = <T extends object>(obj: T): Readonly<T> => {
+  freeze(obj)
+  for (const key in obj) {
+    if (isObject(obj[key]) && obj[key] !== null) {
+      deepFreeze(obj[key])
+    }
+  }
+  return obj
+}
 
 export const extend = <T extends object, X extends object>(obj: T, extensions: X): T & X =>
   freeze({ ...obj, ...extensions })
