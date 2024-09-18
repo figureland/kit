@@ -46,3 +46,15 @@ export const deepFreeze = <T extends object>(obj: T): Readonly<T> => {
 
 export const extend = <T extends object, X extends object>(obj: T, extensions: X): T & X =>
   freeze({ ...obj, ...extensions })
+
+export const isFrozen = <T extends object>(obj: T): boolean => Object.isFrozen(obj)
+
+export const isDeepFrozen = <T extends object>(obj: T): boolean => {
+  if (!isFrozen(obj)) return false
+  for (const key in obj) {
+    if (isObject(obj[key]) && obj[key] !== null) {
+      if (!isDeepFrozen(obj[key])) return false
+    }
+  }
+  return true
+}

@@ -1,5 +1,16 @@
 import { describe, it, expect } from 'bun:test'
-import { entries, keys, values, is, has, omit } from '../object'
+import {
+  entries,
+  keys,
+  values,
+  is,
+  has,
+  omit,
+  freeze,
+  deepFreeze,
+  isFrozen,
+  isDeepFrozen
+} from '../object'
 
 describe('Object Utility Functions', () => {
   const testObj = {
@@ -56,5 +67,21 @@ describe('Object Utility Functions', () => {
 
     const resultWithNonExistent = omit(original, ['b'])
     expect(resultWithNonExistent).toEqual({ a: 1, c: 3, d: 4 })
+  })
+
+  it('freeze should freeze an object', () => {
+    const obj = { a: 1, b: 2 }
+    const frozenObj = freeze(obj)
+    expect(frozenObj).toEqual(obj)
+    expect(isFrozen(frozenObj)).toBe(true)
+  })
+
+  it('deepFreeze should freeze an object and its properties', () => {
+    const obj = { a: 1, b: { c: 3, d: 4 } }
+    const frozenObj = deepFreeze(obj)
+    expect(frozenObj).toEqual(obj)
+    expect(isFrozen(frozenObj)).toBe(true)
+    expect(isDeepFrozen(frozenObj)).toBe(true)
+    expect(isDeepFrozen(frozenObj.b)).toBe(true)
   })
 })
