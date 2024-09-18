@@ -14,6 +14,7 @@
     "./math/constants": "./src/math/constants.ts",
     "./math/style": "./src/math/style.ts",
     "./ts": "./src/ts/index.ts",
+    "./ts/array": "./src/ts/array.ts",
     "./ts/device": "./src/ts/device.ts",
     "./ts/guards": "./src/ts/guards.ts",
     "./ts/map": "./src/ts/map.ts",

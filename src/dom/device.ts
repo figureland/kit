@@ -1,6 +1,7 @@
 import { type StateRecord, record } from '../state'
 import { isChrome, isMobile, isSafari } from '../ts'
 import { createListener } from '../dom/events'
+import { getPlatform, Platform } from '../ts/device'
 
 export const isBrowser = () => typeof window !== 'undefined'
 
@@ -49,6 +50,7 @@ export type DeviceState = {
   safari: boolean
   chrome: boolean
   mobile: boolean
+  platform: Platform
 }
 
 export const createDevice = (): Device => {
@@ -57,7 +59,8 @@ export const createDevice = (): Device => {
     persistence: defaultPersistence(),
     safari: isSafari(),
     chrome: isChrome(),
-    mobile: isMobile()
+    mobile: isMobile(),
+    platform: getPlatform()
   })
 
   getPersistenceStatus().then((persistence) => state.set({ persistence }))

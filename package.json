@@ -54,6 +54,10 @@
       "types": "./src/ts/index.ts",
       "import": "./src/ts/index.ts"
     },
+    "./ts/array": {
+      "types": "./src/ts/array.ts",
+      "import": "./src/ts/array.ts"
+    },
     "./ts/device": {
       "types": "./src/ts/device.ts",
       "import": "./src/ts/device.ts"

@@ -28,8 +28,11 @@ export const isApple = () => {
   return /Mac|iPod|iPhone|iPad/.test(p)
 }
 
-export const getPlatform = () => {
-  if (!hasUserAgent()) return false
+export type Platform = 'mac' | 'windows' | 'linux' | undefined
+
+export const getPlatform = (): Platform => {
+  if (!hasUserAgent()) return
+
   const platform = navigator.platform.toLowerCase()
   const userAgent = navigator.userAgent.toLowerCase()
 
@@ -40,7 +43,7 @@ export const getPlatform = () => {
   } else if (platform.includes('linux') || userAgent.includes('linux')) {
     return 'linux'
   }
-  return false
+  return
 }
 
 export const isTouchscreen = () => hasUserAgent() && window.matchMedia('(pointer: coarse)').matches

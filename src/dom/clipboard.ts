@@ -58,7 +58,7 @@ export const parseClipboardItem = (item: ClipboardItem) =>
           size: blob.size
         }
       })
-  ).then(({ fulfilled }) => fulfilled)
+  ).then(({ fulfilled }) => fulfilled) 
 
 export type ParsedClipboardItem = Awaited<ReturnType<typeof parseClipboardItem>>
 
@@ -74,9 +74,9 @@ export type ClipboardEvents = {
 
 const getClipboardData = async () => {
   const items = await navigator.clipboard.read()
-  const result = await settle(items.map(parseClipboardItem))
+  const { fulfilled } = await settle(items.map(parseClipboardItem))
   return {
-    items: result.fulfilled,
+    items: fulfilled,
     text: await navigator.clipboard.readText()
   }
 }
