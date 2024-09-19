@@ -1,8 +1,8 @@
 import { test, describe, beforeEach, afterEach, expect } from 'bun:test'
 import { vector2, lerp as lerpVec2 } from '../../math/vector2'
 import { lerp } from '../../math/number'
-import { type Animated, animation } from '../animated'
-import { state } from '../state'
+import { type Animated, animation } from '..'
+import { state } from '../../state'
 
 let lastTime = 0
 

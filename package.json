@@ -166,9 +166,9 @@
       "types": "./src/state/local-storage.ts",
       "import": "./src/state/local-storage.ts"
     },
-    "./state/animated": {
-      "types": "./src/state/animated.ts",
-      "import": "./src/state/animated.ts"
+    "./motion": {
+      "types": "./src/motion/index.ts",
+      "import": "./src/motion/index.ts"
     },
     "./infinity": {
       "types": "./src/infinity/index.ts",

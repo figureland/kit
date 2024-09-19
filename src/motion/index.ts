@@ -3,7 +3,7 @@ import { clamp, mapRange } from '../math/number'
 import { isObject } from '../ts/guards'
 import { isBrowser } from '../dom'
 
-type EngineEvents = {
+type AnimatedEvents = {
   start: void
   stop: void
   tick: number
@@ -13,7 +13,7 @@ type EngineEvents = {
 export const animation = ({ fps = 60 }: { fps?: number; epsilon?: number } = {}): Animated => {
   const { use, dispose } = system()
   const active = use(state(() => false))
-  const e = use(events<EngineEvents>())
+  const e = use(events<AnimatedEvents>())
   const animations: Set<AnimatedState<any>> = new Set()
 
   const timestep: number = 1000 / fps
@@ -76,7 +76,7 @@ export type Animated = {
   start: () => void
   stop: () => void
   dispose: () => void
-  events: Events<EngineEvents>
+  events: Events<AnimatedEvents>
   animated: <V>(s: State<V>, options: AnimatedStateOptions<V>) => AnimatedState<V>
 }
 
