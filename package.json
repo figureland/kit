@@ -220,7 +220,6 @@
   },
   "peerDependencies": {
     "@texel/color": "^1.1.2",
-    "@types/big.js": "^6.2.2",
     "big.js": "^6.2.2",
     "react": ">=16.8",
     "svelte": "^4.0.0",
@@ -229,9 +228,6 @@
   },
   "peerDependenciesMeta": {
     "@texel/color": {
-      "optional": true
-    },
-    "@types/big.js": {
       "optional": true
     },
     "big.js": {
