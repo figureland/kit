@@ -49,6 +49,6 @@
     "./color/rgba": "./src/color/rgba.ts",
     "./shape/typography/harfbuzz.wasm": "./src/shape/typography/harfbuzz.wasm",
     "./shape/typography": "./src/shape/typography/index.ts",
-    "./shape/typography/server": "./src/shape/typography/harfbuzz.server.ts"
+    "./shape/typography/server": "./src/shape/typography/server.ts"
   }
 }

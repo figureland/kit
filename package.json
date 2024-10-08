@@ -195,8 +195,8 @@
       "import": "./src/shape/typography/index.ts"
     },
     "./shape/typography/server": {
-      "types": "./src/shape/typography/harfbuzz.server.ts",
-      "import": "./src/shape/typography/harfbuzz.server.ts"
+      "types": "./src/shape/typography/server.ts",
+      "import": "./src/shape/typography/server.ts"
     }
   },
   "description": "Toolkit for building apps, prototypes and experiments",
