@@ -1,4 +1,4 @@
-import { isFunction, isObject, isMap, isSet, shallowEquals, simpleMerge } from '../ts'
+import { isFunction, isObject, isMap, isSet, shallowEquals, simpleMerge } from '../tools'
 import type { Subscription } from './subscriptions'
 import { events } from './events'
 import type { State, StateOptions, SubscribableEvents, UseStateDependency } from './api'

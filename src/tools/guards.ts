@@ -21,7 +21,7 @@ export const isRegExp = (n: unknown): n is RegExp => n instanceof RegExp
 export const isNullOrUndefined = (n: unknown): n is null | undefined => isNull(n) || isUndefined(n)
 
 export const isPrimitive = (n: unknown): n is string | number | boolean | symbol | bigint =>
-  n === null || (typeof n !== 'object' && typeof n !== 'function')
+  n === null || (!isObject(n) && !isFunction(n))
 
 export const isBigInt = (n: unknown): n is bigint => typeof n === 'bigint'
 

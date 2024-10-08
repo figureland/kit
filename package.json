@@ -51,48 +51,48 @@
       "import": "./src/math/style.ts"
     },
     "./ts": {
-      "types": "./src/ts/index.ts",
-      "import": "./src/ts/index.ts"
+      "types": "./src/tools/index.ts",
+      "import": "./src/tools/index.ts"
     },
-    "./ts/array": {
-      "types": "./src/ts/array.ts",
-      "import": "./src/ts/array.ts"
+    "./tools/array": {
+      "types": "./src/tools/array.ts",
+      "import": "./src/tools/array.ts"
     },
-    "./ts/device": {
-      "types": "./src/ts/device.ts",
-      "import": "./src/ts/device.ts"
+    "./tools/device": {
+      "types": "./src/tools/device.ts",
+      "import": "./src/tools/device.ts"
     },
-    "./ts/guards": {
-      "types": "./src/ts/guards.ts",
-      "import": "./src/ts/guards.ts"
+    "./tools/guards": {
+      "types": "./src/tools/guards.ts",
+      "import": "./src/tools/guards.ts"
     },
-    "./ts/map": {
-      "types": "./src/ts/map.ts",
-      "import": "./src/ts/map.ts"
+    "./tools/map": {
+      "types": "./src/tools/map.ts",
+      "import": "./src/tools/map.ts"
     },
-    "./ts/merge": {
-      "types": "./src/ts/merge.ts",
-      "import": "./src/ts/merge.ts"
+    "./tools/merge": {
+      "types": "./src/tools/merge.ts",
+      "import": "./src/tools/merge.ts"
     },
-    "./ts/object": {
-      "types": "./src/ts/object.ts",
-      "import": "./src/ts/object.ts"
+    "./tools/object": {
+      "types": "./src/tools/object.ts",
+      "import": "./src/tools/object.ts"
     },
-    "./ts/async": {
-      "types": "./src/ts/async.ts",
-      "import": "./src/ts/async.ts"
+    "./tools/async": {
+      "types": "./src/tools/async.ts",
+      "import": "./src/tools/async.ts"
     },
-    "./ts/time": {
-      "types": "./src/ts/time.ts",
-      "import": "./src/ts/time.ts"
+    "./tools/time": {
+      "types": "./src/tools/time.ts",
+      "import": "./src/tools/time.ts"
     },
-    "./ts/equals": {
-      "types": "./src/ts/equals.ts",
-      "import": "./src/ts/equals.ts"
+    "./tools/equals": {
+      "types": "./src/tools/equals.ts",
+      "import": "./src/tools/equals.ts"
     },
-    "./ts/clone": {
-      "types": "./src/ts/clone.ts",
-      "import": "./src/ts/clone.ts"
+    "./tools/clone": {
+      "types": "./src/tools/clone.ts",
+      "import": "./src/tools/clone.ts"
     },
     "./dom": {
       "types": "./src/dom/index.ts",
@@ -185,11 +185,23 @@
     "./color/rgba": {
       "types": "./src/color/rgba.ts",
       "import": "./src/color/rgba.ts"
+    },
+    "./shape/typography/harfbuzz.wasm": {
+      "types": "./src/shape/typography/harfbuzz.wasm",
+      "import": "./src/shape/typography/harfbuzz.wasm"
+    },
+    "./shape/typography": {
+      "types": "./src/shape/typography/index.ts",
+      "import": "./src/shape/typography/index.ts"
+    },
+    "./shape/typography/server": {
+      "types": "./src/shape/typography/harfbuzz.server.ts",
+      "import": "./src/shape/typography/harfbuzz.server.ts"
     }
   },
   "description": "Toolkit for building apps, prototypes and experiments",
   "scripts": {
-    "build:jsr": "bun run scripts/build-jsr-manifest.ts",
+    "build:jsr": "bun run scriptools/build-jsr-manifest.ts",
     "prepare": "husky",
     "test": "bun test",
     "lint": "eslint src/",
@@ -223,6 +235,7 @@
     "big.js": "^6.2.2",
     "react": ">=16.8",
     "svelte": "^4.0.0",
+    "svg-path-commander": "^2.1.0",
     "vue": ">=3.0.0",
     "typescript": ">=4.0.0"
   },
@@ -237,6 +250,9 @@
       "optional": true
     },
     "svelte": {
+      "optional": true
+    },
+    "svg-path-commander": {
       "optional": true
     },
     "typescript": {
@@ -262,6 +278,5 @@
     "singleQuote": true,
     "printWidth": 100,
     "trailingComma": "none"
-  },
-  "dependencies": {}
+  }
 }

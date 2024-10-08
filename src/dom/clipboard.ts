@@ -1,8 +1,8 @@
 import { type State, type Disposable, type Events, system, state, events } from '../state'
 import { createListener } from '../dom/events'
-import { isString } from '../ts/guards'
-import { freeze, values } from '../ts/object'
-import { settle } from '../ts/async'
+import { isString } from '../tools/guards'
+import { freeze, values } from '../tools/object'
+import { settle } from '../tools/async'
 import {
   blobToData,
   blobToHTML,

@@ -1,5 +1,5 @@
 import { disposable, type Disposable } from '../state'
-import { isString } from '../ts'
+import { isString } from '../tools'
 
 export type ListenerTarget = Document | Window | HTMLElement | ScreenOrientation | MediaQueryList
 

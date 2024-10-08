@@ -1,4 +1,4 @@
-import { extend } from '../ts/object'
+import { extend } from '../tools/object'
 import {
   State,
   Subscribable,

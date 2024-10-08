@@ -1,6 +1,6 @@
 import type { Gettable, GettableType, StateOptions, UseStateDependency } from '../state'
 import { state as _state } from '../state'
-import { extend } from '../ts/object'
+import { extend } from '../tools/object'
 export const wrap = <S extends Gettable<any>>(s: S) =>
   extend(s, {
     subscribe: (run: (value: GettableType<S>) => void) => {

@@ -1,5 +1,5 @@
-import { isFunction } from '../ts/guards'
-import { keys } from '../ts/object'
+import { isFunction } from '../tools/guards'
+import { keys } from '../tools/object'
 import { state } from './state'
 import type { State, StateOptions, StateRecord } from './api'
 

@@ -1,4 +1,4 @@
-import type { Equals, Merge } from '../ts'
+import type { Equals, Merge } from '../tools'
 import type { Subscription, Unsubscribe } from './subscriptions'
 
 export type Usable = {

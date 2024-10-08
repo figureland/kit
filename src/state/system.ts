@@ -1,4 +1,4 @@
-import { NiceMap } from "../ts/map";
+import { NiceMap } from "../tools/map";
 import type { Disposable, System } from "./api";
 import { createSubscriptions } from "./subscriptions";
 

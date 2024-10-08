@@ -1,4 +1,4 @@
-import { keys } from '../../ts'
+import { keys } from '../../tools'
 
 export type Breakpoints = {
   [key: string]: number

@@ -1,5 +1,5 @@
 import type { Settable, Gettable, SettableType } from '../state'
-import { isArray } from '../ts/guards'
+import { isArray } from '../tools/guards'
 
 export type StorageAPI<T> = {
   get: () => Promise<T>

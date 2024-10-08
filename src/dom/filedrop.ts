@@ -1,7 +1,7 @@
 import { type Events, type StateRecord, events, record, type Disposable, system } from '../state'
-import { isNotNullish } from '../ts'
+import { isNotNullish } from '../tools'
 import { createListener, type ListenerTarget } from '../dom/events'
-import { freeze } from '../ts/object'
+import { freeze } from '../tools/object'
 
 export type FileDropTextContent = {
   type: 'text'

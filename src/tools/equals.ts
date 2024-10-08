@@ -1,5 +1,5 @@
-import { has, is, keys } from '../ts/object'
-import { isArray } from '../ts/guards'
+import { has, is, keys } from './object'
+import { isArray, isNull, isObject } from './guards'
 
 export type Equals<T extends any = any> = (s: T, t: T) => boolean
 
@@ -14,7 +14,7 @@ export const shallowEquals: Equals = (obj1, obj2) => {
     return true
   }
 
-  if (typeof obj1 !== 'object' || obj1 === null || typeof obj2 !== 'object' || obj2 === null) {
+  if (!isObject(obj1) || isNull(obj1) || !isObject(obj2) || isNull(obj2)) {
     return false
   }
 

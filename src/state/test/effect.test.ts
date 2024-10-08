@@ -1,6 +1,6 @@
 import { describe, it, expect, mock } from 'bun:test'
 import { effect, state, events } from '..'
-import { isNumber } from '../../ts/guards'
+import { isNumber } from '../../tools/guards'
 
 describe('effect', () => {
   it('creates an effect which listens to other streams of events', () => {

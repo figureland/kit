@@ -1,8 +1,8 @@
 import { calculateBoundingBox, intersects, isBox, type Box } from '../../math/box'
 import { type State, effect, state, events, system } from '../../state'
-import { isAsyncGeneratorFunction, isNotNullish } from '../../ts/guards'
-import { entries } from '../../ts/object'
-import { arraysEquals } from '../../ts/equals'
+import { isAsyncGeneratorFunction, isNotNullish } from '../../tools/guards'
+import { entries } from '../../tools/object'
+import { arraysEquals } from '../../tools/equals'
 import {
   type QueryParams,
   type Query,

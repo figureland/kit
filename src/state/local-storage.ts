@@ -1,5 +1,5 @@
 import { isBrowser } from '../dom'
-import { isFunction } from '../ts'
+import { isFunction } from '../tools'
 import { getStorageName, PersistenceName, type StorageAPI, type StorageAPIOptions } from './persist'
 
 declare var localStorage: Storage

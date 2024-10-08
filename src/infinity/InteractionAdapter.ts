@@ -7,7 +7,7 @@ import {
   getDataAttribute,
   type PointerInteractionEvent
 } from '../dom/events'
-import { isString } from '../ts/guards'
+import { isString } from '../tools/guards'
 import type { InfinityKit } from './InfinityKit'
 
 export type InteractionAdapter = Disposable & {

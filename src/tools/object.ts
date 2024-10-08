@@ -1,4 +1,4 @@
-import { isObject } from './guards'
+import { isNull, isObject } from './guards'
 
 type ValueOf<T> = T[keyof T]
 
@@ -37,7 +37,7 @@ export const freeze = <T extends object>(obj: T): Readonly<T> => Object.freeze(o
 export const deepFreeze = <T extends object>(obj: T): Readonly<T> => {
   freeze(obj)
   for (const key in obj) {
-    if (isObject(obj[key]) && obj[key] !== null) {
+    if (isObject(obj[key]) && !isNull(obj[key])) {
       deepFreeze(obj[key])
     }
   }
@@ -52,7 +52,7 @@ export const isFrozen = <T extends object>(obj: T): boolean => Object.isFrozen(o
 export const isDeepFrozen = <T extends object>(obj: T): boolean => {
   if (!isFrozen(obj)) return false
   for (const key in obj) {
-    if (isObject(obj[key]) && obj[key] !== null) {
+    if (isObject(obj[key]) && !isNull(obj[key])) {
       if (!isDeepFrozen(obj[key])) return false
     }
   }

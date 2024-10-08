@@ -1,6 +1,6 @@
 import Big, { type RoundingMode } from 'big.js'
 import { state } from '../state'
-import { extend } from '../ts/object'
+import { extend } from '../tools/object'
 import type { Decimal } from './api'
 
 export const decimal = <V extends string | number | Big>(fn: V): Decimal => {

@@ -1,6 +1,6 @@
 import { readonly, record } from '../state'
 import { createListener, mediaQuery } from '../dom/events'
-import { extend } from '../ts/object'
+import { extend } from '../tools/object'
 
 type PreferenceState = {
   colorScheme: 'light' | 'dark' | 'system'

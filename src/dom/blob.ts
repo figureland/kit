@@ -1,4 +1,4 @@
-import { isString } from '../ts'
+import { isString } from '../tools'
 import { fit, size } from '../math/size'
 
 const { stringify, parse } = JSON

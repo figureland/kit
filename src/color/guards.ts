@@ -1,4 +1,4 @@
-import { isString } from '../ts'
+import { isString } from '../tools'
 
 export const isHexColorString = (n: unknown): n is string => {
   if (!isString(n)) return false

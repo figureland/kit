@@ -1,7 +1,7 @@
 import { type StateRecord, record } from '../state'
-import { isChrome, isMobile, isSafari } from '../ts'
+import { isChrome, isMobile, isSafari } from '../tools'
 import { createListener } from '../dom/events'
-import { getPlatform, Platform } from '../ts/device'
+import { getPlatform, Platform } from '../tools/device'
 
 export const isBrowser = () => typeof window !== 'undefined'
 
