@@ -201,7 +201,7 @@
   },
   "description": "Toolkit for building apps, prototypes and experiments",
   "scripts": {
-    "build:jsr": "bun run scriptools/build-jsr-manifest.ts",
+    "build:jsr": "bun run scripts/build-jsr-manifest.ts",
     "prepare": "husky",
     "test": "bun test",
     "lint": "eslint src/",
