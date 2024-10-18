@@ -1,4 +1,4 @@
-import { Effect, Events, State } from './api'
+import type { Effect, Events, State } from './api'
 import { system } from './system'
 
 type SourceValue<S> =

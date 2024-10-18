@@ -6,7 +6,7 @@ import {
   type Matrix2D
 } from '../math/matrix2D'
 import { dp, isNumber, max, min } from '../math/number'
-import { vector2, isVector2, negate, Vector2 } from '../math/vector2'
+import { vector2, isVector2, negate, type Vector2 } from '../math/vector2'
 
 export type { Box } from './api'
 

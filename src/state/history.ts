@@ -1,5 +1,5 @@
 import { extend } from '../tools/object'
-import {
+import type {
   State,
   Subscribable,
   SubscribableHistory,
