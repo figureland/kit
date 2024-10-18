@@ -127,7 +127,6 @@ export const createFileDrop = ({
     return
   }
 
-  use(e)
   use(createListener(target, 'dragenter', onDragEnter))
   use(createListener(target, 'dragleave', onDragLeave))
   use(createListener(target, 'dragover', onDragOver))
