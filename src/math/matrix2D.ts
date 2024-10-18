@@ -278,3 +278,89 @@ export const lerp = (m: Matrix2D, a: Matrix2D, b: Matrix2D, t: number): Matrix2D
  */
 export const preciseEnough = (m: Matrix2D): Matrix2D =>
   set(m, dp(m[0]), dp(m[1]), dp(m[2]), dp(m[3]), dp(m[4]), dp(m[5]))
+
+// /**
+//  * Calculates the eigenvalues of a Matrix2D.
+//  * @param m - The matrix to calculate eigenvalues for
+//  * @returns An array containing the two eigenvalues
+//  */
+// export const eigenvalues = (m: Matrix2D): [number, number] => {
+//   const a = m[0]
+//   const d = m[3]
+
+//   const trace = a + d
+//   const det = determinant(m)
+
+//   const discriminant = sqrt(trace * trace - 4 * det)
+//   const lambda1 = (trace + discriminant) / 2
+//   const lambda2 = (trace - discriminant) / 2
+
+//   return [lambda1, lambda2]
+// }
+
+// /**
+//  * Calculates the eigenvectors of a Matrix2D.
+//  * @param m - The matrix to calculate eigenvectors for
+//  * @returns An array containing two Vector2 eigenvectors
+//  */
+// export const eigenvectors = (m: Matrix2D): [Vector2, Vector2] => {
+//   const [lambda1, lambda2] = eigenvalues(m)
+//   const a = m[0]
+//   const b = m[1]
+//   const c = m[2]
+//   const d = m[3]
+
+//   const isRepeatedEigenvalue = Math.abs(lambda1 - lambda2) < EPS
+
+//   if (isRepeatedEigenvalue) {
+//     // For repeated eigenvalues, we need to find two linearly independent eigenvectors
+//     const x1 = b
+//     const y1 = lambda1 - a
+//     const mag1 = sqrt(x1 * x1 + y1 * y1)
+
+//     let v1: Vector2, v2: Vector2
+
+//     if (mag1 > EPS) {
+//       v1 = { x: x1 / mag1, y: y1 / mag1 }
+//       // The second vector should be orthogonal to the first
+//       v2 = { x: -v1.y, y: v1.x }
+//     } else {
+//       // If the first attempt yields a zero vector, try using the other column
+//       const x2 = lambda1 - d
+//       const y2 = c
+//       const mag2 = sqrt(x2 * x2 + y2 * y2)
+
+//       if (mag2 > EPS) {
+//         v1 = { x: x2 / mag2, y: y2 / mag2 }
+//         v2 = { x: -v1.y, y: v1.x }
+//       } else {
+//         // If both attempts yield zero vectors, return the standard basis
+//         v1 = { x: 1, y: 0 }
+//         v2 = { x: 0, y: 1 }
+//       }
+//     }
+
+//     return [v1, v2]
+//   } else {
+//     // For distinct eigenvalues, calculate eigenvectors as before
+//     let x1 = b
+//     let y1 = lambda1 - a
+//     if (abs(x1) < EPS && abs(y1) < EPS) {
+//       x1 = lambda1 - d
+//       y1 = c
+//     }
+//     const mag1 = sqrt(x1 * x1 + y1 * y1)
+//     const v1: Vector2 = { x: x1 / mag1, y: y1 / mag1 }
+
+//     let x2 = b
+//     let y2 = lambda2 - a
+//     if (abs(x2) < EPS && abs(y2) < EPS) {
+//       x2 = lambda2 - d
+//       y2 = c
+//     }
+//     const mag2 = sqrt(x2 * x2 + y2 * y2)
+//     const v2: Vector2 = { x: x2 / mag2, y: y2 / mag2 }
+
+//     return [v1, v2]
+//   }
+// }

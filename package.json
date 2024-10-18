@@ -1,5 +1,5 @@
 {
-  "name": "@figureland/kit",
+  "name": "@figureland/basis",
   "version": "0.0.20",
   "type": "module",
   "workspaces": [
@@ -13,10 +13,6 @@
     "./math/number": {
       "types": "./src/math/number.ts",
       "import": "./src/math/number.ts"
-    },
-    "./math/decimal": {
-      "types": "./src/math/decimal.ts",
-      "import": "./src/math/decimal.ts"
     },
     "./math/easing": {
       "types": "./src/math/easing.ts",
@@ -232,7 +228,6 @@
   },
   "peerDependencies": {
     "@texel/color": "^1.1.2",
-    "big.js": "^6.2.2",
     "react": ">=16.8",
     "svelte": "^4.0.0",
     "svg-path-commander": "^2.1.0",
@@ -241,9 +236,6 @@
   },
   "peerDependenciesMeta": {
     "@texel/color": {
-      "optional": true
-    },
-    "big.js": {
       "optional": true
     },
     "react": {

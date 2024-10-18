@@ -1,10 +1,9 @@
 {
-  "name": "@figureland/kit",
+  "name": "@figureland/basis",
   "version": "0.0.20",
   "exports": {
     "./math": "./src/math/index.ts",
     "./math/number": "./src/math/number.ts",
-    "./math/decimal": "./src/math/decimal.ts",
     "./math/easing": "./src/math/easing.ts",
     "./math/vector2": "./src/math/vector2.ts",
     "./math/matrix2D": "./src/math/matrix2D.ts",

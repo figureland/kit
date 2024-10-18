@@ -93,3 +93,11 @@ export type Events<S extends EventsMap, K extends keyof S = EventsKey & keyof S>
   dispose: () => void
   size: () => number
 }
+
+export type Factory<Input extends any, Instance extends any, Output extends any> = (
+  v: Input
+) => Gettable<Output> & {
+  set: (v: Input) => void
+  instance: () => Instance
+  derived: <DerivedValue extends any>(fn: (v: Instance) => DerivedValue) => State<DerivedValue>
+}
