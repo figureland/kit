@@ -1,4 +1,39 @@
 #
+## v0.0.21
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.20...v0.0.21)
+
+### 🚀 Enhancements
+
+- Array utilities ([a9ecc5a](https://github.com/figureland/kit/commit/a9ecc5a))
+- Added deepFreeze ([b500c59](https://github.com/figureland/kit/commit/b500c59))
+- Upgrade to object helpers ([f223550](https://github.com/figureland/kit/commit/f223550))
+- Updates ts => internal tools, added shape module ([c568f28](https://github.com/figureland/kit/commit/c568f28))
+- Added factory ([6e80fea](https://github.com/figureland/kit/commit/6e80fea))
+- Fixed and renamed factory helper ([f20db57](https://github.com/figureland/kit/commit/f20db57))
+
+### 🩹 Fixes
+
+- Broken build script ([d8307c8](https://github.com/figureland/kit/commit/d8307c8))
+- Rename file ([c87ffea](https://github.com/figureland/kit/commit/c87ffea))
+- Rename file ([dac64f0](https://github.com/figureland/kit/commit/dac64f0))
+
+### 🏡 Chore
+
+- Update dependencies ([2e8596f](https://github.com/figureland/kit/commit/2e8596f))
+- Rm stray comments ([79f22bd](https://github.com/figureland/kit/commit/79f22bd))
+- Updated freeze methods and tests ([8d710b7](https://github.com/figureland/kit/commit/8d710b7))
+- Moved motion to its own folder ([98e9c5c](https://github.com/figureland/kit/commit/98e9c5c))
+- Minor updates to decimal helper ([0a159d6](https://github.com/figureland/kit/commit/0a159d6))
+- Updated optional dependencies ([b3406e5](https://github.com/figureland/kit/commit/b3406e5))
+- Update dependencies ([9176ea6](https://github.com/figureland/kit/commit/9176ea6))
+- Fixing broken imports ([b34619b](https://github.com/figureland/kit/commit/b34619b))
+- Fixing bugs ([84320a8](https://github.com/figureland/kit/commit/84320a8))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.20
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.19...v0.0.20)
