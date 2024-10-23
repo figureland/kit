@@ -1,4 +1,16 @@
 #
+## v0.0.22
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.21...v0.0.22)
+
+### 📖 Documentation
+
+- Remove old content from readme ([52d4b18](https://github.com/figureland/kit/commit/52d4b18))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.21
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.20...v0.0.21)
