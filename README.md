@@ -9,10 +9,6 @@
 
 Tools for working with numbers, geometry, matrices and vertices.
 
-#### [decimal](./src/decimal/)
-
-Big number utility that wraps [big.js](https://mikemcl.github.io/big.js).
-
 #### [state](./src/state/)
 
 Simple, powerful reactive programming primitives that are portable between frameworks.
@@ -25,9 +21,9 @@ Utilities for working with color, wrapping some functionality from [@texel/color
 
 Minimal primitives for building infinity canvas and map-type interactions.
 
-#### [ts](./src/infinity/)
+#### [tools](./src/tools/)
 
-A toolbox of general purpose Typescript utilities, mainly used internally within this library.
+General purpose Typescript utilities, mainly used internally within this library.
 
 #### [dom](./src/dom/)
 
@@ -38,7 +34,7 @@ A collection of useful tools for DOM-based interaction, like file handling, clip
 This codebase is available as [@figureland/kit](https://www.npmjs.com/package/@figureland/kit), distributed on the NPM and Github package registries. It will eventually be available on [JSR](https://jsr.io/) as well.
 
 ```bash
-npm install @figureland/kit
+bun install @figureland/kit
 ```
 
 This project follows the convention of [Deno](https://deno.com/), JSR, and others in that it doesn't use a build step. The library is distributed as the original Typescript source files, meaning you'll need to have a project that is already using TS.
