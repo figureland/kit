@@ -1,9 +1,9 @@
 import { describe, it, expect } from 'bun:test'
-import { factory } from '../factory'
+import { wrap } from '../wrap'
 import Big, { type BigSource } from 'big.js'
 
-describe('factory', () => {
-  const decimal = factory((v: BigSource) => new Big(v), {
+describe('wrap', () => {
+  const decimal = wrap((v: BigSource) => new Big(v), {
     set: (instance, v) => {
       instance.value = new Big(v)
     },

@@ -1,10 +1,10 @@
 <!-- <script lang="ts">
   import { wrap, state } from '@figureland/kit/state/svelte'
-  import { factory } from '@figureland/kit/state'
+  import { wrap } from '@figureland/kit/state'
   import Big, { type BigSource } from 'big.js'
 
   const s = state(0.000001)
-  const decimal = factory((v: BigSource) => new Big(v), {
+  const decimal = wrap((v: BigSource) => new Big(v), {
     set: (instance, v) => {
       instance.value = new Big(v)
     },

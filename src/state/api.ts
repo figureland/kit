@@ -94,7 +94,7 @@ export type Events<S extends EventsMap, K extends keyof S = EventsKey & keyof S>
   size: () => number
 }
 
-export type Factory<Input extends any, Instance extends any, Output extends any> = (
+export type Wrap<Input extends any, Instance extends any, Output extends any> = (
   v: Input
 ) => Gettable<Output> & {
   set: (v: Input) => void

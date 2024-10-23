@@ -1,13 +1,13 @@
-import { state, type Factory } from '.'
+import { state, type Wrap } from '.'
 import { extend } from '../tools/object'
 
-export const factory = <Input extends any, Instance extends any = any, Output extends any = any>(
+export const wrap = <Input extends any, Instance extends any = any, Output extends any = any>(
   constructor: (v: Input) => Instance,
   {
     set,
     get
   }: { set: (i: { value: Instance }, v: Input) => Instance | void; get: (v: Instance) => Output }
-): Factory<Input, Instance, Output> => {
+): Wrap<Input, Instance, Output> => {
   return (v: Input) => {
     const store = {
       value: constructor(v)

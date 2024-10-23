@@ -3,7 +3,7 @@ import type { Gettable, GettableType, StateOptions, UseStateDependency } from '.
 import { state as _state } from '../state'
 import { extend } from '../tools/object'
 
-export const wrap = <S extends Gettable<any>>(s: S) =>
+export const vue = <S extends Gettable<any>>(s: S) =>
   customRef<GettableType<S>>((track, set) => {
     const dispose = s.on(set)
     onScopeDispose(dispose)
@@ -18,4 +18,4 @@ export const wrap = <S extends Gettable<any>>(s: S) =>
   })
 
 export const state = <V>(fn: V | ((use: UseStateDependency) => V), options: StateOptions<V> = {}) =>
-  wrap(_state(fn, options))
+  vue(_state(fn, options))
