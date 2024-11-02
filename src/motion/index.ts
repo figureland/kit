@@ -2,6 +2,7 @@ import { type AnimatedState, type Events, type State, events, system, state } fr
 import { clamp, mapRange } from '../math/number'
 import { isObject } from '../tools/guards'
 import { isBrowser } from '../dom'
+import { freeze } from '../tools/object'
 
 type AnimatedEvents = {
   start: void
@@ -48,7 +49,7 @@ export const animation = ({ fps = 60 }: { fps?: number; epsilon?: number } = {})
     e.emit('tick', delta)
   }
 
-  return {
+  return freeze({
     active,
     start,
     stop,
@@ -67,7 +68,7 @@ export const animation = ({ fps = 60 }: { fps?: number; epsilon?: number } = {})
       if (!active.get()) start()
       return a
     }
-  }
+  })
 }
 
 export type Animated = {
@@ -133,7 +134,7 @@ export const createAnimated = <V extends any>(
     store.active = false
   }
 
-  return {
+  return freeze({
     id: clone.id,
     use: m.use,
     get: clone.get,
@@ -143,7 +144,7 @@ export const createAnimated = <V extends any>(
     tick,
     events: clone.events,
     dispose: m.dispose
-  }
+  })
 }
 
 type InterpolationFn<V> = (from: V, to: V, amount: number) => V
