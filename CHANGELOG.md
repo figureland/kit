@@ -1,4 +1,16 @@
 #
+## v0.0.23
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.22...v0.0.23)
+
+### 🚀 Enhancements
+
+- Added queue ([7dd8697](https://github.com/figureland/kit/commit/7dd8697))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.22
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.21...v0.0.22)
