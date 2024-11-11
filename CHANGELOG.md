@@ -1,4 +1,16 @@
 #
+## v0.0.24
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.23...v0.0.24)
+
+### 🏡 Chore
+
+- Rename record -> shape ([5464f21](https://github.com/figureland/kit/commit/5464f21))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.23
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.22...v0.0.23)
