@@ -1,4 +1,4 @@
-import { type StateRecord, record } from '../state'
+import { type Shape, shape } from '../state'
 import { dp } from '../math'
 import type { Size } from '../math/size'
 import { createListener } from '../dom/events'
@@ -24,7 +24,7 @@ export const createScreen = <B extends Breakpoints>(
   breakpoints: B = defaultBreakpoint as B
 ): Screen<B> => {
   const size = getWindowSize()
-  const state = record<ScreenState<B>>({
+  const state = shape<ScreenState<B>>({
     visible: true,
     size,
     scale: getWindowScale(),
@@ -63,6 +63,6 @@ export const createScreen = <B extends Breakpoints>(
   })
 }
 
-export type Screen<B = Breakpoints> = StateRecord<ScreenState<B>> & {
+export type Screen<B = Breakpoints> = Shape<ScreenState<B>> & {
   is: (b: keyof B) => boolean
 }

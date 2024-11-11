@@ -1,4 +1,4 @@
-import { type StateRecord, record } from '../state'
+import { type Shape, shape } from '../state'
 import {
   allowEvent,
   createListener,
@@ -55,7 +55,7 @@ export const createPointer = ({
   filterEvents,
   preventGestureDefault = true
 }: PointerOptions = {}): Pointer => {
-  const state = record(defaultPointerState())
+  const state = shape(defaultPointerState())
   const prevent = (e: PointerInteractionEvent) => filterEvents?.(e, allowEvent(e))
 
   const onPointerDown = (e: PointerInteractionEvent) => {
@@ -158,4 +158,4 @@ export const createPointer = ({
   return state
 }
 
-export type Pointer = StateRecord<PointerState>
+export type Pointer = Shape<PointerState>

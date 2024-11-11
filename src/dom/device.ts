@@ -1,7 +1,8 @@
-import { type StateRecord, record } from '../state'
+import { type Shape } from '../state'
 import { isChrome, isMobile, isSafari } from '../tools'
 import { createListener } from '../dom/events'
 import { getPlatform, Platform } from '../tools/device'
+import { shape } from '../state/shape'
 
 export const isBrowser = () => typeof window !== 'undefined'
 
@@ -54,7 +55,7 @@ export type DeviceState = {
 }
 
 export const createDevice = (): Device => {
-  const state = record<DeviceState>({
+  const state = shape<DeviceState>({
     online: navigator?.onLine || true,
     persistence: defaultPersistence(),
     safari: isSafari(),
@@ -79,4 +80,4 @@ export const createDevice = (): Device => {
   return state
 }
 
-export type Device = StateRecord<DeviceState>
+export type Device = Shape<DeviceState>

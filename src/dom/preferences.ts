@@ -1,4 +1,4 @@
-import { readonly, record } from '../state'
+import { readonly, shape } from '../state'
 import { createListener, mediaQuery } from '../dom/events'
 import { extend } from '../tools/object'
 
@@ -13,7 +13,7 @@ export const createPreferences = () => {
   const reducedMotion = mediaQuery('prefers-reduced-motion: reduce')
   const reducedContrast = mediaQuery('prefers-contrast: no-preference')
 
-  const state = record<PreferenceState>({
+  const state = shape<PreferenceState>({
     colorScheme: 'system',
     reducedMotion: false,
     reducedContrast: false
