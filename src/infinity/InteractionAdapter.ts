@@ -1,5 +1,5 @@
 import { vector2 } from '../math/vector2'
-import { state, system, type Disposable } from '../state'
+import { state, lifecycle, type Disposable } from '../state'
 import type { Pointer } from '../dom/pointer'
 import { listen, type PointerInteractionEvent } from '../dom/events'
 import { isString } from '../tools/guards'
@@ -23,7 +23,7 @@ export const createInteractionAdapter = <P extends Pointer>(
   pointer: P,
   kit: InfinityKit<any, any>
 ): InteractionAdapter => {
-  const { use, dispose } = system()
+  const { use, dispose } = lifecycle()
   use(
     state((get) => {
       get(pointer.key('point'))
@@ -99,7 +99,7 @@ export const attachInteractionAdapter = (
     if (!isHTMLElement(element)) {
       throw new Error(`Invalid attach target: ${target}`)
     }
-    const { dispose, use } = system()
+    const { dispose, use } = lifecycle()
     use(
       listen(element, {
         pointerdown: handler.onPointerDown,

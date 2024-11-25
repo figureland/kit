@@ -1,4 +1,4 @@
-import { type State, type Disposable, type Events, system, state, events } from '../state'
+import { type State, type Disposable, type Events, lifecycle, state, events } from '../state'
 import { listen } from '../dom/events'
 import { isString } from '../tools/guards'
 import { freeze, values } from '../tools/object'
@@ -87,7 +87,7 @@ export type ParsedClipboardData = {
 }
 
 export const createClipboard = (): Clipboard => {
-  const { use, dispose } = system()
+  const { use, dispose } = lifecycle()
   const available = use(state(supportsClipboard))
 
   const e = events<ClipboardEvents>()

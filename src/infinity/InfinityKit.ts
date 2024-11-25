@@ -1,6 +1,6 @@
 import { values } from '../tools/object'
 import type { PointerState } from '../dom/pointer'
-import { type State, state, system } from '../state'
+import { type State, state, lifecycle } from '../state'
 import { box, type Box } from '../math/box'
 import type { Vector2 } from '../math/vector2'
 import { timerLoop, timer } from '../dom/timer'
@@ -63,14 +63,14 @@ export class InfinityKit<
   API extends QueryAPI = QueryAPI,
   Tools extends InfinityKitToolset = InfinityKitToolset
 > {
-  public system = system()
+  public lifecycle = lifecycle()
   public state: State<InfinityKitState>
   public visible: State<QueryResult>
   public styles: State<InfinityKitStyles>
   public tools: State<Tools>
   public tool: State<keyof Tools>
 
-  private timer = this.system.use(timerLoop(timer()))
+  private timer = this.lifecycle.use(timerLoop(timer()))
 
   constructor(
     public canvas: Canvas,
@@ -83,7 +83,7 @@ export class InfinityKit<
       initialTool: keyof Tools
     }
   ) {
-    this.state = this.system.use(
+    this.state = this.lifecycle.use(
       state(<InfinityKitState>{
         selecting: false,
         brush: box(),
@@ -93,15 +93,15 @@ export class InfinityKit<
       })
     )
 
-    this.tools = this.system.use(state(tools))
-    this.tool = this.system.use(state(initialTool))
-    this.system.use(() => {
+    this.tools = this.lifecycle.use(state(tools))
+    this.tool = this.lifecycle.use(state(initialTool))
+    this.lifecycle.use(() => {
       values(this.tools.get()).forEach((tool) => {
         tool.dispose()
       })
     })
 
-    this.visible = this.system.use<State<QueryResult>>(
+    this.visible = this.lifecycle.use<State<QueryResult>>(
       api.stateQuery(
         Symbol(),
         state((get) => ({
@@ -110,7 +110,7 @@ export class InfinityKit<
       )
     )
 
-    this.styles = this.system.use(
+    this.styles = this.lifecycle.use(
       state((get) => {
         const transform = get(this.canvas.transform)
         return {
@@ -203,5 +203,5 @@ export class InfinityKit<
     this.timer.stop()
   }
 
-  public dispose = () => this.system.dispose()
+  public dispose = () => this.lifecycle.dispose()
 }

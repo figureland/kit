@@ -1,7 +1,7 @@
 export * from './api'
 export { type PersistenceName, persist, type StorageAPI, type StorageAPIOptions } from './persist'
 export { events } from './events'
-export { state, context } from './state'
+export { state } from './state'
 export {
   type Unsubscribe,
   type Subscription,
@@ -11,7 +11,7 @@ export {
   type TopicSubscriptions
 } from './subscriptions'
 export { shape } from './shape'
-export { system, disposable } from './system'
+export { lifecycle, disposable } from './lifecycle'
 export { history, type HistoryOptions } from './history'
 export { readonly } from './readonly'
 export { Manager } from './manager'

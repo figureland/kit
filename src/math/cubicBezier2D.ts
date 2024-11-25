@@ -40,7 +40,13 @@ export const clone = (b: CubicBezier2D): CubicBezier2D => cubicBezier(b[0], b[1]
  * @param p3 - The new end point.
  * @returns The modified CubicBezier2D object.
  */
-export const set = (b: CubicBezier2D, p0: Vector2, p1: Vector2, p2: Vector2, p3: Vector2): CubicBezier2D => {
+export const set = (
+  b: CubicBezier2D,
+  p0: Vector2,
+  p1: Vector2,
+  p2: Vector2,
+  p3: Vector2
+): CubicBezier2D => {
   setVector2(b[0], p0.x, p0.y)
   setVector2(b[1], p1.x, p1.y)
   setVector2(b[2], p2.x, p2.y)
@@ -53,7 +59,8 @@ export const set = (b: CubicBezier2D, p0: Vector2, p1: Vector2, p2: Vector2, p3:
  * @param b - The cubic Bezier curve to reset.
  * @returns The reset CubicBezier2D object.
  */
-export const reset = (b: CubicBezier2D): CubicBezier2D => set(b, vector2(), vector2(), vector2(), vector2())
+export const reset = (b: CubicBezier2D): CubicBezier2D =>
+  set(b, vector2(), vector2(), vector2(), vector2())
 
 /**
  * Calculates a point on the cubic Bezier curve at a given t value.

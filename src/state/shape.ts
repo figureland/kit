@@ -31,7 +31,6 @@ export const shape = <R extends Record<string, any>>(r: R, options?: StateOption
   }
 
   return {
-    id: parent.id,
     keys: keys(states),
     key,
     set,

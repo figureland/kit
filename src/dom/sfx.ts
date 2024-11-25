@@ -1,4 +1,4 @@
-import { system, state, events, type Disposable, type Events } from '../state'
+import { lifecycle, state, events, type Disposable, type Events } from '../state'
 import { NiceMap } from '../tools'
 import { keys } from '../tools'
 
@@ -13,7 +13,7 @@ export const sfx = <S extends SoundMap, K extends keyof S>({
   sounds: S
   preload?: boolean
 }): SFX<S, K> => {
-  const { use, dispose } = system()
+  const { use, dispose } = lifecycle()
   const loaded = use(state(() => false))
   const audioContext = new AudioContext()
   const buffers = new NiceMap<K, Promise<AudioBuffer>>()

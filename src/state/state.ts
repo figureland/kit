@@ -2,36 +2,16 @@ import { isFunction, isObject, isMap, isSet, shallowEquals, simpleMerge } from '
 import type { Subscription } from './subscriptions'
 import { events } from './events'
 import type { State, StateOptions, SubscribableEvents, UseStateDependency } from './api'
-import { system } from './system'
-
-export const context = () => {
-  let id: number = 0
-
-  const register = () => {
-    id++
-    return id.toString()
-  }
-
-  return {
-    /**
-     * Creates new {@link State}
-     */
-    state: <V>(fn: V | ((use: UseStateDependency) => V), options: StateOptions<V> = {}): State<V> =>
-      createState<V>(register(), fn, options)
-  }
-}
-
-export const { state } = context()
+import { lifecycle } from './lifecycle'
 
 /**
  * Creates a simple {@link State} for tracking a value
  */
-const createState = <V>(
-  id: string,
+export const state = <V>(
   initial: V | ((use: UseStateDependency) => V),
-  { merge = simpleMerge, equality = shallowEquals, throttle, track = false }: StateOptions<V>
+  { merge = simpleMerge, equality = shallowEquals, throttle, track = false }: StateOptions<V> = {}
 ): State<V> => {
-  const { dispose, use } = system()
+  const { dispose, use } = lifecycle()
   const dependencies = new Set<State<any>['on']>()
 
   const e = use(events<SubscribableEvents<V>>())
@@ -78,7 +58,6 @@ const createState = <V>(
   const on = (sub: Subscription<V>) => e.on('state', sub)
 
   return {
-    id,
     set,
     on,
     mutate,

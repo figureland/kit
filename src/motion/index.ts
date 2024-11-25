@@ -1,4 +1,4 @@
-import { type AnimatedState, type Events, type State, events, system, state } from '../state'
+import { type AnimatedState, type Events, type State, events, lifecycle, state } from '../state'
 import { clamp, mapRange } from '../math/number'
 import { isObject } from '../tools/guards'
 import { isBrowser } from '../dom'
@@ -12,7 +12,7 @@ type AnimatedEvents = {
 }
 
 export const animation = ({ fps = 60 }: { fps?: number; epsilon?: number } = {}): Animated => {
-  const { use, dispose } = system()
+  const { use, dispose } = lifecycle()
   const active = use(state(() => false))
   const e = use(events<AnimatedEvents>())
   const animations: Set<AnimatedState<any>> = new Set()
@@ -85,7 +85,7 @@ export const createAnimated = <V extends any>(
   raw: State<V>,
   { duration = 500, easing = (v) => v, interpolate, epsilon = 16 }: AnimatedStateOptions<V>
 ): AnimatedState<V> => {
-  const m = system()
+  const m = lifecycle()
   const clone = m.use(
     state(raw.get, {
       equality: () => false
@@ -135,7 +135,6 @@ export const createAnimated = <V extends any>(
   }
 
   return freeze({
-    id: clone.id,
     use: m.use,
     get: clone.get,
     on: clone.on,

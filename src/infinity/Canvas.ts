@@ -27,7 +27,7 @@ import {
   isBox,
   preciseEnough as preciseEnoughBox
 } from '../math/box'
-import { state, readonly, system } from '../state'
+import { state, readonly, lifecycle } from '../state'
 import { DEFAULT_CANVAS_OPTIONS } from './constants'
 import type { BackgroundPatternType } from './schema/background.schema'
 
@@ -48,19 +48,19 @@ export type CanvasOptions = {
 }
 
 export class Canvas {
-  private system = system()
-  public readonly options = this.system.use(state<CanvasOptions>(() => DEFAULT_CANVAS_OPTIONS))
-  public readonly state = this.system.use(
+  private lifecycle = lifecycle()
+  public readonly options = this.lifecycle.use(state<CanvasOptions>(() => DEFAULT_CANVAS_OPTIONS))
+  public readonly state = this.lifecycle.use(
     state<CanvasState>({
       loaded: false
     })
   )
 
-  public readonly viewport = this.system.use(state(() => box()))
-  public readonly transform = this.system.use(state(() => matrix2D()))
+  public readonly viewport = this.lifecycle.use(state(() => box()))
+  public readonly transform = this.lifecycle.use(state(() => matrix2D()))
 
-  public readonly scale = this.system.use(state((get) => getScale(get(this.transform))))
-  public readonly previous = this.system.use(
+  public readonly scale = this.lifecycle.use(state((get) => getScale(get(this.transform))))
+  public readonly previous = this.lifecycle.use(
     state(() => ({
       transform: matrix2D(),
       distance: 0
@@ -255,7 +255,7 @@ export class Canvas {
     return result as T
   }
 
-  public canvasViewport = this.system.use(
+  public canvasViewport = this.lifecycle.use(
     readonly(
       state((get) => {
         get(this.transform)
@@ -264,7 +264,7 @@ export class Canvas {
     )
   )
 
-  public dispose = () => this.system.dispose()
+  public dispose = () => this.lifecycle.dispose()
 
   public getCenter = () => {
     const viewport = boxCenter(this.viewport.get())

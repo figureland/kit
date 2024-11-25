@@ -1,8 +1,8 @@
-import { system } from './system'
+import { lifecycle } from './lifecycle'
 
 export class Manager {
-  protected readonly system = system()
-  public readonly use = this.system.use
-  public readonly unique = this.system.unique
-  public readonly dispose = this.system.dispose
+  protected readonly lifecycle = lifecycle()
+  public readonly use = this.lifecycle.use
+  public readonly unique = this.lifecycle.unique
+  public readonly dispose = this.lifecycle.dispose
 }

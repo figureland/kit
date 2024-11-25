@@ -1,4 +1,4 @@
-import { type Events, type Shape, events, shape, type Disposable, system } from '../state'
+import { type Events, type Shape, events, shape, type Disposable, lifecycle } from '../state'
 import { isNotNullish } from '../tools'
 import { listen, type ListenerTarget } from '../dom/events'
 import { freeze } from '../tools/object'
@@ -48,7 +48,7 @@ export const createFileDrop = ({
   mimeTypes,
   maxSize = 1024 * 64
 }: FileDropOptions) => {
-  const { use, dispose } = system()
+  const { use, dispose } = lifecycle()
   const state = use(shape<FileDropState>(initialState))
   const e = use(events<FileDropEvents>())
 

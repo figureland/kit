@@ -1,4 +1,4 @@
-import { type State, system, state, type Disposable } from '../state'
+import { type State, lifecycle, state, type Disposable } from '../state'
 import { freeze } from '../tools/object'
 import { listen } from './events'
 
@@ -7,7 +7,7 @@ export const supportsFullscreen = (): boolean =>
   'webkitFullscreenEnabled' in document
 
 export const createFullscreen = (): Fullscreen => {
-  const { use, dispose } = system()
+  const { use, dispose } = lifecycle()
   const available = use(state(supportsFullscreen))
   const active = use(state(() => false))
 

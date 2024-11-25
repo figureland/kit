@@ -1,8 +1,8 @@
-import { system } from '../../state'
+import { lifecycle } from '../../state'
 import type { InfinityKitTool } from './Tool'
 
 export const regionTool = (): InfinityKitTool => {
-  const { dispose } = system()
+  const { dispose } = lifecycle()
 
   return {
     dispose,

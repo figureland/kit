@@ -147,16 +147,16 @@
       "import": "./src/state/index.ts"
     },
     "./state/vue": {
-      "types": "./src/state/vue.ts",
-      "import": "./src/state/vue.ts"
+      "types": "./src/state/frameworks/vue.ts",
+      "import": "./src/state/frameworks/vue.ts"
     },
     "./state/react": {
-      "types": "./src/state/react.ts",
-      "import": "./src/state/react.ts"
+      "types": "./src/state/frameworks/react.ts",
+      "import": "./src/state/frameworks/react.ts"
     },
     "./state/svelte": {
-      "types": "./src/state/svelte.ts",
-      "import": "./src/state/svelte.ts"
+      "types": "./src/state/frameworks/svelte.ts",
+      "import": "./src/state/frameworks/svelte.ts"
     },
     "./state/local-storage": {
       "types": "./src/state/local-storage.ts",

@@ -1,5 +1,5 @@
 import { calculateBoundingBox, intersects, isBox, type Box } from '../../math/box'
-import { type State, state, events, system } from '../../state'
+import { type State, state, events, lifecycle } from '../../state'
 import { isAsyncGeneratorFunction, isNotNullish } from '../../tools/guards'
 import { entries } from '../../tools/object'
 import { arraysEquals } from '../../tools/equals'
@@ -14,20 +14,20 @@ import {
 } from './QueryAPI'
 
 export class CanvasQuery<Item extends any = any> implements QueryAPI<Item> {
-  private readonly system = system()
+  private readonly lifecycle = lifecycle()
   private readonly entities = new Map<ID, Item>()
   private readonly queryQueue = new Map<QueryIdentifier, Query<Item>>()
-  public readonly queue = this.system.use(events<Record<QueryIdentifier, QueryResult>>())
-  private readonly data = this.system.use(events<Record<ID, Item | undefined>>())
-  public readonly processing = this.system.use(state(false))
-  public readonly ids = this.system.use(
+  public readonly queue = this.lifecycle.use(events<Record<QueryIdentifier, QueryResult>>())
+  private readonly data = this.lifecycle.use(events<Record<ID, Item | undefined>>())
+  public readonly processing = this.lifecycle.use(state(false))
+  public readonly ids = this.lifecycle.use(
     state<ID[]>([], {
       equality: arraysEquals
     })
   )
 
   constructor() {
-    this.system.use(() => {
+    this.lifecycle.use(() => {
       this.processing.set(false)
       this.entities.clear()
       this.queryQueue.clear()
@@ -58,7 +58,7 @@ export class CanvasQuery<Item extends any = any> implements QueryAPI<Item> {
   public get = (id: ID): Item | undefined => this.entities.get(id)
 
   public subscribe = (id: ID) =>
-    this.system.unique(id, () => {
+    this.lifecycle.unique(id, () => {
       const s = state(() => this.get(id))
       this.data.on(id, s.set)
       return s
@@ -138,8 +138,8 @@ export class CanvasQuery<Item extends any = any> implements QueryAPI<Item> {
     box: State<Q>,
     throttle: number = 90
   ): State<QueryResult> =>
-    this.system.unique(id, () => {
-      const visible = this.system.use(
+    this.lifecycle.unique(id, () => {
+      const visible = this.lifecycle.use(
         state<QueryResult>(createQueryResult, {
           equality: (a, b) => arraysEquals(a.box, b.box) && arraysEquals(a.point, b.point)
         })
@@ -169,7 +169,7 @@ export class CanvasQuery<Item extends any = any> implements QueryAPI<Item> {
     return calculateBoundingBox(boxLikeEntities as Box[])
   }
 
-  public dispose = (): void => this.system.dispose()
+  public dispose = (): void => this.lifecycle.dispose()
 }
 
 export const initializeCanvasQuery = async <Item = any, ID extends string = string>(

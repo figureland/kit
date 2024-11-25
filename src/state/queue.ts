@@ -1,4 +1,4 @@
-import { type State, type Events, system, state, events } from '../state'
+import { type State, type Events, lifecycle, state, events } from '../state'
 import { extend } from '../tools/object'
 
 export type QueueEvents<T> = {
@@ -22,7 +22,7 @@ export type QueueOptions = {
 
 export const queue = <T>(options: QueueOptions = {}): Queue<T> => {
   const { maxSize = 100, throttle } = options
-  const { use, dispose } = system()
+  const { use, dispose } = lifecycle()
 
   const items = use(state<T[]>([], { throttle }))
   const e = use(events<QueueEvents<T>>())

@@ -18,7 +18,6 @@ export type Subscribable<V extends any = any> = Usable &
 export type Gettable<V extends any = any> = Usable &
   Disposable &
   Subscribable<V> & {
-    id: string
     get: () => V
   }
 
@@ -66,7 +65,7 @@ export type AnimatedState<V extends any> = State<V> & {
   tick: (delta: number) => void
 }
 
-export type System = Disposable &
+export type Lifecycle = Disposable &
   Usable & {
     unique: <S extends Disposable>(key: string | number | symbol, s: () => S) => S
   }
