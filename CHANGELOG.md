@@ -1,4 +1,16 @@
 #
+## v0.0.25
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.24...v0.0.25)
+
+### 🚀 Enhancements
+
+- Improved wrap api ([da769a6](https://github.com/figureland/kit/commit/da769a6))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.24
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.23...v0.0.24)
