@@ -1,6 +1,7 @@
 import { readonly, shape } from '../state'
-import { listen, mediaQuery } from '../dom/events'
+import { listen } from '../dom/events'
 import { extend } from '../tools/object'
+import { mediaQuery } from './media'
 
 type PreferenceState = {
   colorScheme: 'light' | 'dark'
