@@ -1,4 +1,16 @@
 #
+## v0.0.29
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.28...v0.0.29)
+
+### 🚀 Enhancements
+
+- Updated event handling ([38c653f](https://github.com/figureland/kit/commit/38c653f))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.28
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.26...v0.0.28)
