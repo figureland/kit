@@ -1,4 +1,17 @@
 #
+## v0.0.30
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.29...v0.0.30)
+
+### 🚀 Enhancements
+
+- Added media ([bad53e0](https://github.com/figureland/kit/commit/bad53e0))
+- Updated lifecycle module ([d513a30](https://github.com/figureland/kit/commit/d513a30))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.29
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.28...v0.0.29)
