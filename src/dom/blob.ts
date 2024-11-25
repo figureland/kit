@@ -79,9 +79,11 @@ export const blobToData = async (blob: Blob): Promise<unknown> => {
 
 export type HTMLBlobContent = string | HTMLElement
 
-export const htmlToBlob = async (content: HTMLBlobContent) =>
-  new Blob([isString(content) ? content : await serializeElement(content)], {
+export const htmlToBlob = async (content: HTMLBlobContent) => {
+  const blobContent = isString(content) ? content : await serializeElement(content)
+  return new Blob([blobContent], {
     type: mimeTypes.html
   })
+}
 
 export const blobToHTML = async (blob: Blob): Promise<string> => blob.text()
