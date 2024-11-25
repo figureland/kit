@@ -1,5 +1,7 @@
-const hasPlatform = () => typeof navigator !== 'undefined' && navigator.platform
-const hasUserAgent = () => typeof navigator !== 'undefined' && navigator.userAgent
+const hasNavigator = () => typeof navigator !== 'undefined'
+
+const hasPlatform = () => hasNavigator() && navigator.platform
+const hasUserAgent = () => hasNavigator() && navigator.userAgent
 
 export const isChrome = () => {
   const userAgent = hasUserAgent()
@@ -24,7 +26,7 @@ export const isMobile = (): boolean => {
 
 export const isApple = () => {
   if (!hasPlatform()) return false
-  const p = typeof navigator === 'object' ? navigator.platform : ''
+  const p = hasNavigator() ? navigator.platform : ''
   return /Mac|iPod|iPhone|iPad/.test(p)
 }
 

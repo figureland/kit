@@ -1,6 +1,6 @@
 import { type State, system, state, type Disposable } from '../state'
 import { freeze } from '../tools/object'
-import { createListener } from './events'
+import { listen } from './events'
 
 export const supportsFullscreen = (): boolean =>
   ('fullscreenEnabled' in document && !!document.fullscreenEnabled) ||
@@ -16,9 +16,11 @@ export const createFullscreen = (): Fullscreen => {
   const setUnavailable = () => available.set(false)
 
   use(
-    createListener(document, 'fullscreenchange', () => {
-      if (!document.fullscreenElement && active.get()) {
-        setInactive()
+    listen(document, {
+      fullscreenchange: () => {
+        if (!document.fullscreenElement && active.get()) {
+          setInactive()
+        }
       }
     })
   )

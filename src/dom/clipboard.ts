@@ -1,5 +1,5 @@
 import { type State, type Disposable, type Events, system, state, events } from '../state'
-import { createListener } from '../dom/events'
+import { listen } from '../dom/events'
 import { isString } from '../tools/guards'
 import { freeze, values } from '../tools/object'
 import { settle } from '../tools/async'
@@ -58,7 +58,7 @@ export const parseClipboardItem = (item: ClipboardItem) =>
           size: blob.size
         }
       })
-  ).then(({ fulfilled }) => fulfilled) 
+  ).then(({ fulfilled }) => fulfilled)
 
 export type ParsedClipboardItem = Awaited<ReturnType<typeof parseClipboardItem>>
 
@@ -117,9 +117,13 @@ export const createClipboard = (): Clipboard => {
     }
   }
 
-  use(createListener(window, 'copy', handleCopy))
-  use(createListener(window, 'cut', handleCut))
-  use(createListener(window, 'paste', handlePaste))
+  use(
+    listen(window, {
+      copy: handleCopy,
+      cut: handleCut,
+      paste: handlePaste
+    })
+  )
 
   return freeze({
     events: e,

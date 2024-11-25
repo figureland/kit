@@ -86,7 +86,7 @@ export const timerLoop = (t: Timer) => {
   let active = false
 
   const stop = () => {
-    if (isBrowser && active) {
+    if (isBrowser() && active) {
       cancelAnimationFrame(raf)
       active = false
     }
@@ -101,7 +101,7 @@ export const timerLoop = (t: Timer) => {
 
   const loop = () => {
     t.tick()
-    if (isBrowser) raf = requestAnimationFrame(loop)
+    if (isBrowser()) raf = requestAnimationFrame(loop)
   }
 
   t.state.key('active').on((e) => {

@@ -1,7 +1,7 @@
 import { type Shape, shape } from '../state'
 import { dp } from '../math'
 import type { Size } from '../math/size'
-import { createListener } from '../dom/events'
+import { listen } from '../dom/events'
 import { getClosestBreakpoint, type Breakpoints } from './utils/breakpoints'
 import { extend } from '../tools/object'
 
@@ -52,9 +52,17 @@ export const createScreen = <B extends Breakpoints>(
     })
   }
 
-  state.use(createListener(screen.orientation, 'change', onOrientationChange))
-  state.use(createListener(document, 'visibilitychange', onVisibilityChange))
-  state.use(createListener(document, 'resize', resize))
+  state.use(
+    listen(screen.orientation, {
+      change: onOrientationChange
+    })
+  )
+  state.use(
+    listen(document, {
+      visibilitychange: onVisibilityChange,
+      resize
+    })
+  )
 
   const is = (b: keyof B) => state.key('breakpoint').get() === b
 

@@ -1,7 +1,7 @@
 import { type Shape, shape } from '../state'
 import {
   allowEvent,
-  createListener,
+  listen,
   isPointerEvent,
   type ListenerTarget,
   type PointerInteractionEvent
@@ -142,17 +142,33 @@ export const createPointer = ({
       hasDelta
     })
   }
-  state.use(createListener(target, 'wheel', prevent, { passive: false }))
-  state.use(createListener(target, 'touchstart', prevent))
-  state.use(createListener(target, 'pointermove', onPointerMove))
-  state.use(createListener(target, 'pointerdown', onPointerDown))
-  state.use(createListener(target, 'pointerup', onPointerUp))
-  state.use(createListener(target, 'lostpointercapture', onPointerUp))
+  state.use(
+    listen(
+      target,
+      {
+        wheel: prevent
+      },
+      { passive: false }
+    )
+  )
+  state.use(
+    listen(target, {
+      touchstart: prevent,
+      pointermove: onPointerMove,
+      pointerdown: onPointerDown,
+      pointerup: onPointerUp,
+      lostpointercapture: onPointerUp
+    })
+  )
 
   if (preventGestureDefault) {
-    state.use(createListener(document, 'gesturestart', prevent))
-    state.use(createListener(document, 'gesturechange', prevent))
-    state.use(createListener(document, 'gestureend', prevent))
+    state.use(
+      listen(document, {
+        gesturestart: prevent,
+        gesturechange: prevent,
+        gestureend: prevent
+      })
+    )
   }
 
   return state

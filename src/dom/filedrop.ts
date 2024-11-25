@@ -1,6 +1,6 @@
 import { type Events, type Shape, events, shape, type Disposable, system } from '../state'
 import { isNotNullish } from '../tools'
-import { createListener, type ListenerTarget } from '../dom/events'
+import { listen, type ListenerTarget } from '../dom/events'
 import { freeze } from '../tools/object'
 
 export type FileDropTextContent = {
@@ -54,7 +54,7 @@ export const createFileDrop = ({
 
   const reset = () => state.set(initialState)
 
-  const onDragEnter = (event: DragEvent) =>
+  const dragenter = (event: DragEvent) =>
     filterEvent(event, (count) => {
       e.emit('enter', true)
       state.set({
@@ -63,12 +63,12 @@ export const createFileDrop = ({
       })
     })
 
-  const onDragLeave = (event: DragEvent) => {
+  const dragleave = (event: DragEvent) => {
     filterEvent(event, reset)
     e.emit('leave', true)
   }
 
-  const onDragOver = (event: DragEvent) =>
+  const dragover = (event: DragEvent) =>
     filterEvent(event, (count) => {
       e.emit('over', true)
 
@@ -78,7 +78,7 @@ export const createFileDrop = ({
       })
     })
 
-  const onDrop = (event: DragEvent) =>
+  const drop = (event: DragEvent) =>
     filterEvent(event, () => {
       reset()
       const result = getDropData(event)
@@ -127,10 +127,14 @@ export const createFileDrop = ({
     return
   }
 
-  use(createListener(target, 'dragenter', onDragEnter))
-  use(createListener(target, 'dragleave', onDragLeave))
-  use(createListener(target, 'dragover', onDragOver))
-  use(createListener(target, 'drop', onDrop))
+  use(
+    listen(target, {
+      dragenter,
+      dragleave,
+      dragover,
+      drop
+    })
+  )
 
   return freeze({
     dispose,

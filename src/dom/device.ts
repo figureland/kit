@@ -1,7 +1,7 @@
 import { type Shape } from '../state'
 import { isChrome, isMobile, isSafari } from '../tools'
-import { createListener } from '../dom/events'
-import { getPlatform, Platform } from '../tools/device'
+import { listen } from '../dom/events'
+import { getPlatform, type Platform } from '../tools/device'
 import { shape } from '../state/shape'
 
 export const isBrowser = () => typeof window !== 'undefined'
@@ -67,13 +67,13 @@ export const createDevice = (): Device => {
   getPersistenceStatus().then((persistence) => state.set({ persistence }))
 
   state.use(
-    createListener(window, 'offline', () => {
-      state.key('online').set(false)
-    })
-  )
-  state.use(
-    createListener(window, 'online', () => {
-      state.key('online').set(true)
+    listen(window, {
+      online: () => {
+        state.key('online').set(true)
+      },
+      offline: () => {
+        state.key('online').set(false)
+      }
     })
   )
 

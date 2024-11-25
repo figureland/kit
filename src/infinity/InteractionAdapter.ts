@@ -1,7 +1,7 @@
 import { vector2 } from '../math/vector2'
 import { state, system, type Disposable } from '../state'
 import type { Pointer } from '../dom/pointer'
-import { createListener, type PointerInteractionEvent } from '../dom/events'
+import { listen, type PointerInteractionEvent } from '../dom/events'
 import { isString } from '../tools/guards'
 import type { InfinityKit } from './InfinityKit'
 import { getDataAttribute, isHTMLElement } from '../dom/element'
@@ -100,15 +100,19 @@ export const attachInteractionAdapter = (
       throw new Error(`Invalid attach target: ${target}`)
     }
     const { dispose, use } = system()
-    use(createListener(element, 'pointerdown', handler.onPointerDown))
-    use(createListener(element, 'pointerup', handler.onPointerUp))
-    use(createListener(element, 'pointerover', handler.onPointerOver))
-    use(createListener(element, 'pointermove', handler.onPointerMove))
-    use(createListener(element, 'pointerout', handler.onPointerOut))
-    use(createListener(element, 'focusin', handler.onFocusIn))
-    use(createListener(element, 'focusout', handler.onFocusOut))
-    use(createListener(element, 'blur', handler.onBlur))
-    use(createListener(element, 'wheel', handler.onBlur))
+    use(
+      listen(element, {
+        pointerdown: handler.onPointerDown,
+        pointerup: handler.onPointerUp,
+        pointerover: handler.onPointerOver,
+        pointermove: handler.onPointerMove,
+        pointerout: handler.onPointerOut,
+        focusin: handler.onFocusIn,
+        focusout: handler.onFocusOut,
+        blur: handler.onBlur,
+        wheel: handler.onWheel
+      })
+    )
     return {
       dispose
     }

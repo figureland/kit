@@ -1,9 +1,9 @@
 import { readonly, shape } from '../state'
-import { createListener, mediaQuery } from '../dom/events'
+import { listen, mediaQuery } from '../dom/events'
 import { extend } from '../tools/object'
 
 type PreferenceState = {
-  colorScheme: 'light' | 'dark' | 'system'
+  colorScheme: 'light' | 'dark'
   reducedMotion: boolean
   reducedContrast: boolean
 }
@@ -14,28 +14,34 @@ export const createPreferences = () => {
   const reducedContrast = mediaQuery('prefers-contrast: no-preference')
 
   const state = shape<PreferenceState>({
-    colorScheme: 'system',
-    reducedMotion: false,
-    reducedContrast: false
+    colorScheme: colorScheme.matches ? 'dark' : 'light',
+    reducedMotion: reducedMotion.matches,
+    reducedContrast: reducedContrast.matches
   })
 
   state.use(
-    createListener(colorScheme, 'change', (e) => {
-      state.set({ colorScheme: e.matches ? 'dark' : 'light' })
+    listen(colorScheme, {
+      change: (e) => {
+        state.set({ colorScheme: e.matches ? 'dark' : 'light' })
+      }
     })
   )
   state.use(
-    createListener(reducedMotion, 'change', (e) => {
-      state.set({ reducedMotion: e.matches })
+    listen(reducedMotion, {
+      change: (e) => {
+        state.set({ reducedMotion: e.matches })
+      }
     })
   )
   state.use(
-    createListener(reducedContrast, 'change', (e) => {
-      state.set({ reducedContrast: !e.matches })
+    listen(reducedContrast, {
+      change: (e) => {
+        state.set({ reducedContrast: !e.matches })
+      }
     })
   )
 
-  const setTheme = (scheme: 'light' | 'dark' | 'system') => {
+  const setTheme = (scheme: 'light' | 'dark') => {
     state.set({ colorScheme: scheme })
   }
 

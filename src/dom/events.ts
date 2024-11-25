@@ -1,10 +1,9 @@
 import { disposable, type Disposable } from '../state'
+import { entries } from '../tools'
 
 export type ListenerTarget = Document | Window | HTMLElement | ScreenOrientation | MediaQueryList
 
 export type PointerInteractionEvent = Event | WheelEvent | PointerEvent | MouseEvent | TouchEvent
-
-export type AppTouchEvent = TouchEvent
 
 export type UnifiedEventMap = WindowEventMap &
   DocumentEventMap &
@@ -16,21 +15,30 @@ export type UnifiedEventMap = WindowEventMap &
     change: MediaQueryListEvent
   }
 
-export const createListener = <T extends keyof UnifiedEventMap>(
-  target: ListenerTarget,
-  eventName: T,
-  fn: (e: UnifiedEventMap[T]) => void,
+type MediaQueryHandlers = {
+  [K in keyof Pick<UnifiedEventMap, 'change'>]: (e: UnifiedEventMap[K]) => void
+}
+
+type EventHandlerConfig<T extends ListenerTarget> = T extends MediaQueryList
+  ? MediaQueryHandlers
+  : {
+      [K in keyof UnifiedEventMap]?: (e: UnifiedEventMap[K]) => void
+    }
+
+export const listen = <T extends ListenerTarget>(
+  target: T,
+  handlers: EventHandlerConfig<T>,
   opts?: AddEventListenerOptions
 ): Disposable => {
-  if (target instanceof MediaQueryList && eventName === 'change') {
-    target.addEventListener(eventName, fn as (e: MediaQueryListEvent) => void, opts)
-    return disposable(() =>
-      target.removeEventListener(eventName, fn as (e: MediaQueryListEvent) => void)
-    )
-  } else {
-    target.addEventListener(eventName, fn as EventListener, opts)
-    return disposable(() => target.removeEventListener(eventName, fn as EventListener))
+  const cleanupFns: Array<() => void> = []
+
+  for (const [eventName, handler] of entries(handlers)) {
+    if (!handler) continue
+    target.addEventListener(eventName as string, handler as EventListener, opts)
+    cleanupFns.push(() => target.removeEventListener(eventName as string, handler as EventListener))
   }
+
+  return disposable(() => cleanupFns.forEach((fn) => fn()))
 }
 
 export const isPointerEvent = (event: Event): event is PointerEvent => event instanceof PointerEvent
