@@ -1,5 +1,5 @@
 import { calculateBoundingBox, intersects, isBox, type Box } from '../../math/box'
-import { type State, effect, state, events, system } from '../../state'
+import { type State, state, events, system } from '../../state'
 import { isAsyncGeneratorFunction, isNotNullish } from '../../tools/guards'
 import { entries } from '../../tools/object'
 import { arraysEquals } from '../../tools/equals'
@@ -150,13 +150,13 @@ export class CanvasQuery<Item extends any = any> implements QueryAPI<Item> {
         visible.set(visibleItems)
       }
 
-      effect(
-        [box, this.ids],
-        ([target]) => {
-          onChange(target)
+      state(
+        (get) => {
+          get(box)
+          get(this.ids)
+          onChange(get(box))
         },
         {
-          trigger: true,
           throttle
         }
       )

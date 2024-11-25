@@ -34,6 +34,23 @@ describe('state', () => {
     numState.set(20)
     expect(receivedValue).toBe(20)
   })
+  it('functions as an effect', () => {
+    const s1 = state(0)
+    const s2 = state(() => s1.get() + 1)
+    s1.set(10)
+
+    let calls = 0
+
+    state((get) => {
+      get(s1)
+      get(s2)
+      calls++
+    })
+    
+    expect(calls).toBe(1)
+    s1.set(20)
+    expect(calls).toBe(2)
+  })
   it('adds and removes subscriptions, and size() works correctly', () => {
     const numState = state(() => 10)
     const unsub0 = numState.on(() => {})
@@ -77,10 +94,14 @@ describe('state with options', () => {
   it('uses custom equality function', () => {
     const customEquality = (a: any, b: any) => JSON.stringify(a) === JSON.stringify(b)
     const stateWithOptions = state(() => ({ a: 1 }), { equality: customEquality })
+    stateWithOptions.set({ a: 1 })
+    expect(stateWithOptions.get()).toEqual({ a: 1 })
   })
   it('uses typed custom equality function', () => {
     const customEquality = (a: { v: number }, b: { v: number }) => a.v === b.v
     const stateWithOptions = state(() => ({ v: 1 }), { equality: customEquality })
+    stateWithOptions.set({ v: 1 })
+    expect(stateWithOptions.get()).toEqual({ v: 1 })
   })
 })
 

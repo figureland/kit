@@ -1,14 +1,10 @@
 import { vector2 } from '../math/vector2'
-import { effect, system, type Disposable } from '../state'
+import { state, system, type Disposable } from '../state'
 import type { Pointer } from '../dom/pointer'
-import {
-  createListener,
-  isHTMLElement,
-  getDataAttribute,
-  type PointerInteractionEvent
-} from '../dom/events'
+import { createListener, type PointerInteractionEvent } from '../dom/events'
 import { isString } from '../tools/guards'
 import type { InfinityKit } from './InfinityKit'
+import { getDataAttribute, isHTMLElement } from '../dom/element'
 
 export type InteractionAdapter = Disposable & {
   onPointerDown: (e: PointerInteractionEvent) => void
@@ -29,7 +25,8 @@ export const createInteractionAdapter = <P extends Pointer>(
 ): InteractionAdapter => {
   const { use, dispose } = system()
   use(
-    effect([pointer.key('point')], () => {
+    state((get) => {
+      get(pointer.key('point'))
       kit.onPointerMove(pointer.get())
     })
   )

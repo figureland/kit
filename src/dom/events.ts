@@ -1,5 +1,4 @@
 import { disposable, type Disposable } from '../state'
-import { isString } from '../tools'
 
 export type ListenerTarget = Document | Window | HTMLElement | ScreenOrientation | MediaQueryList
 
@@ -54,11 +53,3 @@ export const preventEvents = (e: PointerInteractionEvent) => {
 }
 
 export const mediaQuery = (q: string) => window.matchMedia(`(${q})`)
-
-export const isHTMLElement = (target?: unknown): target is HTMLElement =>
-  target instanceof HTMLElement
-
-export const getDataAttribute = (element: HTMLElement, propertyName: string): string | null => {
-  const dataValue = element.dataset[propertyName]
-  return isString(dataValue) ? dataValue : null
-}
