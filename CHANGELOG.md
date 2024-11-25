@@ -1,4 +1,16 @@
 #
+## v0.0.28
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.26...v0.0.28)
+
+### 🏡 Chore
+
+- Old use of effect ([ec9a32e](https://github.com/figureland/kit/commit/ec9a32e))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.27
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.26...v0.0.27)
