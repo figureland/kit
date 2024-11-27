@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'bun:test'
-import { shape } from '..'
+import { type SettableType, shape } from '..'
 
 describe('shape', () => {
   it('creates a shape and retrieves its initial values', () => {
@@ -19,7 +19,7 @@ describe('shape', () => {
   })
   it('notifies subscribers on any state update', () => {
     const objState = shape({ a: 1, b: 'initial' })
-    let receivedObj!: Partial<{ a: number; b: string }>
+    let receivedObj!: SettableType<typeof objState>
     objState.on((updatedObj) => {
       receivedObj = updatedObj
     })

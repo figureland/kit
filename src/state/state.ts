@@ -57,6 +57,7 @@ export const state = <V>(
 
   const on = (sub: Subscription<V>) => e.on('state', sub)
 
+  e.emit('init', undefined)
   return {
     set,
     on,
@@ -64,7 +65,7 @@ export const state = <V>(
     get: () => value,
     events: e,
     dispose: () => {
-      e.emit('dispose', true)
+      e.emit('dispose', undefined)
       dependencies.clear()
       dispose()
     },

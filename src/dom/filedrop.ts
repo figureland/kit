@@ -48,9 +48,9 @@ export const createFileDrop = ({
   mimeTypes,
   maxSize = 1024 * 64
 }: FileDropOptions) => {
-  const { use, dispose } = lifecycle()
-  const state = use(shape<FileDropState>(initialState))
-  const e = use(events<FileDropEvents>())
+  const instance = lifecycle()
+  const state = instance.use(shape<FileDropState>(initialState))
+  const e = instance.use(events<FileDropEvents>())
 
   const reset = () => state.set(initialState)
 
@@ -127,7 +127,7 @@ export const createFileDrop = ({
     return
   }
 
-  use(
+  instance.use(
     listen(target, {
       dragenter,
       dragleave,
@@ -137,7 +137,7 @@ export const createFileDrop = ({
   )
 
   return freeze({
-    dispose,
+    dispose: instance.dispose,
     state,
     events: e
   })

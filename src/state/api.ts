@@ -23,8 +23,9 @@ export type Gettable<V extends any = any> = Usable &
 
 export type SubscribableEvents<V> = {
   state: V
-  dispose: true
+  dispose: void
   previous: SubscribableHistoryEntry<V>
+  init: void
 }
 
 export type ReadonlyState<V> = Subscribable<V> & Gettable<V>
@@ -104,3 +105,5 @@ export type Wrap<Input, Instance, Output, Methods extends Record<string, (...arg
     ) => ReturnType<Methods[K]>
   }
 }
+
+export type VoidEvents = 'init' | 'dispose'

@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'bun:test'
+import { describe, it, expect, mock } from 'bun:test'
 import { lifecycle, disposable, state } from '..'
 
 describe('lifecycle', () => {
@@ -79,6 +79,27 @@ describe('lifecycle', () => {
       })
     )
     expect(disposed).toBe(false)
+  })
+
+  it('should clear all subscriptions on dispose', () => {
+    const testLifecycle = lifecycle()
+    const mockDispose1 = mock(() => ({}))
+    const mockDispose2 = mock(() => ({}))
+    testLifecycle.use(disposable(mockDispose1))
+    testLifecycle.use(disposable(mockDispose2))
+    testLifecycle.dispose()
+    expect(mockDispose1).toHaveBeenCalled()
+    expect(mockDispose2).toHaveBeenCalled()
+  })
+
+  it('should clear all keyed subscriptions on dispose', () => {
+    const testLifecycle = lifecycle()
+    const mockDispose = mock(() => ({}))
+    const mockSubscribable = () => disposable(mockDispose)
+    testLifecycle.unique('key1', mockSubscribable)
+    testLifecycle.dispose()
+    const newInstance = testLifecycle.unique('key1', mockSubscribable)
+    expect(newInstance).not.toBe(mockDispose.mock.results[0].value)
   })
 })
 

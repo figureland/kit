@@ -13,8 +13,8 @@ export const sfx = <S extends SoundMap, K extends keyof S>({
   sounds: S
   preload?: boolean
 }): SFX<S, K> => {
-  const { use, dispose } = lifecycle()
-  const loaded = use(state(() => false))
+  const instance = lifecycle()
+  const loaded = instance.use(state(() => false))
   const audioContext = new AudioContext()
   const buffers = new NiceMap<K, Promise<AudioBuffer>>()
   const activeSources = new Set<AudioBufferSourceNode>()
@@ -56,14 +56,14 @@ export const sfx = <S extends SoundMap, K extends keyof S>({
     })
   }
 
-  use(stop)
-  use(audioContext.close)
+  instance.use(stop)
+  instance.use(audioContext.close)
 
   return {
     events: e,
     play,
     stop,
-    dispose
+    dispose: instance.dispose
   }
 }
 

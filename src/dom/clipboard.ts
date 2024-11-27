@@ -87,8 +87,8 @@ export type ParsedClipboardData = {
 }
 
 export const createClipboard = (): Clipboard => {
-  const { use, dispose } = lifecycle()
-  const available = use(state(supportsClipboard))
+  const instance = lifecycle()
+  const available = instance.use(state(supportsClipboard))
 
   const e = events<ClipboardEvents>()
 
@@ -117,7 +117,7 @@ export const createClipboard = (): Clipboard => {
     }
   }
 
-  use(
+  instance.use(
     listen(window, {
       copy: handleCopy,
       cut: handleCut,
@@ -130,7 +130,7 @@ export const createClipboard = (): Clipboard => {
     copy,
     read,
     available,
-    dispose
+    dispose: instance.dispose
   })
 }
 
