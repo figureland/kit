@@ -54,32 +54,32 @@ export type Subscriptions<S extends Subscription = Subscription> = {
 export const createTopicSubscriptions = <
   T extends string | number | symbol = string | number | symbol
 >(): TopicSubscriptions<T> => {
-  const subs = new Map<T, Subscriptions>()
+  const topics = new Map<T, Subscriptions>()
 
   const add = (topic: T, ...sub: Subscription[]): Unsubscribe => {
-    if (subs.get(topic)) {
-      subs.get(topic)?.add(...sub)
+    if (topics.get(topic)) {
+      topics.get(topic)?.add(...sub)
     } else {
-      subs.set(topic, createSubscriptions())
-      subs.get(topic)?.add(...sub)
+      topics.set(topic, createSubscriptions())
+      topics.get(topic)?.add(...sub)
     }
 
     return () => {
       for (const s of sub) {
-        subs.get(topic)?.delete(s)
+        topics.get(topic)?.delete(s)
       }
     }
   }
 
   const dispose = () => {
-    for (const [, sub] of subs) {
+    for (const [, sub] of topics) {
       sub.dispose()
     }
-    subs.clear()
+    topics.clear()
   }
 
   const each = (topic: T, value: any) => {
-    subs.get(topic)?.each(value)
+    topics.get(topic)?.each(value)
   }
 
   return {
@@ -88,7 +88,7 @@ export const createTopicSubscriptions = <
     each,
     size: () => {
       let count = 0
-      for (const [, sub] of subs) {
+      for (const [, sub] of topics) {
         count += sub.size()
       }
       return count
