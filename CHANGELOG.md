@@ -1,4 +1,20 @@
 #
+## v0.0.32
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.30...v0.0.32)
+
+### 🚀 Enhancements
+
+- Added init method and removed unused value from lifecycle events ([6961e26](https://github.com/figureland/kit/commit/6961e26))
+
+### 🏡 Chore
+
+- Change subs to topics ([f14499d](https://github.com/figureland/kit/commit/f14499d))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.31
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.30...v0.0.31)
