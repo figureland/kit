@@ -12,7 +12,7 @@
     "./math/random": "./src/math/random.ts",
     "./math/constants": "./src/math/constants.ts",
     "./math/style": "./src/math/style.ts",
-    "./ts": "./src/tools/index.ts",
+    "./tools": "./src/tools/index.ts",
     "./tools/array": "./src/tools/array.ts",
     "./tools/device": "./src/tools/device.ts",
     "./tools/guards": "./src/tools/guards.ts",

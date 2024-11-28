@@ -46,7 +46,7 @@
       "types": "./src/math/style.ts",
       "import": "./src/math/style.ts"
     },
-    "./ts": {
+    "./tools": {
       "types": "./src/tools/index.ts",
       "import": "./src/tools/index.ts"
     },
