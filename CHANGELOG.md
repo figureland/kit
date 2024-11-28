@@ -1,4 +1,16 @@
 #
+## v0.0.33
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.32...v0.0.33)
+
+### 🩹 Fixes
+
+- Broken import ([0b9deda](https://github.com/figureland/kit/commit/0b9deda))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.32
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.30...v0.0.32)
