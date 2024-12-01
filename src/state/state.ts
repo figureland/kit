@@ -1,8 +1,8 @@
 import { isFunction, isObject, isMap, isSet, shallowEquals, simpleMerge } from '../tools'
 import type { Subscription } from './subscriptions'
 import { events } from './events'
-import type { State, StateOptions, SubscribableEvents, UseStateDependency } from './api'
 import { lifecycle } from './lifecycle'
+import type { State, StateOptions, SubscribableEvents, UseStateDependency } from './api'
 
 /**
  * Creates a simple {@link State} for tracking a value

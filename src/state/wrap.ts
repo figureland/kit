@@ -1,4 +1,4 @@
-import { State, state, type Wrap } from '.'
+import { State, state, type Wrapped } from '.'
 import { extend } from '../tools/object'
 
 type WrappedInstance<T> = {
@@ -16,7 +16,7 @@ export const wrap = <Input extends any, Instance extends any = any, Output exten
     get: (i: WrappedInstance<Instance>) => Output
     onCreate?: (i: WrappedInstance<Instance>, s: State<Output>) => void
   }
-): Wrap<Input, Instance, Output> => {
+): Wrapped<Input, Instance, Output> => {
   return (v: Input) => {
     const instance: WrappedInstance<Instance> = {
       value: create(v)

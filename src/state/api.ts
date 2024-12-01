@@ -94,16 +94,10 @@ export type Events<S extends EventsMap, K extends keyof S = EventsKey & keyof S>
   size: () => number
 }
 
-export type Wrap<Input, Instance, Output, Methods extends Record<string, (...args: any[]) => any> = {}> = {
+export type Wrapped<Input, Instance, Output> = {
   (v: Input): State<Output> & {
     set: (v: Input) => void
     derived: <DerivedResult>(fn: (v: Instance) => DerivedResult) => State<DerivedResult>
     instance: () => Instance
-  } & {
-    [K in keyof Methods]: (
-      ...args: Parameters<Methods[K]> extends [any, ...infer Rest] ? Rest : never
-    ) => ReturnType<Methods[K]>
   }
 }
-
-export type VoidEvents = 'init' | 'dispose'
