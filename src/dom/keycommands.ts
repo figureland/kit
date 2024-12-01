@@ -1,7 +1,6 @@
-import { events } from '../state'
+import { events, extend } from '../state'
 import { preventEvents, type ListenerTarget } from '../dom/events'
 import { tinykeys } from './utils/tinykeys'
-import { extend } from '../tools/object'
 
 export enum Commands {
   all,

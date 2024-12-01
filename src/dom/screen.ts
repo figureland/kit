@@ -1,9 +1,8 @@
-import { type Shape, shape } from '../state'
+import { type Shape, shape, extend } from '../state'
 import { dp } from '../math'
 import type { Size } from '../math/size'
 import { listen } from '../dom/events'
 import { getClosestBreakpoint, type Breakpoints } from './utils/breakpoints'
-import { extend } from '../tools/object'
 
 export type ScreenState<B> = {
   visible: boolean

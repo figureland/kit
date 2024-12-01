@@ -1,6 +1,5 @@
 import { customRef, onScopeDispose } from 'vue'
-import type { Gettable, GettableType } from '..'
-import { extend } from '../../tools/object'
+import { extend, type Gettable, type GettableType } from '..'
 
 export const vue = <S extends Gettable<any>>(s: S) =>
   customRef<GettableType<S>>((track, set) => {

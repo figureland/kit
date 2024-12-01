@@ -1,6 +1,5 @@
-import { readonly, shape } from '../state'
+import { readonly, shape, extend } from '../state'
 import { listen } from '../dom/events'
-import { extend } from '../tools/object'
 import { mediaQuery } from './media'
 
 type PreferenceState = {

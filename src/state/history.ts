@@ -1,4 +1,3 @@
-import { extend } from '../tools/object'
 import type {
   State,
   Subscribable,
@@ -6,7 +5,7 @@ import type {
   SubscribableHistoryEntry,
   SubscribableType
 } from './api'
-import { state } from './state'
+import { state, extend } from './state'
 
 export type HistoryOptions = {
   limit?: number
@@ -25,6 +24,7 @@ export const history = <S extends Subscribable | State<any>>(
     })
   })
 
+  // option 1
   const restore = (n: number = -1) => {
     if ('set' in s) {
       const last = store.get()[store.get().length + n]

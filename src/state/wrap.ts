@@ -1,5 +1,4 @@
-import { State, state, type Wrapped } from '.'
-import { extend } from '../tools/object'
+import { State, state, type Wrapped, extend } from '.'
 
 type WrappedInstance<T> = {
   value: T

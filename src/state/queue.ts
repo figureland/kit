@@ -1,5 +1,5 @@
 import { type State, type Events, lifecycle, state, events } from '../state'
-import { extend } from '../tools/object'
+import { extend } from './state'
 
 export type QueueEvents<T> = {
   enqueue: T

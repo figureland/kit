@@ -1,5 +1,4 @@
-import type { Gettable, GettableType } from '..'
-import { extend } from '../../tools/object'
+import { extend, type Gettable, type GettableType } from '..'
 
 export const svelte = <S extends Gettable<any>>(s: S) =>
   extend(s, {

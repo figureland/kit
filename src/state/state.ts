@@ -3,6 +3,7 @@ import type { Subscription } from './subscriptions'
 import { events } from './events'
 import { lifecycle } from './lifecycle'
 import type { State, StateOptions, SubscribableEvents, UseStateDependency } from './api'
+import { freeze } from '../tools/object'
 
 /**
  * Creates a simple {@link State} for tracking a value
@@ -72,3 +73,6 @@ export const state = <V>(
     use
   }
 }
+
+export const extend = <T extends object, X extends object>(obj: T, extensions: X): T & X =>
+  freeze({ ...obj, ...extensions })
