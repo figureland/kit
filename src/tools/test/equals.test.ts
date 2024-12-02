@@ -77,6 +77,6 @@ describe('shallowEquals', () => {
   it('should handle special types like Maps correctly', () => {
     const map1 = new Map([['key', 'value']])
     const map2 = new Map([['key', 'value']])
-    expect(shallowEquals(map1, map2)).toBe(false) // Should return false as indicated in the original implementation
+    expect(shallowEquals(map1, map2)).toBe(false)
   })
 })

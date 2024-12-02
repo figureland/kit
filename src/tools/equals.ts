@@ -1,38 +1,38 @@
 import { has, is, keys } from './object'
-import { isArray, isNull, isObject } from './guards'
+import { isArray, isMap, isNull, isObject } from './guards'
 
-export type Equals<T extends any = any> = (s: T, t: T) => boolean
+export type Equals<T extends any = any> = (a: T, b: T) => boolean
 
-export const simpleEquals: Equals = (state, prevState) => is(state, prevState)
+export const simpleEquals: Equals = (a, b) => is(a, b)
 
-export const shallowEquals: Equals = (obj1, obj2) => {
-  if (!obj1 || !obj2) {
+export const shallowEquals: Equals = (a, b) => {
+  if (!a || !b) {
     return false
   }
 
-  if (simpleEquals(obj1, obj2)) {
+  if (simpleEquals(a, b)) {
     return true
   }
 
-  if (!isObject(obj1) || isNull(obj1) || !isObject(obj2) || isNull(obj2)) {
+  if (!isObject(a) || isNull(a) || !isObject(b) || isNull(b)) {
     return false
   }
 
-  const keys1 = keys(obj1)
-  const keys2 = keys(obj2)
+  if (isMap(a) || isMap(b)) {
+    return false
+  }
+
+  const keys1 = keys(a)
+  const keys2 = keys(b)
 
   if (keys1.length !== keys2.length) {
     return false
   }
 
   for (const key of keys1) {
-    if (!has(obj2, key) || obj1[key] !== obj2[key]) {
+    if (!has(b, key) || a[key] !== b[key]) {
       return false
     }
-  }
-
-  if (obj1 instanceof Map && obj2 instanceof Map) {
-    return false
   }
 
   return true

@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'bun:test'
 import { wrap } from '../wrap'
 import Big, { type BigSource } from 'big.js'
+import { isMap } from '../../tools'
 
 describe('wrap', () => {
   const decimal = wrap((v: BigSource) => new Big(v), {
@@ -98,5 +99,60 @@ describe('wrap', () => {
     expect(example2.get()).toBe('20')
 
     expect(calls).toBe(2)
+  })
+
+  it('wraps JavaScript Map', () => {
+    const reactiveMap = wrap((initial: [string, number][]) => new Map(initial), {
+      set: (instance, entries) => {
+        instance.value = new Map(entries)
+      }
+    })
+
+    const m = reactiveMap([
+      ['a', 1],
+      ['b', 2]
+    ])
+
+    expect(isMap(m.get())).toBe(true)
+
+    let m1 = Array.from(m.get().entries())
+
+    m.mutate((m) => {
+      m.set('c', 3)
+    })
+
+    expect(m1).toEqual([
+      ['a', 1],
+      ['b', 2]
+    ])
+
+    m.set([
+      ['a', 10],
+      ['c', 3]
+    ])
+
+    let m2 = Array.from(m.get().entries())
+
+    expect(m2).toEqual([
+      ['a', 10],
+      ['c', 3]
+    ])
+
+    const keysOnly = m.derived((entries) => Array.from(entries.keys()).map(([k]) => k))
+
+    expect(keysOnly.get()).toEqual(['a', 'c'])
+
+    m.mutate((m) => {
+      m.set('d', 4)
+    })
+
+    expect(keysOnly.get()).toEqual(['a', 'c', 'd'])
+
+    m.set([
+      ['a', 10],
+      ['c', 3]
+    ])
+
+    expect(keysOnly.get()).toEqual(['a', 'c'])
   })
 })

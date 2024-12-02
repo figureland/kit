@@ -4,15 +4,15 @@ export type WrappedInstance<T> = {
   value: T
 }
 
-export const wrap = <Input extends any, Instance extends any = any, Output extends any = any>(
+export const wrap = <Input extends any, Instance extends any = any, Output = Instance>(
   create: (v: Input, trigger?: () => void) => Instance,
   {
     set,
-    get,
+    get = (i: WrappedInstance<Instance>): Output => i.value as unknown as Output,
     onCreate
   }: {
     set: (i: WrappedInstance<Instance>, value: Input) => void
-    get: (i: WrappedInstance<Instance>) => Output
+    get?: (i: WrappedInstance<Instance>) => Output
     onCreate?: (i: WrappedInstance<Instance>, s: State<Output>) => void
   }
 ): Wrapped<Input, Instance, Output> => {
