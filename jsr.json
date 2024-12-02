@@ -2,6 +2,7 @@
   "name": "@figureland/kit",
   "version": "0.0.35",
   "exports": {
+    ".": "./src/index.ts",
     "./math": "./src/math/index.ts",
     "./math/number": "./src/math/number.ts",
     "./math/easing": "./src/math/easing.ts",
