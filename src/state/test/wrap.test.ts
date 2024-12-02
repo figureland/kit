@@ -5,10 +5,7 @@ import { isMap } from '../../tools'
 
 describe('wrap', () => {
   const decimal = wrap((v: BigSource) => new Big(v), {
-    get: (instance) => instance.value.toString(),
-    set: (instance, newValue) => {
-      instance.value = new Big(newValue)
-    }
+    get: (instance) => instance.value.toString()
   })
 
   it('creates a big state with correct initial value', () => {
@@ -102,11 +99,7 @@ describe('wrap', () => {
   })
 
   it('wraps JavaScript Map', () => {
-    const reactiveMap = wrap((initial: [string, number][]) => new Map(initial), {
-      set: (instance, entries) => {
-        instance.value = new Map(entries)
-      }
-    })
+    const reactiveMap = wrap((initial: [string, number][]) => new Map(initial))
 
     const m = reactiveMap([
       ['a', 1],
