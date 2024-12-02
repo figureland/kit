@@ -1,4 +1,22 @@
 #
+## v0.0.34
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.33...v0.0.34)
+
+### 🏡 Chore
+
+- Tidied up wrap types ([86bb5aa](https://github.com/figureland/kit/commit/86bb5aa))
+- Moved extend ([e14b013](https://github.com/figureland/kit/commit/e14b013))
+
+### ✅ Tests
+
+- Added benchmarks ([ed2083b](https://github.com/figureland/kit/commit/ed2083b))
+- Improved benchmarks ([1307e64](https://github.com/figureland/kit/commit/1307e64))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.33
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.32...v0.0.33)
