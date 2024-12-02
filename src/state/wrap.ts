@@ -30,7 +30,7 @@ export const wrap = <Input extends any, Instance extends any = any, Output = Ins
         set(instance, v)
         s.set(get(instance))
       },
-      derived: <DerivedResult extends any>(fn: (v: Instance) => DerivedResult) =>
+      derive: <DerivedResult extends any>(fn: (v: Instance) => DerivedResult) =>
         s.use(
           state((gt) => {
             gt(s)

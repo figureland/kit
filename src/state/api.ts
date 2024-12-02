@@ -97,7 +97,7 @@ export type Events<S extends EventsMap, K extends keyof S = EventsKey & keyof S>
 export type Wrapped<Input, Instance, Output> = {
   (v: Input): State<Output> & {
     set: (v: Input) => void
-    derived: <DerivedResult>(fn: (v: Instance) => DerivedResult) => State<DerivedResult>
+    derive: <DerivedResult>(fn: (v: Instance) => DerivedResult) => State<DerivedResult>
     instance: () => Instance
   }
 }

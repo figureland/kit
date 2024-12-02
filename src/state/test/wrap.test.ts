@@ -2,6 +2,7 @@ import { describe, it, expect } from 'bun:test'
 import { wrap } from '../wrap'
 import Big, { type BigSource } from 'big.js'
 import { isMap } from '../../tools'
+import { state } from '../state'
 
 describe('wrap', () => {
   const decimal = wrap((v: BigSource) => new Big(v), {
@@ -19,20 +20,20 @@ describe('wrap', () => {
     expect(b.get()).toBe('20')
   })
 
-  it('creates a derived state', () => {
+  it('creates a derive state', () => {
     const b = decimal(10)
-    const derived = b.derived((v) => v.times(2).toString())
-    expect(derived.get()).toBe('20')
+    const derive = b.derive((v) => v.times(2).toString())
+    expect(derive.get()).toBe('20')
   })
 
-  it('updates derived state when original state changes', () => {
+  it('updates derive state when original state changes', () => {
     const b = decimal(10)
-    const derived = b.derived((v) => v.times(2).toString())
-    expect(derived.get()).toBe('20')
+    const derive = b.derive((v) => v.times(2).toString())
+    expect(derive.get()).toBe('20')
     b.set(15)
-    expect(derived.get()).toBe('30')
+    expect(derive.get()).toBe('30')
     b.set(0)
-    expect(derived.get()).toBe('0')
+    expect(derive.get()).toBe('0')
   })
 
   it('returns the correct instance', () => {
@@ -64,9 +65,9 @@ describe('wrap', () => {
     expect(calls).toBe(1)
   })
 
-  it('supports chained derived states', () => {
+  it('supports chained derive states', () => {
     const b = decimal(10)
-    const d = b.derived((v) => v.times(2).plus(1).toString())
+    const d = b.derive((v) => v.times(2).plus(1).toString())
 
     expect(d.get()).toBe('21')
 
@@ -131,7 +132,7 @@ describe('wrap', () => {
       ['c', 3]
     ])
 
-    const keysOnly = m.derived((entries) => Array.from(entries.keys()).map(([k]) => k))
+    const keysOnly = state((get) => Array.from(get(m)).map(([k]) => k))
 
     expect(keysOnly.get()).toEqual(['a', 'c'])
 
