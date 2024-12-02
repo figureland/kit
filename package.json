@@ -202,7 +202,8 @@
     "test": "bun test",
     "lint": "eslint src/",
     "format": "prettier --write src/",
-    "release": "bunx changelogen@latest --release"
+    "release": "bunx changelogen@latest --release",
+    "bench": "bun run bench/*.bench.ts"
   },
   "files": [
     "src"
@@ -219,6 +220,7 @@
     "bun-plugin-dts": "^0.2.4",
     "eslint": "^9.15.0",
     "husky": "^9.1.7",
+    "mitata": "^1.0.20",
     "prettier": "^3.3.3",
     "react": "^18.3.1",
     "svelte": "^4.2.19",

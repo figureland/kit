@@ -1,6 +1,6 @@
 import { State, state, type Wrapped, extend } from '.'
 
-type WrappedInstance<T> = {
+export type WrappedInstance<T> = {
   value: T
 }
 
