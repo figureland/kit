@@ -1,4 +1,22 @@
 #
+## v0.0.35
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.34...v0.0.35)
+
+### 🚀 Enhancements
+
+- Removed options from wrap ([2de786e](https://github.com/figureland/kit/commit/2de786e))
+
+### 🏡 Chore
+
+- Minor fixes to wrap ([c6aa8da](https://github.com/figureland/kit/commit/c6aa8da))
+- Minor tweak to derived state ([88955e6](https://github.com/figureland/kit/commit/88955e6))
+- Removed old nicemap helper ([ee8dcbc](https://github.com/figureland/kit/commit/ee8dcbc))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.34
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.33...v0.0.34)
