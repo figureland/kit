@@ -1,9 +1,8 @@
-import { NiceMap } from '../tools/map'
 import type { Disposable, Lifecycle } from './api'
 import { createSubscriptions } from './subscriptions'
 
 export const lifecycle = (): Lifecycle => {
-  const keyedSubs = new NiceMap()
+  const keyedSubs = new Map()
   const subs = createSubscriptions()
 
   const use = <S extends Disposable | (() => void)>(s: S) => {
@@ -11,8 +10,15 @@ export const lifecycle = (): Lifecycle => {
     return s
   }
 
-  const unique = <S extends Disposable>(key: string | number | symbol, s: () => S) =>
-    use(keyedSubs.getOrSet(key, s))
+  const unique = <S extends Disposable>(key: string | number | symbol, s: () => S): S => {
+    if (keyedSubs.has(key)) {
+      return keyedSubs.get(key)
+    } else {
+      const instance = use(s())
+      keyedSubs.set(key, instance)
+      return instance
+    }
+  }
 
   const dispose = () => {
     subs.each()

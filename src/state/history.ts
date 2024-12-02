@@ -24,7 +24,6 @@ export const history = <S extends Subscribable | State<any>>(
     })
   })
 
-  // option 1
   const restore = (n: number = -1) => {
     if ('set' in s) {
       const last = store.get()[store.get().length + n]

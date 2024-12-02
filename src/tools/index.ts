@@ -40,7 +40,7 @@ export {
   has,
   omit
 } from './object'
-export { sortMapToArray, NiceMap } from './map'
+export { sortMapToArray } from './map'
 export { getTimeSince } from './time'
 export { type Merge, simpleMerge } from './merge'
 export { isFulfilled, isRejected, settle, parseSettled } from './async'

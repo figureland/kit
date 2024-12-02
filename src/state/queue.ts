@@ -1,5 +1,12 @@
-import { type State, type Events, lifecycle, state, events } from '../state'
-import { extend } from './state'
+import {
+  type State,
+  type Events,
+  type StateOptions,
+  lifecycle,
+  state,
+  events,
+  extend
+} from '../state'
 
 export type QueueEvents<T> = {
   enqueue: T
@@ -15,13 +22,10 @@ export type Queue<T> = State<T[]> & {
   events: Events<QueueEvents<T>>
 }
 
-export type QueueOptions = {
-  maxSize?: number
-  throttle?: number
-}
-
-export const queue = <T>(options: QueueOptions = {}): Queue<T> => {
-  const { maxSize = 100, throttle } = options
+export const queue = <T>({
+  maxSize,
+  throttle
+}: { maxSize?: number } & Pick<StateOptions<T[]>, 'throttle'> = {}): Queue<T> => {
   const { use, dispose } = lifecycle()
 
   const items = use(state<T[]>([], { throttle }))
@@ -30,7 +34,7 @@ export const queue = <T>(options: QueueOptions = {}): Queue<T> => {
   const enqueue = (item: T) => {
     items.mutate((queue) => {
       queue.push(item)
-      if (queue.length > maxSize) {
+      if (maxSize && queue.length > maxSize) {
         queue.shift()
       }
     })

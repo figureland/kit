@@ -1,5 +1,4 @@
 import { lifecycle, state, events, type Disposable, type Events } from '../state'
-import { NiceMap } from '../tools'
 import { keys } from '../tools'
 
 type SoundMap = {
@@ -16,7 +15,7 @@ export const sfx = <S extends SoundMap, K extends keyof S>({
   const instance = lifecycle()
   const loaded = instance.use(state(() => false))
   const audioContext = new AudioContext()
-  const buffers = new NiceMap<K, Promise<AudioBuffer>>()
+  const buffers = new Map<K, Promise<AudioBuffer>>()
   const activeSources = new Set<AudioBufferSourceNode>()
   const e = events<{ play: { sound: K } }>()
 
@@ -26,8 +25,15 @@ export const sfx = <S extends SoundMap, K extends keyof S>({
     return audioContext.decodeAudioData(arrayBuffer)
   }
 
-  const ensureSoundLoaded = (sound: K): Promise<AudioBuffer> =>
-    buffers.getOrSet(sound, () => loadSound(sounds[sound]))
+  const ensureSoundLoaded = (sound: K): Promise<AudioBuffer> => {
+    if (buffers.has(sound)) {
+      return buffers.get(sound)!
+    } else {
+      const promise = loadSound(sounds[sound])
+      buffers.set(sound, promise)
+      return promise
+    }
+  }
 
   if (preload) {
     const allSounds = keys(sounds).map((sound) => ensureSoundLoaded(sound as K))

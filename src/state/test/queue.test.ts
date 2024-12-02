@@ -85,9 +85,7 @@ describe('queue', () => {
     const q = queue<number>({ throttle: 100 })
     let updateCount = 0
 
-    q.on(() => {
-      updateCount++
-    })
+    q.on(() => updateCount++)
 
     q.enqueue(1)
     q.enqueue(2)
@@ -95,6 +93,13 @@ describe('queue', () => {
 
     await delay(150)
     expect(updateCount).toBe(1)
+
+    q.enqueue(4)
+    await delay(150)
+    expect(updateCount).toBe(2)
+
+    q.enqueue(5)
+    expect(updateCount).toBe(3)
   })
 
   it('disposes properly and stops notifications', () => {
