@@ -1,4 +1,16 @@
 #
+## v0.0.36
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.35...v0.0.36)
+
+### 🏡 Chore
+
+- Added main entrypoint ([6ab4a8d](https://github.com/figureland/kit/commit/6ab4a8d))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.35
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.34...v0.0.35)
