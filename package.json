@@ -197,13 +197,13 @@
   },
   "description": "Toolkit for building apps, prototypes and experiments",
   "scripts": {
-    "build:jsr": "bun run scripts/build-jsr-manifest.ts",
+    "build:jsr": "bun scripts/build-jsr-manifest.ts",
+    "bench": "bun scripts/run-benchmarks.ts",
     "prepare": "husky",
     "test": "bun test",
     "lint": "eslint src/",
     "format": "prettier --write src/",
-    "release": "bunx changelogen@latest --release",
-    "bench": "bun run bench/*.bench.ts"
+    "release": "bunx changelogen@latest --release"
   },
   "files": [
     "src"
