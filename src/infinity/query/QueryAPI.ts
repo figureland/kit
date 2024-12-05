@@ -36,7 +36,7 @@ export type QueryAPI<Item extends any = any> = Disposable & {
   update: (id: ID, item: Item) => void
   delete: (id: ID) => void
   get: (id: ID) => Item | undefined
-  search: (queryID: QueryIdentifier, params: QueryParams<Item>) => Promise<QueryResult>
+  intersect: (queryID: QueryIdentifier, params: QueryParams<Item>) => Promise<QueryResult>
   subscribe: (id: ID) => State<Item | undefined>
   stateQuery: <Q extends QueryParams<Item>>(
     id: QueryIdentifier,

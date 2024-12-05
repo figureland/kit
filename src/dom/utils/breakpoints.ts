@@ -1,5 +1,3 @@
-import { keys } from '../../tools'
-
 export type Breakpoints = {
   [key: string]: number
 }
@@ -8,7 +6,7 @@ export const getClosestBreakpoint = <B extends Breakpoints>(
   breakpoints: B,
   width: number
 ): keyof B => {
-  const names = keys(breakpoints)
+  const names = Object.keys(breakpoints)
   let closest = names[0]
   let closestWidth = breakpoints[closest]
 

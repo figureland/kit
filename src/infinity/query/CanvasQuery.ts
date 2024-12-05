@@ -66,7 +66,7 @@ export class CanvasQuery<Item extends any = any> implements QueryAPI<Item> {
 
   public on = this.queue.on
 
-  public search = (
+  public intersect = (
     queryID: QueryIdentifier,
     params: QueryParams<Item> = {}
   ): Promise<QueryResult> =>
@@ -146,7 +146,7 @@ export class CanvasQuery<Item extends any = any> implements QueryAPI<Item> {
       )
 
       const onChange = async (params: Q) => {
-        const visibleItems = await this.search(id, params)
+        const visibleItems = await this.intersect(id, params)
         visible.set(visibleItems)
       }
 

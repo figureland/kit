@@ -1,5 +1,4 @@
 import { lifecycle, state, events, type Disposable, type Events } from '../state'
-import { keys } from '../tools'
 
 type SoundMap = {
   [sound: string]: string
@@ -36,7 +35,7 @@ export const sfx = <S extends SoundMap, K extends keyof S>({
   }
 
   if (preload) {
-    const allSounds = keys(sounds).map((sound) => ensureSoundLoaded(sound as K))
+    const allSounds = Object.keys(sounds).map((sound) => ensureSoundLoaded(sound as K))
     Promise.all(allSounds).then(() => loaded.set(true))
   }
 

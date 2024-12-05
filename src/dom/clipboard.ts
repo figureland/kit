@@ -74,10 +74,13 @@ export type ClipboardEvents = {
 
 const getClipboardData = async () => {
   const items = await navigator.clipboard.read()
+  const text = await navigator.clipboard.readText()
+
   const { fulfilled } = await settle(items.map(parseClipboardItem))
+
   return {
     items: fulfilled,
-    text: await navigator.clipboard.readText()
+    text
   }
 }
 

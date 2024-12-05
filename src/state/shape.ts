@@ -1,5 +1,4 @@
 import { isFunction } from '../tools/guards'
-import { keys } from '../tools/object'
 import { state } from './state'
 import type { State, StateOptions, Shape } from './api'
 
@@ -25,13 +24,13 @@ export const shape = <R extends Record<string, any>>(r: R, options?: StateOption
 
   const set = (v: R | Partial<R> | ((v: R) => R | Partial<R>), sync: boolean = true): void => {
     const u = isFunction(v) ? (v as (v: R) => R)(parent.get()) : v
-    for (const k of keys(v)) {
+    for (const k of Object.keys(v)) {
       key(k)?.set(u[k] as R[typeof k], sync)
     }
   }
 
   return {
-    keys: keys(states),
+    keys: Object.keys(states),
     key,
     set,
     events: parent.events,

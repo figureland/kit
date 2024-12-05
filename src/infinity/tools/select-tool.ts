@@ -43,7 +43,7 @@ export const selectTool = (): InfinityKitTool => {
       interacting = true
       additiveSelection = shiftKey
 
-      const intersection = await kit.api.search(selectionQuery, {
+      const intersection = await kit.api.intersect(selectionQuery, {
         point: brushOrigin
       })
 
@@ -69,7 +69,7 @@ export const selectTool = (): InfinityKitTool => {
 
       const brush = preciseEnough(box(x, y, width, height))
 
-      const intersection = await kit.api.search(selectionQuery, {
+      const intersection = await kit.api.intersect(selectionQuery, {
         point: pt,
         box: brush
       })

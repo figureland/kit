@@ -1,11 +1,17 @@
 // @ts-ignore
-import { serialize, sRGB, OKLCH } from '@texel/color'
-import { state, extend } from '../state'
-import type { Gamut, OKLCHState } from './api'
+import { serialize, sRGB, OKLCH as texelOKLCH } from '@texel/color'
+import type { Gamut, OKLCH } from './api'
+import { freeze } from '../tools/object'
+import { vector4, set } from '../math/vector4'
 
-export const oklch = (l: number, c: number, h: number, a: number): OKLCHState => {
-  const s = state<OKLCH>([l, c, h, a])
-  return extend(s, {
-    serialize: (outputSpace: Gamut = sRGB) => serialize(s.get(), OKLCH, outputSpace)
+export const oklch = (r: number = 0, g: number = 0, b: number = 0, a: number = 1): OKLCH => {
+  const value = vector4(r, g, b, a)
+
+  return freeze({
+    type: 'oklch',
+    value,
+    set: (l, c, h, a = 1) => set(value, l, c, h, a),
+    serialize: (outputSpace: Gamut = sRGB) =>
+      serialize([value.x, value.y, value.z, value.w], texelOKLCH, outputSpace)
   })
 }
