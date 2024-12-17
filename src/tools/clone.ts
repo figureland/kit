@@ -1,9 +1,11 @@
 import { isFunction } from './guards'
 
+export const hasStructuredClone = isFunction(structuredClone)
+
 const { stringify, parse } = JSON
 
 export const clone = <T>(o: T): T => {
-  if (isFunction(structuredClone)) {
+  if (hasStructuredClone) {
     return structuredClone(o)
   }
 

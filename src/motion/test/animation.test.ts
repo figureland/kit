@@ -6,7 +6,7 @@ import { state } from '../../state'
 
 let lastTime = 0
 
-describe('Animation Lifecycle', () => {
+describe('Animation Manager', () => {
   let engine: Animated
 
   beforeEach(() => {

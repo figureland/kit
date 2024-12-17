@@ -1,7 +1,7 @@
-import type { Disposable, Lifecycle } from './api'
+import type { Disposable, Manager } from './api'
 import { createSubscriptions } from './subscriptions'
 
-export const lifecycle = (): Lifecycle => {
+export const manager = (): Manager => {
   const keyedSubs = new Map()
   const subs = createSubscriptions()
 

@@ -2,7 +2,7 @@ import type { State, StateOptions, SubscribableEvents, UseStateDependency } from
 import type { Subscription } from './subscriptions'
 import { isFunction, isObject, isMap, isSet, simpleMerge, simpleEquals } from '../tools'
 import { events } from './events'
-import { lifecycle } from './lifecycle'
+import { manager } from './manager'
 import { freeze } from '../tools/object'
 
 /**
@@ -12,7 +12,7 @@ export const state = <V>(
   initial: V | ((use: UseStateDependency) => V),
   { merge = simpleMerge, equality = simpleEquals, throttle }: StateOptions<V> = {}
 ): State<V> => {
-  const { dispose, use } = lifecycle()
+  const { dispose, use } = manager()
   const dependencies = new Set<State<any>['on']>()
 
   const e = use(events<SubscribableEvents<V>>())

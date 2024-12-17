@@ -2,7 +2,7 @@ import {
   type State,
   type Events,
   type StateOptions,
-  lifecycle,
+  manager,
   state,
   events,
   extend
@@ -26,7 +26,7 @@ export const queue = <T>({
   maxSize,
   throttle
 }: { maxSize?: number } & Pick<StateOptions<T[]>, 'throttle'> = {}): Queue<T> => {
-  const { use, dispose } = lifecycle()
+  const { use, dispose } = manager()
 
   const items = use(state<T[]>([], { throttle }))
   const e = use(events<QueueEvents<T>>())

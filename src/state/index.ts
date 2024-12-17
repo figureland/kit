@@ -11,7 +11,7 @@ export {
   type TopicSubscriptions
 } from './subscriptions'
 export { shape } from './shape'
-export { lifecycle, disposable } from './lifecycle'
+export { manager, disposable } from './manager'
 export { history, type HistoryOptions } from './history'
 export { readonly } from './readonly'
 export { wrap } from './wrap'

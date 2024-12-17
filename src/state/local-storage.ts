@@ -4,15 +4,23 @@ import { getStorageName, PersistenceName, type StorageAPI, type StorageAPIOption
 
 declare var localStorage: Storage
 
+const defaultValidate = async () => true
+
+export type LocalStorageOptions<T> = StorageAPIOptions<T> & {
+  interval?: number
+  parse?: (v: string) => T
+  stringify?: (v: T) => string
+}
+
 export const storage = <T>({
   name,
-  validate,
+  validate = defaultValidate,
   interval,
   refine,
   fallback,
   parse = JSON.parse,
   stringify = JSON.stringify
-}: StorageAPIOptions<T> & { interval?: number }): StorageAPI<T> => {
+}: LocalStorageOptions<T>): StorageAPI<T> => {
   let lastUpdate: number = performance.now()
   const browser = isBrowser()
   const target = getStorageName(name)

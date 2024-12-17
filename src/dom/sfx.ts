@@ -1,4 +1,4 @@
-import { lifecycle, state, events, type Disposable, type Events } from '../state'
+import { manager, state, events, type Disposable, type Events } from '../state'
 
 type SoundMap = {
   [sound: string]: string
@@ -11,7 +11,7 @@ export const sfx = <S extends SoundMap, K extends keyof S>({
   sounds: S
   preload?: boolean
 }): SFX<S, K> => {
-  const instance = lifecycle()
+  const instance = manager()
   const loaded = instance.use(state(() => false))
   const audioContext = new AudioContext()
   const buffers = new Map<K, Promise<AudioBuffer>>()

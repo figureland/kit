@@ -1,9 +1,9 @@
 import { describe, it, expect, mock } from 'bun:test'
-import { lifecycle, disposable, state } from '..'
+import { manager, disposable, state } from '..'
 
-describe('lifecycle', () => {
+describe('manager', () => {
   it('uses a disposable object', () => {
-    const life = lifecycle()
+    const life = manager()
     let disposed = false
 
     life.use(
@@ -17,7 +17,7 @@ describe('lifecycle', () => {
   })
 
   it('uses a cleanup function directly', () => {
-    const life = lifecycle()
+    const life = manager()
     let cleaned = false
 
     life.use(() => {
@@ -29,7 +29,7 @@ describe('lifecycle', () => {
   })
 
   it('manages unique disposables with keys', () => {
-    const life = lifecycle()
+    const life = manager()
     let disposeCount = 0
 
     const createDisposable = () =>
@@ -47,7 +47,7 @@ describe('lifecycle', () => {
   })
 
   it('handles multiple disposables', () => {
-    const life = lifecycle()
+    const life = manager()
     const disposed: string[] = []
 
     life.use(disposable(() => disposed.push('first')))
@@ -59,7 +59,7 @@ describe('lifecycle', () => {
   })
 
   it('clears unique disposables on dispose', () => {
-    const life = lifecycle()
+    const life = manager()
     let disposed = false
 
     life.unique('key', () =>
@@ -82,23 +82,23 @@ describe('lifecycle', () => {
   })
 
   it('should clear all subscriptions on dispose', () => {
-    const testLifecycle = lifecycle()
+    const testManager = manager()
     const mockDispose1 = mock(() => ({}))
     const mockDispose2 = mock(() => ({}))
-    testLifecycle.use(disposable(mockDispose1))
-    testLifecycle.use(disposable(mockDispose2))
-    testLifecycle.dispose()
+    testManager.use(disposable(mockDispose1))
+    testManager.use(disposable(mockDispose2))
+    testManager.dispose()
     expect(mockDispose1).toHaveBeenCalled()
     expect(mockDispose2).toHaveBeenCalled()
   })
 
   it('should clear all keyed subscriptions on dispose', () => {
-    const testLifecycle = lifecycle()
+    const testManager = manager()
     const mockDispose = mock(() => ({}))
     const mockSubscribable = () => disposable(mockDispose)
-    testLifecycle.unique('key1', mockSubscribable)
-    testLifecycle.dispose()
-    const newInstance = testLifecycle.unique('key1', mockSubscribable)
+    testManager.unique('key1', mockSubscribable)
+    testManager.dispose()
+    const newInstance = testManager.unique('key1', mockSubscribable)
     expect(newInstance).not.toBe(mockDispose.mock.results[0].value)
   })
 })
@@ -116,14 +116,14 @@ describe('disposable', () => {
   })
 })
 
-describe('lifecycle children', () => {
+describe('manager children', () => {
   it('uses a state', () => {
-    const life = lifecycle()
+    const life = manager()
     const s = life.use(state(0))
     expect(s.get()).toBe(0)
   })
-  it('disposes child states when lifecycle is disposed', () => {
-    const life = lifecycle()
+  it('disposes child states when manager is disposed', () => {
+    const life = manager()
     const s = life.use(state(0))
     let disposed = false
     let notified = false

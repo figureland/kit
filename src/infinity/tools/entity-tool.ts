@@ -1,8 +1,8 @@
-import { lifecycle } from '../../state'
+import { manager } from '../../state'
 import type { InfinityKitTool } from './Tool'
 
 export const entityTool = (): InfinityKitTool => {
-  const { dispose } = lifecycle()
+  const { dispose } = manager()
 
   return {
     dispose,

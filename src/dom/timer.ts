@@ -1,4 +1,4 @@
-import { events, shape, lifecycle, type Events, type Shape, type Unsubscribe } from '../state'
+import { events, shape, manager, type Events, type Shape, type Unsubscribe } from '../state'
 import { isBrowser } from '../dom'
 
 type TimerEvent = {
@@ -20,7 +20,7 @@ export const timer = (): Timer => {
   let startTime: number = 0
   let active = false
 
-  const { use, dispose } = lifecycle()
+  const { use, dispose } = manager()
   const state = use(
     shape<TimerState>({
       active: false,

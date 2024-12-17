@@ -65,7 +65,7 @@ export type AnimatedState<V extends any> = State<V> & {
   tick: (delta: number) => void
 }
 
-export type Lifecycle = Disposable &
+export type Manager = Disposable &
   Usable & {
     unique: <S extends Disposable>(key: string | number | symbol, s: () => S) => S
   }
