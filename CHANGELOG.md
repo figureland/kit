@@ -1,4 +1,20 @@
 #
+## v0.0.38
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.37...v0.0.38)
+
+### 🚀 Enhancements
+
+- Simplified color utilities ([1aedf9f](https://github.com/figureland/kit/commit/1aedf9f))
+
+### 🏡 Chore
+
+- Improving tests for box and matrix functions ([6a0ff98](https://github.com/figureland/kit/commit/6a0ff98))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.37
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.36...v0.0.37)
