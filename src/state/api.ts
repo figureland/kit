@@ -50,7 +50,6 @@ export type State<V> = Settable<V> &
   }
 
 export type StateOptions<R> = {
-  track?: boolean
   equality?: Equals<R>
   merge?: Merge
   throttle?: number

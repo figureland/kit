@@ -25,7 +25,7 @@ export const omit = <Item extends object, K extends keyof Item>(
   item: Item,
   props: ReadonlyArray<K>
 ): Omit<Item, K> => {
-  const result = { ...item }
+  const result = structuredClone(item)
   for (const key of props) {
     delete result[key]
   }

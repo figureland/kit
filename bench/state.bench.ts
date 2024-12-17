@@ -38,7 +38,7 @@ boxplot(() => {
 
   bench('Track Dependencies', () => {
     const depState = state(0)
-    const s = state(() => depState.get() + 1, { track: true })
+    const s = state(() => depState.get() + 1)
     depState.set(1)
     s.get()
   })

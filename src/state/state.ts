@@ -1,8 +1,8 @@
-import { isFunction, isObject, isMap, isSet, shallowEquals, simpleMerge } from '../tools'
+import type { State, StateOptions, SubscribableEvents, UseStateDependency } from './api'
 import type { Subscription } from './subscriptions'
+import { isFunction, isObject, isMap, isSet, simpleMerge, simpleEquals } from '../tools'
 import { events } from './events'
 import { lifecycle } from './lifecycle'
-import type { State, StateOptions, SubscribableEvents, UseStateDependency } from './api'
 import { freeze } from '../tools/object'
 
 /**
@@ -10,13 +10,13 @@ import { freeze } from '../tools/object'
  */
 export const state = <V>(
   initial: V | ((use: UseStateDependency) => V),
-  { merge = simpleMerge, equality = shallowEquals, throttle, track = false }: StateOptions<V> = {}
+  { merge = simpleMerge, equality = simpleEquals, throttle }: StateOptions<V> = {}
 ): State<V> => {
   const { dispose, use } = lifecycle()
   const dependencies = new Set<State<any>['on']>()
 
   const e = use(events<SubscribableEvents<V>>())
-  let loaded = track
+  let loaded = false
   let lastSyncTime: number = 0
 
   const shouldThrottle = () => throttle && performance.now() - lastSyncTime < throttle
