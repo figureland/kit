@@ -1,6 +1,6 @@
 {
   "name": "@figureland/kit",
-  "version": "0.0.39",
+  "version": "0.0.40",
   "type": "module",
   "workspaces": [
     "tools/*"
@@ -132,8 +132,8 @@
       "import": "./src/browser/sfx.ts"
     },
     "./browser/dom-events": {
-      "types": "./src/browser/events.ts",
-      "import": "./src/browser/events.ts"
+      "types": "./src/browser/dom-events.ts",
+      "import": "./src/browser/dom-events.ts"
     },
     "./browser/blob": {
       "types": "./src/browser/blob.ts",
@@ -174,18 +174,6 @@
     "./infinity": {
       "types": "./src/infinity/index.ts",
       "import": "./src/infinity/index.ts"
-    },
-    "./color": {
-      "types": "./src/color/index.ts",
-      "import": "./src/color/index.ts"
-    },
-    "./color/guards": {
-      "types": "./src/color/guards.ts",
-      "import": "./src/color/guards.ts"
-    },
-    "./color/rgba": {
-      "types": "./src/color/rgba.ts",
-      "import": "./src/color/rgba.ts"
     }
   },
   "description": "Toolkit for building apps, prototypes and experiments",
@@ -203,44 +191,33 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@commitlint/cli": "^19.6.0",
+    "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
-    "@texel/color": "^1.1.4",
     "@types/big.js": "^6.2.2",
-    "@types/bun": "^1.1.13",
-    "@types/react": "^18.3.12",
+    "@types/bun": "^1.1.14",
+    "@types/react": "^18.3.17",
     "big.js": "^6.2.2",
-    "bun-plugin-dts": "^0.2.4",
-    "eslint": "^9.15.0",
+    "eslint": "^9.17.0",
     "husky": "^9.1.7",
-    "mitata": "^1.0.20",
-    "prettier": "^3.3.3",
+    "mitata": "^1.0.21",
+    "prettier": "^3.4.2",
     "react": "^18.3.1",
     "svelte": "^4.2.19",
-    "svg-path-commander": "^2.1.5",
     "typescript": "^5.7.2",
     "typescript-eslint": "^7.18.0",
     "vue": "^3.5.13"
   },
   "peerDependencies": {
-    "@texel/color": "^1.1.2",
     "react": ">=16.8",
     "svelte": "^4.0.0",
-    "svg-path-commander": "^2.1.0",
     "vue": ">=3.0.0",
     "typescript": ">=4.0.0"
   },
   "peerDependenciesMeta": {
-    "@texel/color": {
-      "optional": true
-    },
     "react": {
       "optional": true
     },
     "svelte": {
-      "optional": true
-    },
-    "svg-path-commander": {
       "optional": true
     },
     "typescript": {

@@ -1,4 +1,17 @@
 #
+## v0.0.40
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.39...v0.0.40)
+
+### 🏡 Chore
+
+- Make disposable functions clearer ([e36c3cd](https://github.com/figureland/kit/commit/e36c3cd))
+- Removed old code and updated dependencies ([9546176](https://github.com/figureland/kit/commit/9546176))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.39
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.38...v0.0.39)
