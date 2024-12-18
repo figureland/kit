@@ -1,6 +1,6 @@
 import { type State, manager, state, type Disposable } from '../state'
 import { freeze } from '../tools/object'
-import { listen } from './events'
+import { listen } from './dom-events'
 
 export const supportsFullscreen = (): boolean =>
   ('fullscreenEnabled' in document && !!document.fullscreenEnabled) ||

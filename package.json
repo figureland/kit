@@ -96,56 +96,56 @@
       "import": "./src/tools/clone.ts"
     },
     "./dom": {
-      "types": "./src/dom/index.ts",
-      "import": "./src/dom/index.ts"
+      "types": "./src/browser/index.ts",
+      "import": "./src/browser/index.ts"
     },
-    "./dom/clipboard": {
-      "types": "./src/dom/clipboard.ts",
-      "import": "./src/dom/clipboard.ts"
+    "./browser/clipboard": {
+      "types": "./src/browser/clipboard.ts",
+      "import": "./src/browser/clipboard.ts"
     },
-    "./dom/device": {
-      "types": "./src/dom/device.ts",
-      "import": "./src/dom/device.ts"
+    "./browser/device": {
+      "types": "./src/browser/device.ts",
+      "import": "./src/browser/device.ts"
     },
-    "./dom/filedrop": {
-      "types": "./src/dom/filedrop.ts",
-      "import": "./src/dom/filedrop.ts"
+    "./browser/filedrop": {
+      "types": "./src/browser/filedrop.ts",
+      "import": "./src/browser/filedrop.ts"
     },
-    "./dom/fullscreen": {
-      "types": "./src/dom/fullscreen.ts",
-      "import": "./src/dom/fullscreen.ts"
+    "./browser/fullscreen": {
+      "types": "./src/browser/fullscreen.ts",
+      "import": "./src/browser/fullscreen.ts"
     },
-    "./dom/keycommands": {
-      "types": "./src/dom/keycommands.ts",
-      "import": "./src/dom/keycommands.ts"
+    "./browser/keycommands": {
+      "types": "./src/browser/keycommands.ts",
+      "import": "./src/browser/keycommands.ts"
     },
-    "./dom/pointer": {
-      "types": "./src/dom/pointer.ts",
-      "import": "./src/dom/pointer.ts"
+    "./browser/pointer": {
+      "types": "./src/browser/pointer.ts",
+      "import": "./src/browser/pointer.ts"
     },
-    "./dom/screen": {
-      "types": "./src/dom/screen.ts",
-      "import": "./src/dom/screen.ts"
+    "./browser/screen": {
+      "types": "./src/browser/screen.ts",
+      "import": "./src/browser/screen.ts"
     },
-    "./dom/sfx": {
-      "types": "./src/dom/sfx.ts",
-      "import": "./src/dom/sfx.ts"
+    "./browser/sfx": {
+      "types": "./src/browser/sfx.ts",
+      "import": "./src/browser/sfx.ts"
     },
-    "./dom/events": {
-      "types": "./src/dom/events.ts",
-      "import": "./src/dom/events.ts"
+    "./browser/dom-events": {
+      "types": "./src/browser/events.ts",
+      "import": "./src/browser/events.ts"
     },
-    "./dom/blob": {
-      "types": "./src/dom/blob.ts",
-      "import": "./src/dom/blob.ts"
+    "./browser/blob": {
+      "types": "./src/browser/blob.ts",
+      "import": "./src/browser/blob.ts"
     },
-    "./dom/preferences": {
-      "types": "./src/dom/preferences.ts",
-      "import": "./src/dom/preferences.ts"
+    "./browser/preferences": {
+      "types": "./src/browser/preferences.ts",
+      "import": "./src/browser/preferences.ts"
     },
-    "./dom/timer": {
-      "types": "./src/dom/timer.ts",
-      "import": "./src/dom/timer.ts"
+    "./browser/timer": {
+      "types": "./src/browser/timer.ts",
+      "import": "./src/browser/timer.ts"
     },
     "./state": {
       "types": "./src/state/index.ts",
@@ -186,18 +186,6 @@
     "./color/rgba": {
       "types": "./src/color/rgba.ts",
       "import": "./src/color/rgba.ts"
-    },
-    "./shape/typography/harfbuzz.wasm": {
-      "types": "./src/shape/typography/harfbuzz.wasm",
-      "import": "./src/shape/typography/harfbuzz.wasm"
-    },
-    "./shape/typography": {
-      "types": "./src/shape/typography/index.ts",
-      "import": "./src/shape/typography/index.ts"
-    },
-    "./shape/typography/server": {
-      "types": "./src/shape/typography/server.ts",
-      "import": "./src/shape/typography/server.ts"
     }
   },
   "description": "Toolkit for building apps, prototypes and experiments",

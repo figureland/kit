@@ -1,9 +1,9 @@
 import { values } from '../tools/object'
-import type { PointerState } from '../dom/pointer'
+import type { PointerState } from '../browser/pointer'
 import { type State, state, manager } from '../state'
 import { box, type Box } from '../math/box'
 import type { Vector2 } from '../math/vector2'
-import { timerLoop, timer } from '../dom/timer'
+import { timerLoop, timer } from '../browser/timer'
 
 import { type Canvas } from './Canvas'
 import type { QueryAPI, QueryResult } from './query/QueryAPI'

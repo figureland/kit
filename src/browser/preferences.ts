@@ -1,5 +1,5 @@
 import { readonly, shape, extend } from '../state'
-import { listen } from '../dom/events'
+import { listen } from './dom-events'
 import { mediaQuery } from './media'
 
 type PreferenceState = {

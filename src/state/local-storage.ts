@@ -1,4 +1,4 @@
-import { isBrowser } from '../dom'
+import { isBrowser } from '../browser'
 import { isFunction } from '../tools'
 import { getStorageName, PersistenceName, type StorageAPI, type StorageAPIOptions } from './persist'
 
@@ -22,7 +22,7 @@ export const storage = <T>({
   stringify = JSON.stringify
 }: LocalStorageOptions<T>): StorageAPI<T> => {
   let lastUpdate: number = performance.now()
-  const browser = isBrowser()
+  const browser = isBrowser
   const target = getStorageName(name)
   const set = async (v: T) => {
     if (!browser) return
@@ -55,6 +55,6 @@ export const storage = <T>({
 }
 
 export const clear = (names: (string | PersistenceName)[]) => {
-  if (!isBrowser()) return
+  if (!isBrowser) return
   names.forEach((name) => localStorage.removeItem(getStorageName(name)))
 }

@@ -1,5 +1,7 @@
+/// <reference lib="dom" />
+
 import { disposable, type Disposable } from '../state'
-import { entries } from '../tools'
+import { entries } from '../tools/object'
 
 export type ListenerTarget = Document | Window | HTMLElement | ScreenOrientation | MediaQueryList
 
@@ -15,11 +17,11 @@ export type UnifiedEventMap = WindowEventMap &
     change: MediaQueryListEvent
   }
 
-type MediaQueryHandlers = {
+export type MediaQueryHandlers = {
   [K in keyof Pick<UnifiedEventMap, 'change'>]: (e: UnifiedEventMap[K]) => void
 }
 
-type EventHandlerConfig<T extends ListenerTarget> = T extends MediaQueryList
+export type EventHandlerConfig<T extends ListenerTarget> = T extends MediaQueryList
   ? MediaQueryHandlers
   : {
       [K in keyof UnifiedEventMap]?: (e: UnifiedEventMap[K]) => void

@@ -1,7 +1,7 @@
 import { type Shape, shape, extend } from '../state'
-import { dp } from '../math'
+import { dp } from '../math/number'
 import type { Size } from '../math/size'
-import { listen } from '../dom/events'
+import { listen } from './dom-events'
 import { getClosestBreakpoint, type Breakpoints } from './utils/breakpoints'
 
 export type ScreenState<B> = {

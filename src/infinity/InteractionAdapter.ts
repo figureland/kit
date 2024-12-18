@@ -1,10 +1,10 @@
 import { vector2 } from '../math/vector2'
 import { state, manager, type Disposable } from '../state'
-import type { Pointer } from '../dom/pointer'
-import { listen, type PointerInteractionEvent } from '../dom/events'
+import type { Pointer } from '../browser/pointer'
+import { listen, type PointerInteractionEvent } from '../browser/dom-events'
 import { isString } from '../tools/guards'
 import type { InfinityKit } from './InfinityKit'
-import { getDataAttribute, isHTMLElement } from '../dom/element'
+import { getDataAttribute, isHTMLElement } from '../browser/element'
 
 export type InteractionAdapter = Disposable & {
   onPointerDown: (e: PointerInteractionEvent) => void

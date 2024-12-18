@@ -1,7 +1,7 @@
 import { type AnimatedState, type Events, type State, events, manager, state } from '../state'
 import { clamp, mapRange } from '../math/number'
 import { isObject } from '../tools/guards'
-import { isBrowser } from '../dom'
+import { isBrowser } from '../browser/device'
 import { freeze } from '../tools/object'
 
 type AnimatedEvents = {
@@ -157,12 +157,11 @@ type AnimatedStateOptions<V> = {
 
 export const loop = (e: Animated, { autoStart = true }: { autoStart?: boolean } = {}) => {
   let raf: number
-  const browser = isBrowser()
   const stop = () => {
-    if (browser) cancelAnimationFrame(raf)
+    if (isBrowser) cancelAnimationFrame(raf)
   }
   const run = () => {
-    if (browser) raf = requestAnimationFrame(loop)
+    if (isBrowser) raf = requestAnimationFrame(loop)
   }
   const loop = (timestamp: number) => {
     e.tick(timestamp)

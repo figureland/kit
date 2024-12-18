@@ -1,6 +1,6 @@
 import { type Events, type Shape, events, shape, type Disposable, manager } from '../state'
-import { isNotNullish } from '../tools'
-import { listen, type ListenerTarget } from '../dom/events'
+import { isNotNullish } from '../tools/guards'
+import { listen, type ListenerTarget } from './dom-events'
 import { freeze } from '../tools/object'
 
 export type FileDropTextContent = {

@@ -5,7 +5,7 @@ import {
   isPointerEvent,
   type ListenerTarget,
   type PointerInteractionEvent
-} from '../dom/events'
+} from './dom-events'
 import { preciseEnough, vector2, type Vector2 } from '../math/vector2'
 
 export type PointerType = 'mouse' | 'pen' | 'touch'

@@ -1,6 +1,6 @@
 import type { Vector2 } from '../../math'
 import type { Disposable } from '../../state'
-import type { PointerState } from '../../dom/pointer'
+import type { PointerState } from '../../browser/pointer'
 import type { InfinityKit } from '../InfinityKit'
 import type { QueryAPI } from '../query/QueryAPI'
 

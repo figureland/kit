@@ -1,5 +1,5 @@
 import { type State, type Disposable, type Events, manager, state, events } from '../state'
-import { listen } from '../dom/events'
+import { listen } from '../browser/dom-events'
 import { isString } from '../tools/guards'
 import { freeze, values } from '../tools/object'
 import { settle } from '../tools/async'
@@ -14,7 +14,7 @@ import {
   type DataBlobContent,
   type HTMLBlobContent,
   type ImageBlobContent
-} from '../dom/blob'
+} from '../browser/blob'
 
 export type ClipboardEntry = {
   data?: DataBlobContent

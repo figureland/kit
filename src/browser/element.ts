@@ -1,4 +1,4 @@
-import { isString } from '../tools'
+import { isString } from '../tools/guards'
 
 export const isHTMLElement = (target?: unknown): target is HTMLElement =>
   target instanceof HTMLElement
