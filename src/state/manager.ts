@@ -3,10 +3,10 @@ import { createSubscriptions } from './subscriptions'
 
 export const manager = (): Manager => {
   const keyedSubs = new Map()
-  const subs = createSubscriptions()
+  const disposables = createSubscriptions()
 
   const use = <S extends Disposable | (() => void)>(s: S) => {
-    subs.add('dispose' in s ? s.dispose : s)
+    disposables.add('dispose' in s ? s.dispose : s)
     return s
   }
 
@@ -21,8 +21,8 @@ export const manager = (): Manager => {
   }
 
   const dispose = () => {
-    subs.each()
-    subs.dispose()
+    disposables.each()
+    disposables.dispose()
     keyedSubs.clear()
   }
 
