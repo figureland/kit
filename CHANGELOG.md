@@ -1,4 +1,16 @@
 #
+## v0.0.41
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.40...v0.0.41)
+
+### 🏡 Chore
+
+- Remove old modules ([16a4bfe](https://github.com/figureland/kit/commit/16a4bfe))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.40
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.39...v0.0.40)
