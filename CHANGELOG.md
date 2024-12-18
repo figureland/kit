@@ -1,4 +1,16 @@
 #
+## v0.0.39
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.38...v0.0.39)
+
+### 🏡 Chore
+
+- **release:** V0.0.38 ([a36f810](https://github.com/figureland/kit/commit/a36f810))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.38
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.37...v0.0.38)
