@@ -13,10 +13,6 @@ Tools for working with numbers, geometry, matrices and vertices.
 
 Simple, powerful reactive programming primitives that are portable between frameworks.
 
-#### [color](./src/color/)
-
-Utilities for working with color, wrapping some functionality from [@texel/color](https://github.com/texel-org/color)
-
 #### [infinity](./src/infinity/)
 
 Minimal primitives for building infinity canvas and map-type interactions.
@@ -25,7 +21,7 @@ Minimal primitives for building infinity canvas and map-type interactions.
 
 General purpose Typescript utilities, mainly used internally within this library.
 
-#### [dom](./src/dom/)
+#### [browser](./src/browser/)
 
 A collection of useful tools for DOM-based interaction, like file handling, clipboard, pointer events.
 

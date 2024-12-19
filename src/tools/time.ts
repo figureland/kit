@@ -5,6 +5,8 @@ const hour = 3600
 const day = 86400
 const week = 604800
 
+export const createTimestamp = () => Date.now()
+
 export const getTimeSince = (timestamp: number): string => {
   const now = new Date().getTime()
   const diffInSeconds = floor((now - timestamp) / 1000)

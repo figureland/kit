@@ -6,6 +6,7 @@
     "tools/*"
   ],
   "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "exports": {
     ".": {
       "types": "./src/index.ts",
@@ -184,7 +185,10 @@
     "test": "bun test",
     "lint": "eslint src/",
     "format": "prettier --write src/",
-    "release": "bunx changelogen@latest --release"
+    "release:patch": "bunx changelogen@latest --release --patch",
+    "release:minor": "bunx changelogen@latest --release --minor",
+    "release:major": "bunx changelogen@latest --release --major",
+    "typecheck": "tsc --noEmit"
   },
   "files": [
     "src"
