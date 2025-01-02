@@ -1,4 +1,4 @@
-import { readonly, shape, extend } from '../state'
+import { readonly, struct, extend } from '../state'
 import { listen } from './dom-events'
 import { mediaQuery } from './media'
 
@@ -13,7 +13,7 @@ export const createPreferences = () => {
   const reducedMotion = mediaQuery('prefers-reduced-motion: reduce')
   const reducedContrast = mediaQuery('prefers-contrast: no-preference')
 
-  const state = shape<PreferenceState>({
+  const state = struct<PreferenceState>({
     colorScheme: colorScheme.matches ? 'dark' : 'light',
     reducedMotion: reducedMotion.matches,
     reducedContrast: reducedContrast.matches

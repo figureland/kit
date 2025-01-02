@@ -10,7 +10,7 @@ export {
   createTopicSubscriptions,
   type TopicSubscriptions
 } from './subscriptions'
-export { shape } from './shape'
+export { struct } from './struct'
 export { manager, disposable } from './manager'
 export { history, type HistoryOptions } from './history'
 export { readonly } from './readonly'

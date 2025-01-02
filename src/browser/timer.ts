@@ -1,4 +1,4 @@
-import { events, shape, manager, type Events, type Shape, type Unsubscribe } from '../state'
+import { events, struct, manager, type Events, type Struct, type Unsubscribe } from '../state'
 import { isBrowser } from '.'
 
 type TimerEvent = {
@@ -22,7 +22,7 @@ export const timer = (): Timer => {
 
   const { use, dispose } = manager()
   const state = use(
-    shape<TimerState>({
+    struct<TimerState>({
       active: false,
       event: undefined
     })
@@ -72,7 +72,7 @@ export const timer = (): Timer => {
 }
 
 export type Timer = {
-  state: Shape<TimerState>
+  state: Struct<TimerState>
   get: () => TimerEvent | undefined
   on: Events<TimerEvents>['on']
   start: () => void

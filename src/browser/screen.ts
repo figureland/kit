@@ -1,4 +1,4 @@
-import { type Shape, shape, extend } from '../state'
+import { type Struct, struct, extend } from '../state'
 import { dp } from '../math/number'
 import type { Size } from '../math/size'
 import { listen } from './dom-events'
@@ -23,7 +23,7 @@ export const createScreen = <B extends Breakpoints>(
   breakpoints: B = defaultBreakpoint as B
 ): Screen<B> => {
   const size = getWindowSize()
-  const state = shape<ScreenState<B>>({
+  const state = struct<ScreenState<B>>({
     visible: true,
     size,
     scale: getWindowScale(),
@@ -70,6 +70,6 @@ export const createScreen = <B extends Breakpoints>(
   })
 }
 
-export type Screen<B = Breakpoints> = Shape<ScreenState<B>> & {
+export type Screen<B = Breakpoints> = Struct<ScreenState<B>> & {
   is: (b: keyof B) => boolean
 }

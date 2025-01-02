@@ -55,7 +55,7 @@ export type StateOptions<R> = {
   throttle?: number
 }
 
-export type Shape<R extends Record<string, any>, K extends keyof R = keyof R> = Settable<R> &
+export type Struct<R extends Record<string, any>, K extends keyof R = keyof R> = Settable<R> &
   Gettable<R> & {
     key: <K extends keyof R>(key: K) => State<R[K]>
     keys: K[]

@@ -1,6 +1,6 @@
-import { type Shape } from '../state'
+import { type Struct } from '../state'
 import { listen } from './dom-events'
-import { shape } from '../state/shape'
+import { struct } from '../state/struct'
 
 export const isBrowser = typeof window !== 'undefined'
 
@@ -105,7 +105,7 @@ export type DeviceState = {
 }
 
 export const createDevice = (): Device => {
-  const state = shape<DeviceState>({
+  const state = struct<DeviceState>({
     online: navigator?.onLine || true,
     persistence: defaultPersistence(),
     safari: isSafari(),
@@ -130,4 +130,4 @@ export const createDevice = (): Device => {
   return state
 }
 
-export type Device = Shape<DeviceState>
+export type Device = Struct<DeviceState>

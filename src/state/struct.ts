@@ -1,8 +1,8 @@
 import { isFunction } from '../tools/guards'
 import { state } from './state'
-import type { State, StateOptions, Shape } from './api'
+import type { State, StateOptions, Struct } from './api'
 
-export const shape = <R extends Record<string, any>>(r: R, options?: StateOptions<R>): Shape<R> => {
+export const struct = <R extends Record<string, any>>(r: R, options?: StateOptions<R>): Struct<R> => {
   const parent = state<R>(structuredClone(r), options)
   const states = {} as { [K in keyof R]: State<R[K]> }
 
