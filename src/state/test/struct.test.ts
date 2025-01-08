@@ -7,6 +7,11 @@ describe('struct', () => {
     const objState = struct(initialObj)
     expect(objState.get()).toEqual(initialObj)
   })
+  it('creates a struct from function and retrieves its initial values', () => {
+    const objState = struct(() => ({ a: 1, b: 'test' }))
+    expect(objState.get().a).toEqual(1)
+    expect(objState.get().b).toEqual('test')
+  })
   it('sets and gets a single state value', () => {
     const objState = struct({ a: 1, b: 'test' })
     objState.key('a').set(2)

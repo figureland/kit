@@ -2,12 +2,16 @@ import { isFunction } from '../tools/guards'
 import { state } from './state'
 import type { State, StateOptions, Struct } from './api'
 
-export const struct = <R extends Record<string, any>>(r: R, options?: StateOptions<R>): Struct<R> => {
-  const parent = state<R>(structuredClone(r), options)
+export const struct = <R extends Record<string, any>>(
+  r: R | (() => R),
+  options?: StateOptions<R>
+): Struct<R> => {
+  const baseStruct = isFunction(r) ? r() : r
+  const parent = state<R>(structuredClone(baseStruct), options)
   const states = {} as { [K in keyof R]: State<R[K]> }
 
-  for (const k in r) {
-    states[k] = state(r[k])
+  for (const k in baseStruct) {
+    states[k] = state(baseStruct[k])
     parent.use(states[k].on(() => parent.set(getObject())))
     parent.use(states[k].dispose)
   }
@@ -16,7 +20,7 @@ export const struct = <R extends Record<string, any>>(r: R, options?: StateOptio
 
   const getObject = () => {
     const out = {} as R
-    for (const k in r) {
+    for (const k in baseStruct) {
       out[k] = key(k).get()
     }
     return out
