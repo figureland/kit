@@ -1,4 +1,20 @@
 #
+## v0.0.42
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.41...v0.0.42)
+
+### 🏡 Chore
+
+- Added typechecking and updated package exports ([525229a](https://github.com/figureland/kit/commit/525229a))
+- Renamed shape -> struct ([09e8f39](https://github.com/figureland/kit/commit/09e8f39))
+- Updated filename ([3cd1c82](https://github.com/figureland/kit/commit/3cd1c82))
+- Updated filename ([9a24dcc](https://github.com/figureland/kit/commit/9a24dcc))
+- Added function argument to struct ([ccab1ae](https://github.com/figureland/kit/commit/ccab1ae))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.41
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.40...v0.0.41)
