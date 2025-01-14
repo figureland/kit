@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'bun:test'
 import { wrap } from '../wrap'
 import Big, { type BigSource } from 'big.js'
-import { isMap } from '../../tools'
+import { isMap } from '../../tools/guards'
 import { state } from '../state'
 
 describe('wrap', () => {
