@@ -1,4 +1,20 @@
 #
+## v0.0.43
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.42...v0.0.43)
+
+### 🩹 Fixes
+
+- Bug in state events behaviour ([faf7ca9](https://github.com/figureland/kit/commit/faf7ca9))
+
+### 🏡 Chore
+
+- Api tweaks to wrap ([6f3213f](https://github.com/figureland/kit/commit/6f3213f))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.42
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.41...v0.0.42)
