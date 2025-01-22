@@ -24,6 +24,13 @@ describe('wrap', () => {
     const b = decimal(10)
     const derive = b.derive((v) => v.times(2).toString())
     expect(derive.get()).toBe('20')
+
+    // essentially the same as b.derive((v) => v.times(2).toString())
+    const childState = state((get) => new Big(get(b)).times(2).toString())
+    expect(childState.get()).toBe('20')
+
+    // original state is unchanged
+    expect(b.get()).toBe('10')
   })
 
   it('updates derive state when original state changes', () => {

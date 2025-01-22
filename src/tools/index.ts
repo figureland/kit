@@ -27,7 +27,9 @@ export {
   isNullOrUndefined,
   isPrimitive,
   isNull,
-  isUndefined
+  isUndefined,
+  isAsyncGenerator,
+  isAsyncGeneratorFunction
 } from './guards'
 export {
   type DistributiveOmit,

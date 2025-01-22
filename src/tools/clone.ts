@@ -15,3 +15,4 @@ export const clone = <T>(o: T): T => {
     throw new Error(`Could not clone ${stringify(o)}`)
   }
 }
+
