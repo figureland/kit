@@ -1,4 +1,8 @@
 #
+## v0.0.46
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.45...v0.0.46)
+
 ## v0.0.45
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.44...v0.0.45)
