@@ -44,9 +44,9 @@ export const state = <V>(
     const newValue = shouldMerge && isObject(value) ? (merge(value, next) as V) : (next as V)
     if (!equality || !equality(value, newValue) || forceSync) {
       lastSyncTime = performance.now()
+      e.emit('previous', [lastSyncTime, value])
       value = newValue
       e.emit('state', value)
-      e.emit('previous', [lastSyncTime, value])
     }
   }
 
@@ -58,7 +58,6 @@ export const state = <V>(
 
   const on = (sub: Subscription<V>) => e.on('state', sub)
 
-  e.emit('init', undefined)
   return {
     set,
     on,

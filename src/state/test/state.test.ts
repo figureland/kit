@@ -46,7 +46,7 @@ describe('state', () => {
       get(s2)
       calls++
     })
-    
+
     expect(calls).toBe(1)
     s1.set(20)
     expect(calls).toBe(2)
@@ -153,5 +153,38 @@ describe('state with throttle', () => {
     testState.set(300)
 
     expect(latestValue).toBe(300)
+  })
+
+  it('subscribes correctly to named events', () => {
+    const testState = state(() => 10)
+    let receivedValue = 0
+    let receivedPrevious!: [number, number]
+    let receivedDispose!: any
+
+    testState.events.on('dispose', () => {
+      receivedDispose = true
+    })
+
+    testState.events.on('state', (value) => {
+      receivedValue = value
+    })
+
+    testState.events.on('previous', (p) => {
+      receivedPrevious = p
+    })
+
+    testState.set(20)
+
+    testState.dispose()
+
+    testState.set(30)
+
+    expect(receivedValue).toBe(20)
+    // timestamp
+    expect(receivedPrevious[0]).toBeGreaterThan(0)
+    // value
+    expect(receivedPrevious[1]).toBe(10)
+    // dispose
+    expect(receivedDispose).toBe(true)
   })
 })

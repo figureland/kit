@@ -25,7 +25,6 @@ export type SubscribableEvents<V> = {
   state: V
   dispose: void
   previous: SubscribableHistoryEntry<V>
-  init: void
 }
 
 export type ReadonlyState<V> = Subscribable<V> & Gettable<V>
