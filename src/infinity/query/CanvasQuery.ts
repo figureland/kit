@@ -1,7 +1,6 @@
 import { calculateBoundingBox, intersects, isBox, type Box } from '../../math/box'
 import { type State, state, events, manager } from '../../state'
-import { isAsyncGeneratorFunction, isNotNullish } from '../../tools/guards'
-import { entries } from '../../tools/object'
+import { isNotNullish } from '../../tools/guards'
 import { arraysEquals } from '../../tools/equals'
 import {
   type QueryParams,
@@ -170,24 +169,4 @@ export class CanvasQuery<Item extends any = any> implements QueryAPI<Item> {
   }
 
   public dispose = (): void => this.manager.dispose()
-}
-
-export const initializeCanvasQuery = async <Item = any, ID extends string = string>(
-  items?: Record<ID, Item> | (() => AsyncGenerator<[ID, Item]>)
-): Promise<CanvasQuery<Item>> => {
-  const query = new CanvasQuery<Item>()
-
-  if (items) {
-    if (isAsyncGeneratorFunction(items)) {
-      for await (const [id, item] of items()) {
-        query.add(id, item)
-      }
-    } else {
-      for (const [id, item] of entries(items)) {
-        query.add(id, item)
-      }
-    }
-  }
-
-  return query
 }

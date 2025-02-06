@@ -24,7 +24,7 @@ export {
 } from './InfinityKit'
 
 // Query API
-export { CanvasQuery, initializeCanvasQuery } from './query/CanvasQuery'
+export { CanvasQuery } from './query/CanvasQuery'
 export type {
   QueryIdentifier,
   Query,
