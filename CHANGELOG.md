@@ -1,4 +1,26 @@
 #
+## v0.0.47
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.46...v0.0.47)
+
+### 🚀 Enhancements
+
+- Added tasks module ([dcf52a7](https://github.com/figureland/kit/commit/dcf52a7))
+
+### 🏡 Chore
+
+- Tweaks to state types and added missing exports ([041f6d9](https://github.com/figureland/kit/commit/041f6d9))
+- Simplified persistence name ([dbb232e](https://github.com/figureland/kit/commit/dbb232e))
+- Rm stray comment ([d190683](https://github.com/figureland/kit/commit/d190683))
+- Removed tests from typechecking ([a3c5e5a](https://github.com/figureland/kit/commit/a3c5e5a))
+- Refined canvas query ([963e1ed](https://github.com/figureland/kit/commit/963e1ed))
+- Tweaks to tasks test ([9ee2b98](https://github.com/figureland/kit/commit/9ee2b98))
+- Tweaks to wrap.ts ([5642b01](https://github.com/figureland/kit/commit/5642b01))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.46
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.45...v0.0.46)
