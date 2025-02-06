@@ -86,7 +86,7 @@ export const tasks = (): Tasks => {
         task.dispose()
       }
       activeTasks.clear()
-      e.emit('dispose', undefined) // Added this line
+      e.emit('dispose', undefined)
       managerDispose()
     },
     events: e
