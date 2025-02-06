@@ -15,10 +15,20 @@ export const settle = async <T>(promises: Promise<T>[]) => {
   return parseSettled(results)
 }
 
-export async function collect<T>(asyncGenerator: AsyncGenerator<T>): Promise<T[]> {
-  const result: T[] = []
-  for await (const item of asyncGenerator) {
-    result.push(item)
+export const defer = <T = void>() => {
+  const resolve: (value: T | (() => Promise<T>)) => void = () => undefined
+  const reject: (reason?: unknown) => void = () => undefined
+
+  const promise = new Promise<T>((res, rej) => ({
+    resolve: res,
+    reject: rej
+  }))
+
+  promise.catch((error) => error)
+
+  return {
+    promise,
+    resolve,
+    reject
   }
-  return result
 }

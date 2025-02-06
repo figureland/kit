@@ -1,5 +1,4 @@
 import type { Settable, Gettable, SettableType } from '../state'
-import { isArray } from '../tools/guards'
 
 export type StorageAPI<T> = {
   get: () => Promise<T>
@@ -7,7 +6,7 @@ export type StorageAPI<T> = {
 }
 
 export type StorageAPIOptions<T> = {
-  name: string | PersistenceName
+  name: string
   validate?: ((v: unknown) => Promise<boolean>) | ((v: unknown) => v is T)
   fallback: T | (() => T) | (() => Promise<T>)
   refine?: {
@@ -15,10 +14,6 @@ export type StorageAPIOptions<T> = {
     set: ((v: T) => Promise<any>) | ((v: T) => any)
   }
 }
-
-export const getStorageName = (n: string | PersistenceName) => (isArray(n) ? n.join('/') : n)
-
-export type PersistenceName = string[]
 
 export const persist = <S extends Gettable<any> & Settable<any>>(
   s: S,

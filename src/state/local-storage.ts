@@ -1,6 +1,6 @@
 import { isBrowser } from '../browser'
 import { isFunction } from '../tools'
-import { getStorageName, PersistenceName, type StorageAPI, type StorageAPIOptions } from './persist'
+import { type StorageAPI, type StorageAPIOptions } from './persist'
 
 declare var localStorage: Storage
 
@@ -23,25 +23,24 @@ export const storage = <T>({
 }: LocalStorageOptions<T>): StorageAPI<T> => {
   let lastUpdate: number = performance.now()
   const browser = isBrowser
-  const target = getStorageName(name)
   const set = async (v: T) => {
     if (!browser) return
     const now = performance.now()
     if (!interval || now - lastUpdate >= interval) {
       const value = refine ? await refine.set(v) : v
-      localStorage.setItem(target, stringify(value))
+      localStorage.setItem(name, stringify(value))
       lastUpdate = now
     }
   }
   const get = async () => {
     try {
-      const result = parse(localStorage.getItem(target) || '')
+      const result = parse(localStorage.getItem(name) || '')
       const v = refine ? await refine.get(result) : result
       const validated = await validate(v)
       if (validated) {
         return v as T
       }
-      throw new Error(`Invalid value in ${target}`)
+      throw new Error(`Invalid value in ${name}`)
     } catch (e) {
       const fb = isFunction(fallback) ? ((await fallback()) as T) : fallback
       await set(fb)
@@ -54,7 +53,7 @@ export const storage = <T>({
   }
 }
 
-export const clear = (names: (string | PersistenceName)[]) => {
+export const clear = (names: string[]) => {
   if (!isBrowser) return
-  names.forEach((name) => localStorage.removeItem(getStorageName(name)))
+  names.forEach((name) => localStorage.removeItem(name))
 }

@@ -1,5 +1,5 @@
 export * from './api'
-export { type PersistenceName, persist, type StorageAPI, type StorageAPIOptions } from './persist'
+export { persist, type StorageAPI, type StorageAPIOptions } from './persist'
 export { events } from './events'
 export { state, extend } from './state'
 export {
