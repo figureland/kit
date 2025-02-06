@@ -4,7 +4,7 @@ import Big, { type BigSource } from 'big.js'
 import { isMap } from '../../tools/guards'
 import { state } from '../state'
 
-describe('wrap', () => {
+describe('wrap external library', () => {
   const decimal = wrap((v: BigSource) => new Big(v), {
     get: (instance) => instance.value.toString()
   })
@@ -155,5 +155,41 @@ describe('wrap', () => {
     ])
 
     expect(keysOnly.get()).toEqual(['a', 'c'])
+  })
+})
+
+class BracketedNumber {
+  private value: number
+
+  public get = () => `(${this.value.toString()})`
+
+  public set = (v: number) => {
+    this.value = v
+  }
+}
+
+describe('wraps custom class with get and set ', () => {
+  it('creates a state from a class', () => {
+    const s = wrap(
+      (n: number) => {
+        const i = new BracketedNumber()
+        if (n) i.set(n)
+        return i
+      },
+      {
+        get: (instance) => {
+          return instance.value.get()
+        },
+        set: (instance, value) => {
+          instance.value.set(value)
+        }
+      }
+    )
+
+    const s1 = s(1)
+    expect(s1.get()).toBe('(1)')
+
+    s1.set(2)
+    expect(s1.get()).toBe('(2)')
   })
 })
