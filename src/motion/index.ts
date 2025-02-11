@@ -1,5 +1,5 @@
 import { type AnimatedState, type Events, type State, events, manager, state } from '../state'
-import { clamp, mapRange } from '../math/number'
+import { clamp, map } from '../math/number'
 import { isObject } from '../tools/guards'
 import { isBrowser } from '../browser/device'
 import { freeze } from '../tools/object'
@@ -110,7 +110,7 @@ export const createAnimated = <V extends any>(
     const finished = store.progress === duration || duration - store.progress < epsilon
 
     if (!finished || store.active) {
-      const amount = easing(mapRange(store.progress, 0, duration, 0, 1))
+      const amount = easing(map(store.progress, 0, duration, 0, 1))
       objectLike
         ? clone.mutate((d) => {
             d = interpolate(d, store.target, amount)

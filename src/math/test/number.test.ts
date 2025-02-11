@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { clamp, lerp, mapRange } from '..'
+import { clamp, lerp, map } from '..'
 
 describe('clamp', () => {
   test('should return the value if it is within the bounds', () => {
@@ -30,7 +30,7 @@ describe('clamp', () => {
   })
 })
 
-describe('mapRange', () => {
+describe('map', () => {
   test('should correctly map value from one range to another', () => {
     const value = 5
     const low1 = 0
@@ -38,7 +38,7 @@ describe('mapRange', () => {
     const low2 = 0
     const high2 = 100
 
-    const result = mapRange(value, low1, high1, low2, high2)
+    const result = map(value, low1, high1, low2, high2)
     expect(result).toBe(50)
   })
 
@@ -49,7 +49,7 @@ describe('mapRange', () => {
     const low2 = 0
     const high2 = 10
 
-    const result = mapRange(value, low1, high1, low2, high2)
+    const result = map(value, low1, high1, low2, high2)
     expect(result).toBe(5)
   })
 
@@ -60,7 +60,7 @@ describe('mapRange', () => {
     const low2 = 0
     const high2 = 100
 
-    const result = mapRange(value, low1, high1, low2, high2)
+    const result = map(value, low1, high1, low2, high2)
     expect(result).toBe(150)
   })
 })

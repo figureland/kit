@@ -1,4 +1,4 @@
-import { mapRange } from "../../math/number";
+import { map } from "../../math/number";
 import type { Matrix2D } from "../../math";
 import type { Box } from "../../math/box";
 import { getScale } from "../../math/matrix2D";
@@ -18,7 +18,7 @@ export const getSVGBackgroundPattern = (
     height: size,
     patternTransform: patternTransform,
     patternUnits: "userSpaceOnUse",
-    opacity: mapRange(getScale(matrix), 0.5, 1, 0.1, 0.5),
+    opacity: map(getScale(matrix), 0.5, 1, 0.1, 0.5),
   };
 };
 

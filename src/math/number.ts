@@ -28,7 +28,7 @@ export const clamp = (value: number, low: number, high: number = Infinity): numb
  * @returns Number
  *
  */
-export const mapRange = (
+export const map = (
   value: number,
   low1: number,
   high1: number,

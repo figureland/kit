@@ -6,7 +6,7 @@ export {
   round,
   sqrt,
   clamp,
-  mapRange,
+  map,
   lerp,
   dp,
   cos,
