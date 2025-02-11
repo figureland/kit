@@ -20,6 +20,7 @@ export type Task = {
 
 export type Tasks = {
   add: (id: string, fn: () => void, options: TaskOptions) => Task
+  get: (id: string) => Task | undefined
   dispose: () => void
   events: Events<TaskEvents>
 }
@@ -27,13 +28,18 @@ export type Tasks = {
 export const tasks = (): Tasks => {
   const { use, dispose: managerDispose } = manager()
   const e = use(events<TaskEvents>())
-  const activeTasks = new Set<Task>()
+  const activeTasks = new Map<string, Task>()
 
   const createTask = (
     id: string,
     fn: () => void,
     { interval, count = Infinity }: TaskOptions
   ): Task => {
+    const existingTask = activeTasks.get(id)
+    if (existingTask) {
+      existingTask.dispose()
+    }
+
     const m = manager()
     const active = m.use(state(true))
     const remaining = m.use(state(count))
@@ -68,7 +74,7 @@ export const tasks = (): Tasks => {
         clearTimeout(timer)
         active.set(false)
         m.dispose()
-        activeTasks.delete(task)
+        activeTasks.delete(id)
       }
     })
 
@@ -78,11 +84,12 @@ export const tasks = (): Tasks => {
   return freeze({
     add: (id: string, fn: () => void, options: TaskOptions) => {
       const task = createTask(id, fn, options)
-      activeTasks.add(task)
+      activeTasks.set(id, task)
       return task
     },
+    get: (id: string) => activeTasks.get(id),
     dispose: () => {
-      for (const task of activeTasks) {
+      for (const task of activeTasks.values()) {
         task.dispose()
       }
       activeTasks.clear()

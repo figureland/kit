@@ -142,4 +142,66 @@ describe('Task Manager', () => {
     expect(count1).toBe(1)
     expect(count2).toBe(1)
   })
+
+  it('should retrieve task by id', () => {
+    const task = taskManager.add('retrievable', () => {}, {
+      interval: 100
+    })
+
+    const retrieved = taskManager.get('retrievable')
+    expect(retrieved).toBe(task)
+    expect(retrieved?.id).toBe('retrievable')
+  })
+
+  it('should return undefined for non-existent task id', () => {
+    const retrieved = taskManager.get('non-existent')
+    expect(retrieved).toBeUndefined()
+  })
+
+  it('should replace existing task with same id', async () => {
+    let count1 = 0
+    let count2 = 0
+
+    // Create first task
+    const task1 = taskManager.add(
+      'duplicate',
+      () => {
+        count1++
+      },
+      {
+        interval: 100
+      }
+    )
+
+    await delay(150)
+    expect(count1).toBeGreaterThan(0)
+
+    // Create second task with same id
+    const task2 = taskManager.add(
+      'duplicate',
+      () => {
+        count2++
+      },
+      {
+        interval: 100
+      }
+    )
+
+    await delay(150)
+
+    // First task should be stopped
+    const initialCount1 = count1
+    expect(task1.active.get()).toBe(false)
+
+    // Second task should be running
+    expect(count2).toBeGreaterThan(0)
+    expect(task2.active.get()).toBe(true)
+
+    // First task should not increment anymore
+    await delay(150)
+    expect(count1).toBe(initialCount1)
+
+    // Verify get() returns the new task
+    expect(taskManager.get('duplicate')).toBe(task2)
+  })
 })

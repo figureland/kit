@@ -42,7 +42,7 @@ export const state = <V>(
     const next = isFunction(v) ? (v as (v: V) => V)(value) : v
     const shouldMerge = isObject(next) && !isMap(next) && !isSet(next)
     const newValue = shouldMerge && isObject(value) ? (merge(value, next) as V) : (next as V)
-    if (!equality || !equality(value, newValue) || forceSync) {
+    if (forceSync || !equality || !equality(value, newValue)) {
       lastSyncTime = performance.now()
       e.emit('previous', [lastSyncTime, value])
       value = newValue
