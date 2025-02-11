@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'bun:test'
 import { state } from '..'
-
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+import { delay } from '../../tools/async'
 
 describe('state', () => {
   it('creates a state and retrieves its value', () => {

@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'bun:test'
 import { events } from '..'
+import { delay } from '../../tools/async'
 
 describe('events', () => {
   type EventsMap = {
@@ -178,5 +179,3 @@ describe('events', () => {
     expect(count).toBe(3)
   })
 })
-
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))

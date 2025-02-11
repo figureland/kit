@@ -1,8 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach } from 'bun:test'
 import { tasks } from '..'
 import type { Tasks } from '../tasks'
-
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+import { delay } from '../../tools/async'
 
 describe('Task Manager', () => {
   let taskManager: Tasks
