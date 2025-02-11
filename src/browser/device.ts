@@ -97,6 +97,7 @@ export const getPersistenceStatus = async (): Promise<PersistenceStatus> => {
 
 export type DeviceState = {
   online: boolean
+  focus: boolean
   persistence: PersistenceStatus
   safari: boolean
   chrome: boolean
@@ -107,6 +108,7 @@ export type DeviceState = {
 export const createDevice = (): Device => {
   const state = struct<DeviceState>({
     online: navigator?.onLine || true,
+    focus: document?.hasFocus(),
     persistence: defaultPersistence(),
     safari: isSafari(),
     chrome: isChrome(),
@@ -118,6 +120,12 @@ export const createDevice = (): Device => {
 
   state.use(
     listen(window, {
+      focus: () => {
+        state.key('focus').set(true)
+      },
+      blur: () => {
+        state.key('focus').set(false)
+      },
       online: () => {
         state.key('online').set(true)
       },
