@@ -1,13 +1,14 @@
 import { isFunction } from '../tools/guards'
 import { state } from './state'
 import type { State, StateOptions, Struct } from './api'
+import { freeze } from '../tools/object'
 
 export const struct = <R extends Record<string, any>>(
   r: R | (() => R),
   options?: StateOptions<R>
 ): Struct<R> => {
-  const baseStruct = isFunction(r) ? r() : r
-  const parent = state<R>(structuredClone(baseStruct), options)
+  const baseStruct = structuredClone(isFunction(r) ? r() : r)
+  const parent = state<R>(baseStruct, options)
   const states = {} as { [K in keyof R]: State<R[K]> }
 
   for (const k in baseStruct) {
@@ -33,7 +34,7 @@ export const struct = <R extends Record<string, any>>(
     }
   }
 
-  return {
+  return freeze({
     keys: Object.keys(states),
     key,
     set,
@@ -42,5 +43,5 @@ export const struct = <R extends Record<string, any>>(
     get: parent.get,
     dispose: parent.dispose,
     use: parent.use
-  }
+  })
 }
