@@ -34,16 +34,10 @@ describe('Task Manager', () => {
 
   it('should respect task count limit', async () => {
     let count = 0
-    const task = taskManager.add(
-      'limited',
-      () => {
-        count++
-      },
-      {
-        interval: 100,
-        count: 2
-      }
-    )
+    const task = taskManager.add('limited', () => count++, {
+      interval: 100,
+      count: 2
+    })
 
     await delay(500)
     expect(count).toBe(2)
@@ -67,15 +61,9 @@ describe('Task Manager', () => {
 
   it('should stop task on dispose', async () => {
     let count = 0
-    const task = taskManager.add(
-      'disposable',
-      () => {
-        count++
-      },
-      {
-        interval: 100
-      }
-    )
+    const task = taskManager.add('disposable', () => count++, {
+      interval: 100
+    })
 
     await delay(150)
     const initialCount = count
@@ -163,29 +151,17 @@ describe('Task Manager', () => {
     let count2 = 0
 
     // Create first task
-    const task1 = taskManager.add(
-      'duplicate',
-      () => {
-        count1++
-      },
-      {
-        interval: 100
-      }
-    )
+    const task1 = taskManager.add('duplicate', () => count1++, {
+      interval: 100
+    })
 
     await delay(150)
     expect(count1).toBeGreaterThan(0)
 
     // Create second task with same id
-    const task2 = taskManager.add(
-      'duplicate',
-      () => {
-        count2++
-      },
-      {
-        interval: 100
-      }
-    )
+    const task2 = taskManager.add('duplicate', () => count2++, {
+      interval: 100
+    })
 
     await delay(150)
 
