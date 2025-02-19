@@ -20,13 +20,7 @@ import {
   add,
   preciseEnough as preciseEnoughVec2
 } from '../math/vector2'
-import {
-  box,
-  type Box,
-  boxCenter,
-  isBox,
-  preciseEnough as preciseEnoughBox
-} from '../math/box'
+import { box, type Box, boxCenter, isBox, preciseEnough as preciseEnoughBox } from '../math/box'
 import { state, readonly, manager } from '../state'
 import { DEFAULT_CANVAS_OPTIONS } from './constants'
 import type { BackgroundPatternType } from './schema/background.schema'
@@ -58,7 +52,6 @@ export class Canvas {
 
   public readonly viewport = this.manager.use(state(() => box()))
   public readonly transform = this.manager.use(state(() => matrix2D()))
-
   public readonly scale = this.manager.use(state((get) => getScale(get(this.transform))))
   public readonly previous = this.manager.use(
     state(() => ({
@@ -212,9 +205,7 @@ export class Canvas {
     item.x -= viewport.x
     item.y -= viewport.y
 
-    const result: Vector2 & Partial<Box> = preciseEnoughVec2(
-      transform(vector2(), item, invTransform)
-    )
+    const result = preciseEnoughVec2(transform(vector2(), item, invTransform))
 
     if (isBox(item)) {
       const v = vector2()

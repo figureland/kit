@@ -31,7 +31,7 @@
     "./browser/fullscreen": "./src/browser/fullscreen.ts",
     "./browser/keycommands": "./src/browser/keycommands.ts",
     "./browser/pointer": "./src/browser/pointer.ts",
-    "./browser/screen": "./src/browser/screen.ts",
+    "./browser/viewport": "./src/browser/viewport.ts",
     "./browser/sfx": "./src/browser/sfx.ts",
     "./browser/dom-events": "./src/browser/dom-events.ts",
     "./browser/blob": "./src/browser/blob.ts",

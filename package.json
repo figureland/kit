@@ -124,9 +124,9 @@
       "types": "./src/browser/pointer.ts",
       "import": "./src/browser/pointer.ts"
     },
-    "./browser/screen": {
-      "types": "./src/browser/screen.ts",
-      "import": "./src/browser/screen.ts"
+    "./browser/viewport": {
+      "types": "./src/browser/viewport.ts",
+      "import": "./src/browser/viewport.ts"
     },
     "./browser/sfx": {
       "types": "./src/browser/sfx.ts",

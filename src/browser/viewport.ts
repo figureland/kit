@@ -4,7 +4,7 @@ import type { Size } from '../math/size'
 import { listen } from './dom-events'
 import { getClosestBreakpoint, type Breakpoints } from './utils/breakpoints'
 
-export type ScreenState<B> = {
+export type ViewportState<B> = {
   visible: boolean
   size: Size
   scale: number
@@ -19,11 +19,11 @@ const defaultBreakpoint: Breakpoints = {
   default: 0
 }
 
-export const createScreen = <B extends Breakpoints>(
+export const createViewport = <B extends Breakpoints>(
   breakpoints: B = defaultBreakpoint as B
-): Screen<B> => {
+): Viewport<B> => {
   const size = getWindowSize()
-  const state = struct<ScreenState<B>>({
+  const state = struct<ViewportState<B>>({
     visible: true,
     size,
     scale: getWindowScale(),
@@ -70,6 +70,6 @@ export const createScreen = <B extends Breakpoints>(
   })
 }
 
-export type Screen<B = Breakpoints> = Struct<ScreenState<B>> & {
+export type Viewport<B = Breakpoints> = Struct<ViewportState<B>> & {
   is: (b: keyof B) => boolean
 }
