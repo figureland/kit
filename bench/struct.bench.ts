@@ -1,4 +1,4 @@
-import { bench, boxplot, run } from 'mitata'
+import { bench, boxplot } from 'mitata'
 import { struct } from '../src/state'
 
 boxplot(() => {

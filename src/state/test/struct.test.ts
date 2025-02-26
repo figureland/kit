@@ -34,6 +34,15 @@ describe('struct', () => {
 
     expect(receivedObj).toEqual({ a: 2, b: 'initial' })
   })
+  it('subscribes to a key', () => {
+    const objState = struct({ a: 1, b: 'initial' })
+    let receivedObj!: SettableType<typeof objState>['a']
+    objState.key('a').on((updatedObj) => {
+      receivedObj = updatedObj
+    })
+    objState.set({ a: 2 })
+    expect(receivedObj).toEqual(2)
+  })
   it('disposes of all states and stops notifications', () => {
     const objState = struct({ a: 1, b: 'initial' })
     let calls = 0

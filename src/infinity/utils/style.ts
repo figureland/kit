@@ -5,7 +5,7 @@ import { getScale } from '../../math/matrix2D'
 import { transform } from '../../math/style'
 
 export const boxStyle = (box: Box, inset: number = 0): string =>
-  `width: ${box.width - inset}px; height: ${box.height - inset}px; transform: ${transform([1, 0, 0, 1, box.x + inset / 2, box.y + inset / 2])}`
+  `touch-action: none; width: ${box.width - inset}px; height: ${box.height - inset}px; transform: ${transform([1, 0, 0, 1, box.x + inset / 2, box.y + inset / 2])}`
 
 export const getSVGBackgroundPattern = (matrix: Matrix2D, size: number): SVGBackgroundPattern => ({
   width: size,
