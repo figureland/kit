@@ -1,4 +1,29 @@
 #
+## v0.0.49
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.48...v0.0.49)
+
+### 🚀 Enhancements
+
+- Added focus detection ([74930d7](https://github.com/figureland/kit/commit/74930d7))
+
+### 🏡 Chore
+
+- Tidied up test ([d44b4f8](https://github.com/figureland/kit/commit/d44b4f8))
+- Relocated delay ([340ccc4](https://github.com/figureland/kit/commit/340ccc4))
+- Performance tweaks to struct ([74babbf](https://github.com/figureland/kit/commit/74babbf))
+- Renamed mapRange ([2a56fe5](https://github.com/figureland/kit/commit/2a56fe5))
+- Changed Screen to Viewport ([2d1452f](https://github.com/figureland/kit/commit/2d1452f))
+- **release:** V0.0.48 ([fc6b3a0](https://github.com/figureland/kit/commit/fc6b3a0))
+
+### ✅ Tests
+
+- Minor tweaks to struct ([5f82e58](https://github.com/figureland/kit/commit/5f82e58))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.48
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.48...v0.0.48)
