@@ -11,7 +11,7 @@ export {
   type TopicSubscriptions
 } from './subscriptions'
 export { struct } from './struct'
-export { manager, disposable } from './manager'
+export { store, disposable } from './store'
 export { history, type HistoryOptions } from './history'
 export { readonly } from './readonly'
 export { wrap } from './wrap'

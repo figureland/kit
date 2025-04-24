@@ -1,7 +1,7 @@
-import type { Disposable, Manager } from './api'
+import type { Disposable, Store } from './api'
 import { createSubscriptions } from './subscriptions'
 
-export const manager = (): Manager => {
+export const store = (): Store => {
   const keyedSubs = new Map()
   const disposables = createSubscriptions()
 

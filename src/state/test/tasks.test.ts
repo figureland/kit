@@ -3,20 +3,20 @@ import { tasks } from '..'
 import type { Tasks } from '../tasks'
 import { delay } from '../../tools/async'
 
-describe('Task Manager', () => {
-  let taskManager: Tasks
+describe('Task Store', () => {
+  let taskStore: Tasks
 
   beforeEach(() => {
-    taskManager = tasks()
+    taskStore = tasks()
   })
 
   afterEach(() => {
-    taskManager.dispose()
+    taskStore.dispose()
   })
 
   it('should create and run a task', async () => {
     let count = 0
-    const task = taskManager.add(
+    const task = taskStore.add(
       'counter',
       () => {
         count++
@@ -33,7 +33,7 @@ describe('Task Manager', () => {
 
   it('should respect task count limit', async () => {
     let count = 0
-    const task = taskManager.add('limited', () => count++, {
+    const task = taskStore.add('limited', () => count++, {
       interval: 100,
       count: 2
     })
@@ -45,11 +45,11 @@ describe('Task Manager', () => {
 
   it('should emit events when tasks run', async () => {
     let eventCount = 0
-    taskManager.events.on('test-task', () => {
+    taskStore.events.on('test-task', () => {
       eventCount++
     })
 
-    taskManager.add('test-task', () => {}, {
+    taskStore.add('test-task', () => {}, {
       interval: 100,
       count: 2
     })
@@ -60,7 +60,7 @@ describe('Task Manager', () => {
 
   it('should stop task on dispose', async () => {
     let count = 0
-    const task = taskManager.add('disposable', () => count++, {
+    const task = taskStore.add('disposable', () => count++, {
       interval: 100
     })
 
@@ -71,18 +71,18 @@ describe('Task Manager', () => {
     expect(count).toBe(initialCount)
   })
 
-  it('should dispose all tasks when manager is disposed', async () => {
+  it('should dispose all tasks when store is disposed', async () => {
     let count1 = 0,
       count2 = 0
 
-    taskManager.add('task1', () => count1++, { interval: 100 })
-    taskManager.add('task2', () => count2++, { interval: 100 })
+    taskStore.add('task1', () => count1++, { interval: 100 })
+    taskStore.add('task2', () => count2++, { interval: 100 })
 
     await delay(150)
     const initial1 = count1
     const initial2 = count2
 
-    taskManager.dispose()
+    taskStore.dispose()
     await delay(150)
 
     expect(count1).toBe(initial1)
@@ -90,7 +90,7 @@ describe('Task Manager', () => {
   })
 
   it('should track remaining count correctly', async () => {
-    const task = taskManager.add('counted', () => {}, {
+    const task = taskStore.add('counted', () => {}, {
       interval: 100,
       count: 3
     })
@@ -102,14 +102,14 @@ describe('Task Manager', () => {
     expect(task.count.get()).toBe(0)
   })
 
-  it('should emit dispose event when manager is disposed', () => {
+  it('should emit dispose event when store is disposed', () => {
     let disposed = false
 
-    taskManager.events.on('dispose', () => {
+    taskStore.events.on('dispose', () => {
       disposed = true
     })
 
-    taskManager.dispose()
+    taskStore.dispose()
     expect(disposed).toBe(true)
   })
 
@@ -117,10 +117,10 @@ describe('Task Manager', () => {
     let count1 = 0,
       count2 = 0
 
-    taskManager.events.on('multi-listen', () => count1++)
-    taskManager.events.on('multi-listen', () => count2++)
+    taskStore.events.on('multi-listen', () => count1++)
+    taskStore.events.on('multi-listen', () => count2++)
 
-    taskManager.add('multi-listen', () => {}, {
+    taskStore.add('multi-listen', () => {}, {
       interval: 100,
       count: 1
     })
@@ -131,17 +131,17 @@ describe('Task Manager', () => {
   })
 
   it('should retrieve task by id', () => {
-    const task = taskManager.add('retrievable', () => {}, {
+    const task = taskStore.add('retrievable', () => {}, {
       interval: 100
     })
 
-    const retrieved = taskManager.get('retrievable')
+    const retrieved = taskStore.get('retrievable')
     expect(retrieved).toBe(task)
     expect(retrieved?.id).toBe('retrievable')
   })
 
   it('should return undefined for non-existent task id', () => {
-    const retrieved = taskManager.get('non-existent')
+    const retrieved = taskStore.get('non-existent')
     expect(retrieved).toBeUndefined()
   })
 
@@ -150,7 +150,7 @@ describe('Task Manager', () => {
     let count2 = 0
 
     // Create first task
-    const task1 = taskManager.add('duplicate', () => count1++, {
+    const task1 = taskStore.add('duplicate', () => count1++, {
       interval: 100
     })
 
@@ -158,7 +158,7 @@ describe('Task Manager', () => {
     expect(count1).toBeGreaterThan(0)
 
     // Create second task with same id
-    const task2 = taskManager.add('duplicate', () => count2++, {
+    const task2 = taskStore.add('duplicate', () => count2++, {
       interval: 100
     })
 
@@ -177,6 +177,6 @@ describe('Task Manager', () => {
     expect(count1).toBe(initialCount1)
 
     // Verify get() returns the new task
-    expect(taskManager.get('duplicate')).toBe(task2)
+    expect(taskStore.get('duplicate')).toBe(task2)
   })
 })

@@ -1,4 +1,4 @@
-import { manager } from '../../state'
+import { store } from '../../state'
 import { box, preciseEnough } from '../../math/box'
 import { copy, vector2 } from '../../math/vector2'
 import { min, max } from '../../math/number'
@@ -20,7 +20,7 @@ const mergeSelection = <T>(array1: T[], array2: T[], toggle?: boolean): T[] => {
 }
 
 export const selectTool = (): InfinityKitTool => {
-  const { dispose } = manager()
+  const { dispose } = store()
   const brushOrigin = vector2()
   let interacting = false
   let additiveSelection = false

@@ -1,4 +1,4 @@
-import { type Events, type Struct, events, struct, type Disposable, manager } from '../state'
+import { type Events, type Struct, events, struct, type Disposable, store } from '../state'
 import { isNotNullish } from '../tools/guards'
 import { listen, type ListenerTarget } from './dom-events'
 import { freeze } from '../tools/object'
@@ -48,7 +48,7 @@ export const createFileDrop = ({
   mimeTypes,
   maxSize = 1024 * 64
 }: FileDropOptions) => {
-  const instance = manager()
+  const instance = store()
   const state = instance.use(struct<FileDropState>(initialState))
   const e = instance.use(events<FileDropEvents>())
 

@@ -1,5 +1,5 @@
 import { calculateBoundingBox, intersects, isBox, type Box } from '../../math/box'
-import { type State, state, events, manager } from '../../state'
+import { type State, state, events, store } from '../../state'
 import { isNotNullish } from '../../tools/guards'
 import { arraysEquals } from '../../tools/equals'
 import {
@@ -13,20 +13,20 @@ import {
 } from './QueryAPI'
 
 export class CanvasQuery<Item extends any = any> implements QueryAPI<Item> {
-  private readonly manager = manager()
+  private readonly store = store()
   private readonly entities = new Map<ID, Item>()
   private readonly queryQueue = new Map<QueryIdentifier, Query<Item>>()
-  public readonly queue = this.manager.use(events<Record<QueryIdentifier, QueryResult>>())
-  private readonly data = this.manager.use(events<Record<ID, Item | undefined>>())
-  public readonly processing = this.manager.use(state(false))
-  public readonly ids = this.manager.use(
+  public readonly queue = this.store.use(events<Record<QueryIdentifier, QueryResult>>())
+  private readonly data = this.store.use(events<Record<ID, Item | undefined>>())
+  public readonly processing = this.store.use(state(false))
+  public readonly ids = this.store.use(
     state<ID[]>([], {
       equality: arraysEquals
     })
   )
 
   constructor() {
-    this.manager.use(() => {
+    this.store.use(() => {
       this.processing.set(false)
       this.entities.clear()
       this.queryQueue.clear()
@@ -57,7 +57,7 @@ export class CanvasQuery<Item extends any = any> implements QueryAPI<Item> {
   public get = (id: ID): Item | undefined => this.entities.get(id)
 
   public subscribe = (id: ID) =>
-    this.manager.unique(id, () => {
+    this.store.unique(id, () => {
       const s = state(() => this.get(id))
       this.data.on(id, s.set)
       return s
@@ -137,8 +137,8 @@ export class CanvasQuery<Item extends any = any> implements QueryAPI<Item> {
     box: State<Q>,
     throttle: number = 90
   ): State<QueryResult> =>
-    this.manager.unique(id, () => {
-      const visible = this.manager.use(
+    this.store.unique(id, () => {
+      const visible = this.store.use(
         state<QueryResult>(createQueryResult, {
           equality: (a, b) => arraysEquals(a.box, b.box) && arraysEquals(a.point, b.point)
         })
@@ -168,5 +168,5 @@ export class CanvasQuery<Item extends any = any> implements QueryAPI<Item> {
     return calculateBoundingBox(boxLikeEntities as Box[])
   }
 
-  public dispose = (): void => this.manager.dispose()
+  public dispose = (): void => this.store.dispose()
 }

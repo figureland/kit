@@ -1,4 +1,4 @@
-import { type State, manager, state, type Disposable } from '../state'
+import { type State, store, state, type Disposable } from '../state'
 import { freeze } from '../tools/object'
 import { listen } from './dom-events'
 
@@ -7,7 +7,7 @@ export const supportsFullscreen = (): boolean =>
   'webkitFullscreenEnabled' in document
 
 export const createFullscreen = (): Fullscreen => {
-  const { use, dispose } = manager()
+  const { use, dispose } = store()
   const available = use(state(supportsFullscreen))
   const active = use(state(() => false))
 

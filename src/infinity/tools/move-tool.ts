@@ -1,9 +1,9 @@
 import { negate, vector2 } from '../../math/vector2'
-import { manager } from '../../state'
+import { store } from '../../state'
 import type { InfinityKitTool } from './Tool'
 
 export const moveTool = (): InfinityKitTool => {
-  const { dispose } = manager()
+  const { dispose } = store()
 
   let interacting = false
 

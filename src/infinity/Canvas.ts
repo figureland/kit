@@ -21,7 +21,7 @@ import {
   preciseEnough as preciseEnoughVec2
 } from '../math/vector2'
 import { box, type Box, boxCenter, isBox, preciseEnough as preciseEnoughBox } from '../math/box'
-import { state, readonly, manager } from '../state'
+import { state, readonly, store } from '../state'
 import { DEFAULT_CANVAS_OPTIONS } from './constants'
 import type { BackgroundPatternType } from './schema/background.schema'
 
@@ -42,18 +42,18 @@ export type CanvasOptions = {
 }
 
 export class Canvas {
-  private manager = manager()
-  public readonly options = this.manager.use(state<CanvasOptions>(() => DEFAULT_CANVAS_OPTIONS))
-  public readonly state = this.manager.use(
+  private store = store()
+  public readonly options = this.store.use(state<CanvasOptions>(() => DEFAULT_CANVAS_OPTIONS))
+  public readonly state = this.store.use(
     state<CanvasState>({
       loaded: false
     })
   )
 
-  public readonly viewport = this.manager.use(state(() => box()))
-  public readonly transform = this.manager.use(state(() => matrix2D()))
-  public readonly scale = this.manager.use(state((get) => getScale(get(this.transform))))
-  public readonly previous = this.manager.use(
+  public readonly viewport = this.store.use(state(() => box()))
+  public readonly transform = this.store.use(state(() => matrix2D()))
+  public readonly scale = this.store.use(state((get) => getScale(get(this.transform))))
+  public readonly previous = this.store.use(
     state(() => ({
       transform: matrix2D(),
       distance: 0
@@ -197,9 +197,8 @@ export class Canvas {
   }
 
   public screenToCanvas = <T extends Vector2 | Box>(i: T): T => {
-    const invTransform = matrix2D()
+    const invTransform = invert(matrix2D(), this.transform.get())
     const viewport = this.viewport.get()
-    invert(invTransform, this.transform.get())
 
     const item = { ...i }
     item.x -= viewport.x
@@ -246,7 +245,7 @@ export class Canvas {
     return result as T
   }
 
-  public canvasViewport = this.manager.use(
+  public canvasViewport = this.store.use(
     readonly(
       state((get) => {
         get(this.transform)
@@ -255,7 +254,7 @@ export class Canvas {
     )
   )
 
-  public dispose = () => this.manager.dispose()
+  public dispose = () => this.store.dispose()
 
   public getCenter = () => {
     const viewport = boxCenter(this.viewport.get())

@@ -1,8 +1,8 @@
-import { manager } from '../../state'
+import { store } from '../../state'
 import type { InfinityKitTool } from './Tool'
 
 export const regionTool = (): InfinityKitTool => {
-  const { dispose } = manager()
+  const { dispose } = store()
 
   return {
     dispose,

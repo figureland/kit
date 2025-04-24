@@ -22,9 +22,8 @@ export const storage = <T>({
   stringify = JSON.stringify
 }: LocalStorageOptions<T>): StorageAPI<T> => {
   let lastUpdate: number = performance.now()
-  const browser = isBrowser
   const set = async (v: T) => {
-    if (!browser) return
+    if (!isBrowser) return
     const now = performance.now()
     if (!interval || now - lastUpdate >= interval) {
       const value = refine ? await refine.set(v) : v

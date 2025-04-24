@@ -1,4 +1,4 @@
-import { type Events, events, manager, type State, state } from '../state'
+import { type Events, events, store, type State, state } from '../state'
 import { freeze } from '../tools/object'
 
 type TaskEvents = {
@@ -26,7 +26,7 @@ export type Tasks = {
 }
 
 export const tasks = (): Tasks => {
-  const { use, dispose: managerDispose } = manager()
+  const { use, dispose: storeDispose } = store()
   const e = use(events<TaskEvents>())
   const activeTasks = new Map<string, Task>()
 
@@ -40,7 +40,7 @@ export const tasks = (): Tasks => {
       existingTask.dispose()
     }
 
-    const m = manager()
+    const m = store()
     const active = m.use(state(true))
     const remaining = m.use(state(count))
     let timer: Timer
@@ -94,7 +94,7 @@ export const tasks = (): Tasks => {
       }
       activeTasks.clear()
       e.emit('dispose', undefined)
-      managerDispose()
+      storeDispose()
     },
     events: e
   })

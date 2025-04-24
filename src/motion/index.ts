@@ -1,4 +1,4 @@
-import { type AnimatedState, type Events, type State, events, manager, state } from '../state'
+import { type AnimatedState, type Events, type State, events, store, state } from '../state'
 import { clamp, map } from '../math/number'
 import { isObject } from '../tools/guards'
 import { isBrowser } from '../browser/device'
@@ -12,7 +12,7 @@ type AnimatedEvents = {
 }
 
 export const animation = ({ fps = 60 }: { fps?: number; epsilon?: number } = {}): Animated => {
-  const { use, dispose } = manager()
+  const { use, dispose } = store()
   const active = use(state(() => false))
   const e = use(events<AnimatedEvents>())
   const animations: Set<AnimatedState<any>> = new Set()
@@ -85,7 +85,7 @@ export const createAnimated = <V extends any>(
   raw: State<V>,
   { duration = 500, easing = (v) => v, interpolate, epsilon = 16 }: AnimatedStateOptions<V>
 ): AnimatedState<V> => {
-  const m = manager()
+  const m = store()
   const clone = m.use(
     state(raw.get, {
       equality: () => false
@@ -97,41 +97,41 @@ export const createAnimated = <V extends any>(
     })
   )
 
-  const store = {
+  const internal = {
     target: raw.get(),
     active: false,
     progress: 0.0
   }
 
-  const objectLike = isObject(store.target)
+  const objectLike = isObject(internal.target)
 
   const tick = (delta: number) => {
-    store.progress = clamp(store.progress + delta, 0, duration)
-    const finished = store.progress === duration || duration - store.progress < epsilon
+    internal.progress = clamp(internal.progress + delta, 0, duration)
+    const finished = internal.progress === duration || duration - internal.progress < epsilon
 
-    if (!finished || store.active) {
-      const amount = easing(map(store.progress, 0, duration, 0, 1))
+    if (!finished || internal.active) {
+      const amount = easing(map(internal.progress, 0, duration, 0, 1))
       objectLike
         ? clone.mutate((d) => {
-            d = interpolate(d, store.target, amount)
+            d = interpolate(d, internal.target, amount)
           }, true)
-        : clone.set((d) => interpolate(d, store.target, amount), true)
-      store.active = !finished
+        : clone.set((d) => interpolate(d, internal.target, amount), true)
+      internal.active = !finished
     }
   }
 
   raw.on((v) => {
-    store.progress = 0
-    store.target = v
-    store.active = true
+    internal.progress = 0
+    internal.target = v
+    internal.active = true
     tick(0)
   })
 
   const set = (v: V | Partial<V> | ((v: V) => V | Partial<V>), sync: boolean = true) => {
-    store.progress = 1.0
+    internal.progress = 1.0
     clone.set(v, sync)
-    store.target = clone.get()
-    store.active = false
+    internal.target = clone.get()
+    internal.active = false
   }
 
   return freeze({

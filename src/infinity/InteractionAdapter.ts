@@ -1,5 +1,5 @@
 import { vector2 } from '../math/vector2'
-import { state, manager, type Disposable } from '../state'
+import { state, store, type Disposable } from '../state'
 import type { Pointer } from '../browser/pointer'
 import { listen, type PointerInteractionEvent } from '../browser/dom-events'
 import { isString } from '../tools/guards'
@@ -23,7 +23,7 @@ export const createInteractionAdapter = <P extends Pointer>(
   pointer: P,
   kit: InfinityKit<any, any>
 ): InteractionAdapter => {
-  const { use, dispose } = manager()
+  const { use, dispose } = store()
   use(
     state((get) => {
       get(pointer.key('point'))
@@ -71,7 +71,7 @@ export const createInteractionAdapter = <P extends Pointer>(
       kit.onBlur()
     },
     onWheel: (e: WheelEvent) => {
-      if (e.target instanceof HTMLElement) {
+      if (isHTMLElement(e.target)) {
         e.target.focus()
       }
       kit.onWheel(vector2(e.clientX, e.clientY), vector2(e.deltaX, e.deltaY))
@@ -80,7 +80,7 @@ export const createInteractionAdapter = <P extends Pointer>(
       // This intercepts the browser's scroll event and pans the canvas instead.
       // Specifically this is useful when the user uses tab interaction to focus
       // to a focusable/tabbable element that is partially or fully offscreen.
-      if (e.target instanceof HTMLElement) {
+      if (isHTMLElement(e.target)) {
         kit.canvas.pan(vector2(e.target.scrollLeft, e.target.scrollTop))
         e.target.scrollTop = 0
         e.target.scrollLeft = 0
@@ -99,7 +99,7 @@ export const attachInteractionAdapter = (
     if (!isHTMLElement(element)) {
       throw new Error(`Invalid attach target: ${target}`)
     }
-    const { dispose, use } = manager()
+    const { dispose, use } = store()
     use(
       listen(element, {
         pointerdown: handler.onPointerDown,

@@ -1,6 +1,6 @@
 import { values } from '../tools/object'
 import type { PointerState } from '../browser/pointer'
-import { type State, state, manager } from '../state'
+import { type State, state, store } from '../state'
 import { box, type Box } from '../math/box'
 import type { Vector2 } from '../math/vector2'
 import { timerLoop, timer } from '../browser/timer'
@@ -63,14 +63,14 @@ export class InfinityKit<
   API extends QueryAPI = QueryAPI,
   Tools extends InfinityKitToolset = InfinityKitToolset
 > {
-  public manager = manager()
+  public store = store()
   public state: State<InfinityKitState>
   public visible: State<QueryResult>
   public styles: State<InfinityKitStyles>
   public tools: State<Tools>
   public tool: State<keyof Tools>
 
-  private timer = this.manager.use(timerLoop(timer()))
+  private timer = this.store.use(timerLoop(timer()))
 
   constructor(
     public canvas: Canvas,
@@ -83,7 +83,7 @@ export class InfinityKit<
       initialTool: keyof Tools
     }
   ) {
-    this.state = this.manager.use(
+    this.state = this.store.use(
       state(<InfinityKitState>{
         selecting: false,
         brush: box(),
@@ -93,15 +93,15 @@ export class InfinityKit<
       })
     )
 
-    this.tools = this.manager.use(state(tools))
-    this.tool = this.manager.use(state(initialTool))
-    this.manager.use(() => {
+    this.tools = this.store.use(state(tools))
+    this.tool = this.store.use(state(initialTool))
+    this.store.use(() => {
       values(this.tools.get()).forEach((tool) => {
         tool.dispose()
       })
     })
 
-    this.visible = this.manager.use<State<QueryResult>>(
+    this.visible = this.store.use<State<QueryResult>>(
       api.stateQuery(
         Symbol(),
         state((get) => ({
@@ -110,7 +110,7 @@ export class InfinityKit<
       )
     )
 
-    this.styles = this.manager.use(
+    this.styles = this.store.use(
       state((get) => {
         const transform = get(this.canvas.transform)
         return {
@@ -203,5 +203,5 @@ export class InfinityKit<
     this.timer.stop()
   }
 
-  public dispose = () => this.manager.dispose()
+  public dispose = () => this.store.dispose()
 }
