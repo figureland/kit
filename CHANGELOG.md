@@ -1,4 +1,16 @@
 #
+## v0.0.50
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.49...v0.0.50)
+
+### 🩹 Fixes
+
+- Broken name ([26fcddf](https://github.com/figureland/kit/commit/26fcddf))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.49
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.48...v0.0.49)
