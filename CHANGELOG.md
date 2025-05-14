@@ -1,4 +1,16 @@
 #
+## v0.0.52
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.51...v0.0.52)
+
+### 🏡 Chore
+
+- Update dependencies 2025-04-24 ([ea1a80b](https://github.com/figureland/kit/commit/ea1a80b))
+
+### ❤️ Contributors
+
+- GitHub Actions ([@Github-Action-Bot](https://github.com/Github-Action-Bot))
+
 ## v0.0.51
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.50...v0.0.51)
