@@ -1,4 +1,16 @@
 #
+## v0.0.51
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.50...v0.0.51)
+
+### 🚀 Enhancements
+
+- Refinements and new primitives ([2e40f2f](https://github.com/figureland/kit/commit/2e40f2f))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.50
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.49...v0.0.50)
