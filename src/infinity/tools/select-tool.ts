@@ -25,7 +25,6 @@ export const selectTool = (): InfinityKitTool => {
   let interacting = false
   let additiveSelection = false
   let initialSelection: string[] = []
-  let gestureSelection: string[] = []
 
   const selectionQuery = Symbol()
 
