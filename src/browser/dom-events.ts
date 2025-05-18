@@ -3,7 +3,7 @@
 import { disposable, type Disposable } from '../state'
 import { entries } from '../tools/object'
 
-export type ListenerTarget = Document | Window | HTMLElement | ScreenOrientation | MediaQueryList
+export type ListenerTarget = Document | Window | HTMLElement | ScreenOrientation | MediaQueryList | VisualViewport
 
 export type PointerInteractionEvent = Event | WheelEvent | PointerEvent | MouseEvent | TouchEvent
 
@@ -15,6 +15,8 @@ export type UnifiedEventMap = WindowEventMap &
     gestureend: Event
   } & {
     change: MediaQueryListEvent
+  } & {
+    resize: Event
   }
 
 export type MediaQueryHandlers = {
