@@ -3,6 +3,7 @@ import { dp } from '../math/number'
 import type { Size } from '../math/size'
 import { listen } from './dom-events'
 import { getClosestBreakpoint, type Breakpoints } from './utils/breakpoints'
+import { isBrowser } from './device'
 
 export type ViewportState<B> = {
   visible: boolean
@@ -16,7 +17,7 @@ export type ViewportState<B> = {
 const getWindowSize = (): Size => ({ width: window.innerWidth, height: window.innerHeight })
 const getWindowScale = (): number => dp(window.outerWidth / window.innerWidth)
 const detectKeyboard = (minKeyboardHeight = 300): boolean => {
-  if (typeof window === 'undefined' || !window.visualViewport) {
+  if (!isBrowser || !window.visualViewport) {
     return false
   }
   return window.screen.height - minKeyboardHeight > window.visualViewport.height
@@ -79,7 +80,7 @@ export const createViewport = <B extends Breakpoints>(
     })
   )
 
-  if (typeof window !== 'undefined' && window.visualViewport) {
+  if (isBrowser && window.visualViewport) {
     state.use(
       listen(window.visualViewport, {
         resize: onVisualViewportResize
