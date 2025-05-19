@@ -19,7 +19,9 @@ export const state = <V>(
   let loaded = false
   let lastSyncTime: number = 0
 
-  const shouldThrottle = () => throttle && performance.now() - lastSyncTime < throttle
+  const shouldThrottle = () => {
+    return throttle !== undefined && performance.now() - lastSyncTime < throttle
+  }
 
   const handleDependency: UseStateDependency = (s) => {
     if (!loaded) dependencies.add(s.on)
@@ -31,17 +33,30 @@ export const state = <V>(
   loaded = true
 
   const mutate = (u: (value: V) => void, sync: boolean = true) => {
-    if (shouldThrottle()) return
+    // Always execute the mutation, even when throttling
     u(value)
-    if (sync) e.emit('state', value)
-    lastSyncTime = performance.now()
+    
+    // Skip emission if we're throttling
+    if (shouldThrottle()) return
+    
+    if (sync) {
+      e.emit('state', value)
+      lastSyncTime = performance.now()
+    }
   }
 
   const set = (v: V | Partial<V> | ((v: V) => V | Partial<V>), forceSync?: boolean): void => {
-    if (shouldThrottle()) return
+    // Always calculate the new value, even when throttling
     const next = isFunction(v) ? (v as (v: V) => V)(value) : v
     const shouldMerge = isObject(next) && !isMap(next) && !isSet(next)
     const newValue = shouldMerge && isObject(value) ? (merge(value, next) as V) : (next as V)
+    
+    // Skip emission but still update the value if we're throttling
+    if (shouldThrottle()) {
+      value = newValue
+      return
+    }
+    
     if (forceSync || !equality || !equality(value, newValue)) {
       lastSyncTime = performance.now()
       e.emit('previous', [lastSyncTime, value])
