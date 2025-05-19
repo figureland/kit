@@ -1,4 +1,22 @@
 #
+## v0.0.53
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.52...v0.0.53)
+
+### 🚀 Enhancements
+
+- Adding visual viewport and keyboard checks ([1f23f0c](https://github.com/figureland/kit/commit/1f23f0c))
+- VisualViewport ([339d6b4](https://github.com/figureland/kit/commit/339d6b4))
+
+### 🏡 Chore
+
+- Remove unused code ([f9ef39a](https://github.com/figureland/kit/commit/f9ef39a))
+- Bump independencies ([997a27f](https://github.com/figureland/kit/commit/997a27f))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.52
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.51...v0.0.52)
