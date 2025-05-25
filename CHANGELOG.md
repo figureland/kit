@@ -1,4 +1,20 @@
 #
+## v0.0.54
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.53...v0.0.54)
+
+### 🚀 Enhancements
+
+- Updated store ([116c95a](https://github.com/figureland/kit/commit/116c95a))
+
+### 🏡 Chore
+
+- Fixed throttle bug ([5f1a884](https://github.com/figureland/kit/commit/5f1a884))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.53
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.52...v0.0.53)
