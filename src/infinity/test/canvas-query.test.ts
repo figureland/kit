@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'bun:test'
 import { CanvasQuery } from '..'
-import { entries } from '../../tools'
 
 describe('CanvasQuery', () => {
   it('initializes CanvasQuery with seed data', async () => {

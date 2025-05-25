@@ -1,37 +1,33 @@
-import type { Disposable, Store } from './api'
 import { createSubscriptions } from './subscriptions'
+import type { Disposable } from './api'
 
-export const store = (): Store => {
-  const keyedSubs = new Map()
-  const disposables = createSubscriptions()
+export class Store {
+  private keyedSubs = new Map<string | number | symbol, Disposable>()
+  private disposables = createSubscriptions()
 
-  const use = <S extends Disposable | (() => void)>(s: S) => {
-    disposables.add('dispose' in s ? s.dispose : s)
+  use = <S extends Disposable | (() => void)>(s: S): S => {
+    this.disposables.add('dispose' in s ? s.dispose : s)
     return s
   }
 
-  const unique = <S extends Disposable>(key: string | number | symbol, s: () => S): S => {
-    if (keyedSubs.has(key)) {
-      return keyedSubs.get(key)
+  unique = <S extends Disposable>(key: string | number | symbol, s: () => S): S => {
+    if (this.keyedSubs.has(key)) {
+      return this.keyedSubs.get(key) as S
     } else {
-      const instance = use(s())
-      keyedSubs.set(key, instance)
+      const instance = this.use(s())
+      this.keyedSubs.set(key, instance)
       return instance
     }
   }
 
-  const dispose = () => {
-    disposables.each()
-    disposables.dispose()
-    keyedSubs.clear()
-  }
-
-  return {
-    unique,
-    use,
-    dispose
+  dispose = (): void => {
+    this.disposables.each()
+    this.disposables.dispose()
+    this.keyedSubs.clear()
   }
 }
+
+export const store = () => new Store()
 
 export const disposable = (dispose: () => void): Disposable => ({
   dispose

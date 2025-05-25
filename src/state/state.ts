@@ -35,10 +35,10 @@ export const state = <V>(
   const mutate = (u: (value: V) => void, sync: boolean = true) => {
     // Always execute the mutation, even when throttling
     u(value)
-    
+
     // Skip emission if we're throttling
     if (shouldThrottle()) return
-    
+
     if (sync) {
       e.emit('state', value)
       lastSyncTime = performance.now()
@@ -50,13 +50,13 @@ export const state = <V>(
     const next = isFunction(v) ? (v as (v: V) => V)(value) : v
     const shouldMerge = isObject(next) && !isMap(next) && !isSet(next)
     const newValue = shouldMerge && isObject(value) ? (merge(value, next) as V) : (next as V)
-    
+
     // Skip emission but still update the value if we're throttling
     if (shouldThrottle()) {
       value = newValue
       return
     }
-    
+
     if (forceSync || !equality || !equality(value, newValue)) {
       lastSyncTime = performance.now()
       e.emit('previous', [lastSyncTime, value])
