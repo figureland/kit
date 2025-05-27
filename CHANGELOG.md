@@ -1,4 +1,16 @@
 #
+## v0.0.55
+
+[compare changes](https://github.com/figureland/kit/compare/v0.0.54...v0.0.55)
+
+### 🔥 Performance
+
+- Throttle fix for CI ([c52abac](https://github.com/figureland/kit/commit/c52abac))
+
+### ❤️ Contributors
+
+- Toby Milner-Gulland <toby@figure.land>
+
 ## v0.0.54
 
 [compare changes](https://github.com/figureland/kit/compare/v0.0.53...v0.0.54)
