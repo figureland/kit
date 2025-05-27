@@ -1,6 +1,6 @@
 {
   "name": "@figureland/kit",
-  "version": "0.0.56",
+  "version": "0.0.57",
   "type": "module",
   "workspaces": [
     "tools/*"
