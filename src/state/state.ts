@@ -18,9 +18,10 @@ export const state = <V>(
   const e = use(events<SubscribableEvents<V>>())
   let loaded = false
   let lastSyncTime: number = 0
+  let hasEmitted = false
 
   const shouldThrottle = () => {
-    return throttle !== undefined && performance.now() - lastSyncTime < throttle
+    return throttle !== undefined && hasEmitted && performance.now() - lastSyncTime < throttle
   }
 
   const handleDependency: UseStateDependency = (s) => {
@@ -42,6 +43,7 @@ export const state = <V>(
     if (sync) {
       e.emit('state', value)
       lastSyncTime = performance.now()
+      hasEmitted = true
     }
   }
 
@@ -62,6 +64,7 @@ export const state = <V>(
       e.emit('previous', [lastSyncTime, value])
       value = newValue
       e.emit('state', value)
+      hasEmitted = true
     }
   }
 
