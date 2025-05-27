@@ -7,18 +7,18 @@
         "@commitlint/cli": "^19.8.1",
         "@commitlint/config-conventional": "^19.8.1",
         "@types/big.js": "^6.2.2",
-        "@types/bun": "^1.2.13",
-        "@types/react": "^18.3.21",
+        "@types/bun": "^1.2.14",
+        "@types/react": "^18.3.23",
         "big.js": "^6.2.2",
-        "eslint": "^9.26.0",
+        "eslint": "^9.27.0",
         "husky": "^9.1.7",
         "mitata": "^1.0.34",
         "prettier": "^3.5.3",
         "react": "^18.3.1",
-        "svelte": "^4.2.19",
+        "svelte": "^4.2.20",
         "typescript": "^5.8.3",
         "typescript-eslint": "^7.18.0",
-        "vue": "^3.5.13",
+        "vue": "^3.5.15",
       },
       "peerDependencies": {
         "react": ">=16.8",
@@ -699,7 +699,7 @@
 
     "import-fresh/resolve-from": ["resolve-from@4.0.0", "", {}, "sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g=="],
 
-    "kit-sandbox/@figureland/kit": ["@figureland/kit@file:", { "devDependencies": { "@commitlint/cli": "^19.8.1", "@commitlint/config-conventional": "^19.8.1", "@types/big.js": "^6.2.2", "@types/bun": "^1.2.13", "@types/react": "^18.3.21", "big.js": "^6.2.2", "eslint": "^9.26.0", "husky": "^9.1.7", "mitata": "^1.0.34", "prettier": "^3.5.3", "react": "^18.3.1", "svelte": "^4.2.19", "typescript": "^5.8.3", "typescript-eslint": "^7.18.0", "vue": "^3.5.13" }, "peerDependencies": { "react": ">=16.8", "svelte": ">=4.0.0", "typescript": ">=4.0.0", "vue": ">=3.0.0" }, "optionalPeers": ["react", "svelte", "vue"] }],
+    "kit-sandbox/@figureland/kit": ["@figureland/kit@file:", { "devDependencies": { "@commitlint/cli": "^19.8.1", "@commitlint/config-conventional": "^19.8.1", "@types/big.js": "^6.2.2", "@types/bun": "^1.2.14", "@types/react": "^18.3.23", "big.js": "^6.2.2", "eslint": "^9.27.0", "husky": "^9.1.7", "mitata": "^1.0.34", "prettier": "^3.5.3", "react": "^18.3.1", "svelte": "^4.2.20", "typescript": "^5.8.3", "typescript-eslint": "^7.18.0", "vue": "^3.5.15" }, "peerDependencies": { "react": ">=16.8", "svelte": ">=4.0.0", "typescript": ">=4.0.0", "vue": ">=3.0.0" }, "optionalPeers": ["react", "svelte", "vue"] }],
 
     "@commitlint/config-validator/ajv/json-schema-traverse": ["json-schema-traverse@1.0.0", "", {}, "sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug=="],
 
