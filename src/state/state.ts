@@ -19,9 +19,21 @@ export const state = <V>(
   let loaded = false
   let lastSyncTime: number = 0
   let hasEmitted = false
+  let throttleTimeoutId: number | undefined
 
   const shouldThrottle = () => {
     return throttle !== undefined && hasEmitted && performance.now() - lastSyncTime < throttle
+  }
+
+  const scheduleThrottledEmit = () => {
+    if (throttle === undefined || throttleTimeoutId !== undefined) return
+    
+    const timeToWait = throttle - (performance.now() - lastSyncTime)
+    throttleTimeoutId = setTimeout(() => {
+      throttleTimeoutId = undefined
+      lastSyncTime = performance.now()
+      e.emit('state', value)
+    }, Math.max(0, timeToWait))
   }
 
   const handleDependency: UseStateDependency = (s) => {
@@ -56,10 +68,17 @@ export const state = <V>(
     // Skip emission but still update the value if we're throttling
     if (shouldThrottle()) {
       value = newValue
+      scheduleThrottledEmit()
       return
     }
 
     if (forceSync || !equality || !equality(value, newValue)) {
+      // Clear any pending throttled emit since we're emitting now
+      if (throttleTimeoutId !== undefined) {
+        clearTimeout(throttleTimeoutId)
+        throttleTimeoutId = undefined
+      }
+      
       lastSyncTime = performance.now()
       e.emit('previous', [lastSyncTime, value])
       value = newValue
@@ -83,6 +102,10 @@ export const state = <V>(
     get: () => value,
     events: e,
     dispose: () => {
+      if (throttleTimeoutId !== undefined) {
+        clearTimeout(throttleTimeoutId)
+        throttleTimeoutId = undefined
+      }
       e.emit('dispose', undefined)
       dependencies.clear()
       dispose()
