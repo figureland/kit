@@ -198,18 +198,18 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@types/big.js": "^6.2.2",
-    "@types/bun": "^1.2.13",
-    "@types/react": "^18.3.21",
+    "@types/bun": "^1.2.14",
+    "@types/react": "^18.3.23",
     "big.js": "^6.2.2",
-    "eslint": "^9.26.0",
+    "eslint": "^9.27.0",
     "husky": "^9.1.7",
     "mitata": "^1.0.34",
     "prettier": "^3.5.3",
     "react": "^18.3.1",
-    "svelte": "^4.2.19",
+    "svelte": "^4.2.20",
     "typescript": "^5.8.3",
     "typescript-eslint": "^7.18.0",
-    "vue": "^3.5.13"
+    "vue": "^3.5.15"
   },
   "peerDependencies": {
     "react": ">=16.8",
