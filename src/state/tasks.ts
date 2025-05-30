@@ -43,7 +43,7 @@ export const tasks = (): Tasks => {
     const m = store()
     const active = m.use(state(true))
     const remaining = m.use(state(count))
-    let timer: Timer
+    let timer: NodeJS.Timeout
 
     const runTask = () => {
       if (!active.get() || remaining.get() <= 0) {
